@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <avr/io.h>
 #include board.h
-//#include UART.h
+#include UART.h
 
 int main(void)
 {
