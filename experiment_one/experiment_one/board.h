@@ -2,7 +2,7 @@
  * board.h
  *
  * Created: 9/4/2020 11:57:19 AM
- *  Author: Hayden and Mikel Long-Serralde
+ *  Author: Hayden Long and Mikel Serralde
  */
 
 
