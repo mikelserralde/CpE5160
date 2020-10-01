@@ -5,25 +5,14 @@
  *  Author: Hayden Long and Mikel Serralde
  */
 
-
-
-
 #ifndef BOARD_H_
 #define BOARD_H_
 
+// Clock Speed
 #define F_CPU (16000000)
 #define OSC_DIV (1)
 
-
-
  /* Registers and associated bit numbers */
-
-#define PA _SFR_MEM8 (0x20)
-#define PB _SFR_MEM8 (0x23)
-#define PC _SFR_MEM8 (0x26)
-#define PD _SFR_MEM8 (0x29)
-#define PE _SFR_MEM8 (0x2C)
-
 #define PIN_A    _SFR_IO8(0x00)
 #define PIN_A7   7
 #define PIN_A6   6
@@ -155,10 +144,12 @@
 // #     # #     # #    #     #    
 //  #####  #     # #     #    #   
 
+// UART Addresses
 #define UART0 _SFR_MEM8(0xC0)
 #define UART1 _SFR_MEM8(0xC8)
 #define UART2 _SFR_MEM8(0xD0)
 
+// UART Registers
 #define UCSRA (0)
 #define UCSRB (1)
 #define UCSRC (2)
@@ -167,18 +158,34 @@
 #define UBRRH (5)
 #define UDR (6)
 
+// UCSRA Bits
 #define UDRE (5)
 #define RXC  (7)
 
+// UCSRB Bits
+#define UCSZ2 (2)
 #define TXEN (3)
 #define RXEN (4)
 
-#define UCSZ2 (2)
+// UCSRC Bits
+#define Asynchronous (0<<6)
+#define Synchronous (1<<6)
+#define No_Parity (0<<4)
+#define Even_Parity (2<<4)
+#define Odd_Parity (3<<4)
+#define One_Stop_Bit (0<<3)
+#define Two_Stop_Bits (1<<3)
+#define Eight_Data_Bits (3)
+#define Nine_Data_Bits (7)
 
 /***** Ports ******/
 /*
 The port.h (board.h) file can redefine the general I/O pin names with more descriptive names to indicate they are in use for this project.
 */
-
+#define PA _SFR_MEM8 (0x20)
+#define PB _SFR_MEM8 (0x23)
+#define PC _SFR_MEM8 (0x26)
+#define PD _SFR_MEM8 (0x29)
+#define PE _SFR_MEM8 (0x2C)
 
 #endif /* BOARD_H_ */

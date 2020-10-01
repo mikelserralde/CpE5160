@@ -13,7 +13,7 @@
 #include <util/delay.h>
 #include <avr/pgmspace.h>
 
-//const int8_t test[15] PROGMEM = "This is test\n\r";
+//const int8_t test[15]	 PROGMEM = "This is test\n\r";
 
 int main(void)
 {
@@ -39,19 +39,18 @@ int main(void)
     while (1) 
     {
 		
-		//Part 3, toggle USER LED
+		//Part 3, toggle USER LED with 500 ms delay
 		Output_Clear(&PC, (1<<PORT_USERLED));
 		_delay_ms(500);
 		Output_Set(&PC, (1<<PORT_USERLED));
 		_delay_ms(500);
 		
 		
-		//Part 6, UART transmit ascii U
+		//Part 6, UART transmit U at first, and then echo the received value
 		UART_Transmit(&UART1, testChar);
 
-		//Part 7, Echo received char into testChar for transmitting
+		//Part 7, Places received char into testChar for transmitting the "echo"
 		testChar = UART_Receive(&UART1);
-		
 		
     }
 }
