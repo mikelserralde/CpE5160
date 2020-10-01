@@ -188,4 +188,10 @@ The port.h (board.h) file can redefine the general I/O pin names with more descr
 #define PD _SFR_MEM8 (0x29)
 #define PE _SFR_MEM8 (0x2C)
 
+// Output Port Registers
+//PIN offset = 0, DDR offset = 1, and PORT offset = 2
+#define PIN (0)
+#define DDR (1)
+#define PORT(2)
+
 #endif /* BOARD_H_ */
