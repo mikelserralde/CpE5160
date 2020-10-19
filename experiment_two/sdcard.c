@@ -1,4 +1,9 @@
-// sdcard.c pseudo code
+// sdcard.c
+// by mikel
+
+#include "sdcard.h"
+#include "board.h"
+#include <stdio.h>
 
 #define CMD0 0
 #define CMD8 8
@@ -6,11 +11,6 @@
 #define CMD58 58
 #define ACMD41 41
 
-// TODO: #define errors
-
-// Return Values: 
-// 0x01: Illegal Command Value
-// 0xFF: Success
 uint8_t Send_Command(uint8_t command, uint32_t argument)
 {
 	uint8_t checksum = 0x01;
@@ -18,7 +18,7 @@ uint8_t Send_Command(uint8_t command, uint32_t argument)
 
 	if(command > 63)
 	{
-		return 0x01;
+		return ILLEGAL_COMMAND;
 	}
 	
 	if(command == CMD8)
@@ -43,14 +43,11 @@ uint8_t Send_Command(uint8_t command, uint32_t argument)
 	// Sends Checksum and Stop Bit (1)
 	received_byte=SPI_Transfer(SPI_Addr, checksum);
 	
-	return 0xFF;
+	return SUCCESS;
 }
 
-// Return Values: 
-// 0x00: R1 Response Error 
-// 0x01: Timeout 
-// 0xFF: Success
-uint8_t Receive_Response (uint8_t number_of_bytes, uint8_t * array_name)
+
+uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 {
 	uint8_t received_byte;
 	uint8_t timeout = 0;
@@ -59,15 +56,14 @@ uint8_t Receive_Response (uint8_t number_of_bytes, uint8_t * array_name)
 		timeout++;
 		if(timeout > 100)
 		{
-			return 0x01;
+			return TIMEOUT;
 		}
 		// delay_ms(50);
 	}while((received_byte & 0x80) != 0x80);
-	//}while(((received_byte & 0x80) != 0x80) & (timeout < 100));
 	
 	if(received_byte != 0x01 | received_byte != 0x00)
 	{
-		return 0x00;
+		return received_byte;
 	}
 	
 	*(array_name) = received_byte;
@@ -82,7 +78,7 @@ uint8_t Receive_Response (uint8_t number_of_bytes, uint8_t * array_name)
 	
 	SPI_Transfer(SPI_Addr, 0xFF);
 	
-	return 0xFF;
+	return SUCCESS;
 }
 
 
@@ -113,8 +109,7 @@ uint8_t SD_Card_Init(void)
 	// Continue if R1 = 0x01. 
 	if(response[0] != 0x01)
 	{
-		// Unexpected Active State Error
-		return 0x01;
+		return UNEXPECTED_ACTIVE_STATE;
 	}
 	
 	// Set /CS = 1
@@ -142,8 +137,7 @@ uint8_t SD_Card_Init(void)
 	// If R1 is not 0x01 (otherwise), function should exit with error flag
 	if(response[0] != 0x01)
 	{
-		// Unexpected Active State Error
-		return 0x01;
+		return UNEXPECTED_ACTIVE_STATE;
 	}
 	
 	// Check R7 response for correct voltage range
