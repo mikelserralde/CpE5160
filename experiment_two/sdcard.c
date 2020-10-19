@@ -1,9 +1,12 @@
 // sdcard.c pseudo code
 
-#define CMD0 (0)
-#define CMD8 (8)
-#define CMD41 (41)
-#define CMD58 (58)
+#define CMD0 0
+#define CMD8 8
+#define CMD55 55
+#define CMD58 58
+#define ACMD41 41
+
+// TODO: #define errors
 
 // Return Values: 
 // 0x01: Illegal Command Value
@@ -32,18 +35,12 @@ uint8_t Send_Command(uint8_t command, uint32_t argument)
 	command |= 0x40;
 	received_byte=SPI_Transfer(SPI_Addr, command);
 	
-	// for(uint8_t i = 4; i>0; i--)
-	// {
-		// splits up into MSB to LSB bytes in the most complicated way 
-		// uint8_t to_send = (argument & ((15*16^((i*2)-1))+(15*16^((i*2)-2))))>>((i-1)*8);
-		// SPI_Transfer(SPI_Addr, to_send);
-	// }
-	
 	for(index=0;index<4;index++){
 		send_value=(uint8_t)(argument>>(24-(index*8)));
 		received_byte=SPI_Transfer(&SD_PORT,send_value);
 	}
 	
+	// Sends Checksum and Stop Bit (1)
 	received_byte=SPI_Transfer(SPI_Addr, checksum);
 	
 	return 0xFF;
@@ -86,42 +83,180 @@ uint8_t Receive_Response (uint8_t number_of_bytes, uint8_t * array_name)
 	SPI_Transfer(SPI_Addr, 0xFF);
 	
 	return 0xFF;
-	
 }
 
 
+// Return Values: 
 uint8_t SD_Card_Init(void)
 {
 	uint8_t response[8]; 
+	uint8_t received_value;
+	uint8_t timeout = 0;
 	
 	// Set /CS = 1 and send at least 74 clock cycles on SCK
 	
 	// Clear /CS (= 0) and send CMD0
-	Send_Command(CMD0, 
-	// Read R1 Response 
+	received_value = Send_Command(CMD0, 0UL);
 	
+	if(received_value != 0xFF)
+	{
+		return received_value;
+	}
+	// Read R1 Response 
+	received_value = Receive_Response(1, &response);
+	
+	if(received_value != 0xFF)
+	{
+		return received_value;
+	}
 	
 	// Continue if R1 = 0x01. 
+	if(response[0] != 0x01)
+	{
+		// Unexpected Active State Error
+		return 0x01;
+	}
+	
 	// Set /CS = 1
 	
 	// Clear /CS and send CMD8 
+	received_value = Send_Command(CMD8, 0x000001AA);
+	
+	if(received_value != 0xFF)
+	{
+		return received_value;
+	}
+	
 	// Read R7 Response
+	received_value = Receive_Response(5 , &response);
+	
 	// Set /CS = 1 after response
+	
+	
 	// If R1 is = 0x05 (Illegal Command) then SD card is v1.x typedef (handle this)
+	if(received_value != 0xFF)
+	{
+		return received_value;
+	}
+	
 	// If R1 is not 0x01 (otherwise), function should exit with error flag
+	if(response[0] != 0x01)
+	{
+		// Unexpected Active State Error
+		return 0x01;
+	}
+	
 	// Check R7 response for correct voltage range
-	// If it doesn't match, designate card as unusable?
 	
-	// Clear /CS and send CMD58
+	if(response[3] != 0x01)
+	{
+		return VOLTAGE_ERROR;
+	}
+	
+		
+	// Clear /CS 
+
+	// Send CMD58
+	received_value = Send_Command(CMD58, 0UL);
+	if(received_value != 0xFF)
+	{
+		return received_value;
+	}
+	
 	// Read R3 response
-	// Set /CS = 1
-	// R1 should be 0x01 (else return error)
-	// Check R3 response for correct voltage (else return unusable)
+	received_value = Receive_Response(5, &response);
 	
-	// Clear /CS and send ACMD41 (send CMD 55 and receive R1, then send CMD41)
-	// Receive R1 response 
-	// If card is v1.x, ACD41 argument = 0, if v2.0, HCS (bit 30) should be set_new_handler
+	if(received_value != 0xFF)
+	{
+		return received_value;
+	}
+	
+	// R1 should be 0x01 (else return error)
+	if(response[0] != 0x01)
+	{
+		// Unexpected Active State Error
+		return 0x01;
+	}
+	
+	// Check R3 response for correct voltage (else return unusable)
+	if((response[2] & 0x30) != 0x30)
+	{
+		return VOLTAGE_ERROR;
+	}
+	
+	// Set /CS = 1
+	
+	// Clear /CS
+	
+	// Send ACMD41: Send CMD 55 and receive R1, then send ACMD41
 	// Send command sequence until R1 response returns as 0x00 (active state) (or if error occurs), 
 	// or until timeout if it doesn't ever go into active state
-	//
+	do
+	{
+		Send_Command(CMD55, 0UL);
+		if(received_value != 0xFF)
+		{
+			return received_value;
+		}
+
+		// Receive R1 response 
+		received_value = Receive_Response(1, &response);
+
+		if(received_value != 0xFF)
+		{
+			return received_value;
+		}
+
+		// If card is v1.x, ACMD41 argument = 0, if v2.0, HCS (bit 30) should be set_new_handler
+		received_value = Send_Command(ACMD41, 0x40000000);
+		if(received_value != 0xFF)
+		{
+			return received_value;
+		}
+
+		// Receive R1 response 
+		received_value = Receive_Response(1, &response);
+
+		if(received_value != 0xFF)
+		{
+			return received_value;
+		}
+		
+		timeout++;
+		if(timeout > 100)
+		{
+			return 0x01;
+		}
+	}while(received_value != 0x00);
+	
+	
+	// Send CMD58
+	received_value = Send_Command(CMD58, 0UL);
+	if(received_value != 0xFF)
+	{
+		return received_value;
+	}
+	
+	// Read R3 response
+	received_value = Receive_Response(5, &response);
+	
+	if(received_value != 0xFF)
+	{
+		return received_value;
+	}
+	
+	// R1 should be 0x00 (else return error)
+	if(response[0] != 0x00)
+	{
+		// Unexpected Idle State Error
+		return UNEXPECTED_IDLE_STATE;
+	}
+	
+	// Check R3 response OCR and CCS bits
+	if((response[1] & 0xC0) != 0xC0)
+	{
+		return CARD_CAPACITY_ERROR;
+	}
+	
+	return SUCCESS;
 }
