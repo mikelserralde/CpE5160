@@ -3,6 +3,7 @@
 
 #include "sdcard.h"
 #include "board.h"
+#include "Control_Outputs.h"
 #include <stdio.h>
 
 #define CMD0 0
@@ -33,7 +34,7 @@ uint8_t Send_Command(uint8_t command, uint32_t argument)
 
 	// Sends Command (with transmission bits)
 	command |= 0x40;
-	received_byte=SPI_Transfer(SPI_Addr, command);
+	received_byte=SPI_Transfer(SPI0, command);
 	
 	for(index=0;index<4;index++){
 		send_value=(uint8_t)(argument>>(24-(index*8)));
@@ -41,7 +42,7 @@ uint8_t Send_Command(uint8_t command, uint32_t argument)
 	}
 	
 	// Sends Checksum and Stop Bit (1)
-	received_byte=SPI_Transfer(SPI_Addr, checksum);
+	received_byte=SPI_Transfer(SPI0, checksum);
 	
 	return SUCCESS;
 }
@@ -52,7 +53,7 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 	uint8_t received_byte;
 	uint8_t timeout = 0;
 	do{
-		received_byte = SPI_Transfer(SPI_Addr, 0xFF);
+		received_byte = SPI_Transfer(SPI0, 0xFF);
 		timeout++;
 		if(timeout > 100)
 		{
@@ -72,11 +73,11 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 	{
 		for(uint8_t i = 1; i < number_of_bytes; i++)
 		{
-			*(array_name+i) = SPI_Transfer(SPI_Addr, 0xFF);
+			*(array_name+i) = SPI_Transfer(SPI0, 0xFF);
 		}
 	}
 	
-	SPI_Transfer(SPI_Addr, 0xFF);
+	SPI_Transfer(SPI0, 0xFF);
 	
 	return SUCCESS;
 }
@@ -89,9 +90,19 @@ uint8_t SD_Card_Init(void)
 	uint8_t received_value;
 	uint8_t timeout = 0;
 	
-	// Set /CS = 1 and send at least 74 clock cycles on SCK
+	// Set /CS = 1
+	Output_Init(&PB, (1<<SD_CS));
 	
-	// Clear /CS (= 0) and send CMD0
+	// Send at least 74 clock cycles on SCK
+	for(uint8_t i = 0; i<10; i++)
+	{
+		SPI_Transfer(SPI0, 0xff);
+	}
+	
+	// Clear /CS (= 0) 
+	Output_Clear(&PB, (1<<CS));
+	
+	// Send CMD0
 	received_value = Send_Command(CMD0, 0UL);
 	
 	if(received_value != 0xFF)
@@ -113,8 +124,9 @@ uint8_t SD_Card_Init(void)
 	}
 	
 	// Set /CS = 1
-	
+	Output_Set(&PB, (1<<CS));
 	// Clear /CS and send CMD8 
+	Output_Clear(&PB, (1<<CS));
 	received_value = Send_Command(CMD8, 0x000001AA);
 	
 	if(received_value != 0xFF)
@@ -126,7 +138,7 @@ uint8_t SD_Card_Init(void)
 	received_value = Receive_Response(5 , &response);
 	
 	// Set /CS = 1 after response
-	
+	Output_Set(&PB, (1<<CS));
 	
 	// If R1 is = 0x05 (Illegal Command) then SD card is v1.x typedef (handle this)
 	if(received_value != 0xFF)
@@ -149,7 +161,7 @@ uint8_t SD_Card_Init(void)
 	
 		
 	// Clear /CS 
-
+	Output_Clear(&PB, (1<<CS));
 	// Send CMD58
 	received_value = Send_Command(CMD58, 0UL);
 	if(received_value != 0xFF)
@@ -179,9 +191,9 @@ uint8_t SD_Card_Init(void)
 	}
 	
 	// Set /CS = 1
-	
+	Output_Set(&PB, (1<<CS));
 	// Clear /CS
-	
+	Output_Clear(&PB, (1<<CS));
 	// Send ACMD41: Send CMD 55 and receive R1, then send ACMD41
 	// Send command sequence until R1 response returns as 0x00 (active state) (or if error occurs), 
 	// or until timeout if it doesn't ever go into active state
@@ -252,5 +264,6 @@ uint8_t SD_Card_Init(void)
 		return CARD_CAPACITY_ERROR;
 	}
 	
+	Output_Set(&PB, (1<<CS));
 	return SUCCESS;
 }
