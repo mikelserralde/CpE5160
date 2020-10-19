@@ -4,6 +4,10 @@ Holds the function prototypes for the SPI initialization and transfers
 Created by Hayden Long 10/20/2020
 */
 
+#ifndef SPI_H_
+#define SPI_H_
+
+
 #include <stdio.h>
 #include "board.h"
 
@@ -43,6 +47,7 @@ OUTPUTS: returns the byte value received from slave
 */
 
 
-uint8_t SPI_Transfer(uint8_t* SPI_addr, uint8_t data);
+uint8_t SPI_Transfer(uint8_t volatile * SPI_addr, uint8_t data);
 
 
+#endif //SPI_H_

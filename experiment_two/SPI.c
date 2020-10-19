@@ -75,13 +75,16 @@ uint8_t SPI_Master_Init(uint8_t volatile* SPI_addr, uint32_t clock_freq)
 		Output_Init(&PB, (1 << SCK));
 	}
 
+	//Set MOSI pin as output and initialize at 1
+	Output_Set(&PB, (1 << MOSI));
+	Output_Init(&PB, (1 << MOSI));
 
 	return return_value;
 }
 
 
 
-uint8_t SPI_Transfer(uint8_t* SPI_addr, uint8_t data)
+uint8_t SPI_Transfer(uint8_t volatile * SPI_addr, uint8_t data)
 {
 	uint8_t status;
 
