@@ -23,14 +23,18 @@ void main()
 	SD_Status = SD_Card_Init();
 	UART_init(&UART1,9600);
 	
-	
 	while(1)
 	{
-		
 		// super loop, one loop one equation
+		
 		// Prompt User
 		selected_sd_block = long_serial_input(&UART1);
-		if(Send_Command(CMD17, 0UL) != 0xFF)
+		
+		// Clear /CS
+		Output_Clear(&PB, (1<<CS));
+		
+		// Select Data Block
+		if(Send_Command(CMD17, selected_sd_block) != SUCCESS)
 		{
 			while(1)
 			{
@@ -38,15 +42,18 @@ void main()
 			}
 		}
 		
-		// Where do we input the # for the data block????????? @younger
-		if(Read_Block(512, data) != 0xFF)
+		// Read Data Block
+		if(Read_Block(512, data) != SUCCESS)
 		{
 			while(1)
 			{
 				// Ends Program
 			}
 		}
+		// Set /CS = 1
+		Output_Set(&PB, (1<<CS));
 		
+		print_memory(&UART1, 512, data);
 		
 	}
 	return 0;
