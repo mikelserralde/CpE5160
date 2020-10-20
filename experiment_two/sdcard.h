@@ -4,6 +4,14 @@
 #ifndef SDCARD_H_
 #define SDCARD_H_
 
+// SD Commands
+#define CMD0 0
+#define CMD8 8
+#define CMD17 17
+#define CMD55 55
+#define CMD58 58
+#define ACMD41 41
+
 // Return Values for SD Card Functions
 #define TIMEOUT 0
 #define ILLEGAL_COMMAND 1
@@ -11,6 +19,7 @@
 #define UNEXPECTED_IDLE_STATE 3
 #define CARD_CAPACITY_ERROR 4
 #define VOLTAGE_ERROR 5
+#define INACTIVE_CARD 6
 #define SUCCESS 255
 // If the return is not one of the above, something is very wrong
 
@@ -24,5 +33,7 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name);
 // Initializes the SD Card
 uint8_t SD_Card_Init(void);
 
+// Reads a block of data from the SD Card
+uint8_t Read_Block(uint16_t number_of_bytes, uint8_t * array);
 
 #endif // SDCARD_H_

@@ -6,11 +6,6 @@
 #include "Control_Outputs.h"
 #include <stdio.h>
 
-#define CMD0 0
-#define CMD8 8
-#define CMD55 55
-#define CMD58 58
-#define ACMD41 41
 
 uint8_t Send_Command(uint8_t command, uint32_t argument)
 {
@@ -34,7 +29,7 @@ uint8_t Send_Command(uint8_t command, uint32_t argument)
 
 	// Sends Command (with transmission bits)
 	command |= 0x40;
-	received_byte=SPI_Transfer(SPI0, command);
+	received_byte=SPI_Transfer(&SPI0, command);
 	
 	for(index=0;index<4;index++){
 		send_value=(uint8_t)(argument>>(24-(index*8)));
@@ -42,7 +37,7 @@ uint8_t Send_Command(uint8_t command, uint32_t argument)
 	}
 	
 	// Sends Checksum and Stop Bit (1)
-	received_byte=SPI_Transfer(SPI0, checksum);
+	received_byte=SPI_Transfer(&SPI0, checksum);
 	
 	return SUCCESS;
 }
@@ -53,7 +48,7 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 	uint8_t received_byte;
 	uint8_t timeout = 0;
 	do{
-		received_byte = SPI_Transfer(SPI0, 0xFF);
+		received_byte = SPI_Transfer(&SPI0, 0xFF);
 		timeout++;
 		if(timeout > 100)
 		{
@@ -73,11 +68,11 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 	{
 		for(uint8_t i = 1; i < number_of_bytes; i++)
 		{
-			*(array_name+i) = SPI_Transfer(SPI0, 0xFF);
+			*(array_name+i) = SPI_Transfer(&SPI0, 0xFF);
 		}
 	}
 	
-	SPI_Transfer(SPI0, 0xFF);
+	SPI_Transfer(&SPI0, 0xFF);
 	
 	return SUCCESS;
 }
@@ -96,7 +91,7 @@ uint8_t SD_Card_Init(void)
 	// Send at least 74 clock cycles on SCK
 	for(uint8_t i = 0; i<10; i++)
 	{
-		SPI_Transfer(SPI0, 0xff);
+		SPI_Transfer(&SPI0, 0xff);
 	}
 	
 	// Clear /CS (= 0) 
@@ -265,5 +260,64 @@ uint8_t SD_Card_Init(void)
 	}
 	
 	Output_Set(&PB, (1<<CS));
+	return SUCCESS;
+}
+
+uint8_t Read_Block(uint16_t number_of_bytes, uint8_t * array)
+{
+	uint8_t received_byte;
+	uint8_t timeout = 0;
+
+	// Clear /CS
+	Output_Clear(&PB, (1<<CS));
+
+	// Loop until receive R1 response
+	do{
+		received_byte = SPI_Transfer(&SPI0, 0xFF);
+		timeout++;
+		if(timeout > 100)
+		{
+			return TIMEOUT;
+		}
+		// delay_ms(50);
+	}while((received_byte & 0x80) != 0x80);
+	
+	if(received_byte != 0x00)
+	{
+		return INACTIVE_CARD;
+	}
+
+	// Loop until get something other than 0xFF
+	timeout = 0;
+	do{
+		received_byte = SPI_Transfer(&SPI0,0xFF);
+		if(timeout > 100)
+		{
+			return TIMEOUT;
+		}
+	}while(received_byte==0xFF);
+	
+	// Check for data start token
+	if(received_byte != 0xFE)
+	{
+		return received_byte;
+	}
+	
+	// Read all bytes of data block
+	for(uint8_t i = 0; i<number_of_bytes; i++)
+	{
+		received_byte = SPI_Transfer(&SPI0,0xFF);
+		*(array+i) = received_byte;
+	}
+	
+	// Receive CRC16 (do nothing with it) and send a final 0xFF
+	for(uint8_t i = 0; i<3; i++)
+	{
+		received_byte = SPI_Transfer(&SPI0,0xFF);
+	}
+
+	// Set /CS = 1
+	Output_Set(&PB, (1<<CS));
+	
 	return SUCCESS;
 }
