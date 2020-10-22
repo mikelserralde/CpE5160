@@ -21,7 +21,8 @@
 #define VOLTAGE_ERROR 5
 #define INACTIVE_CARD 6
 #define SUCCESS 255
-// If the return is not one of the above, something is very wrong
+// If the return is not one of the above, it will be the R1 response with an error
+// Otherwise, something is very wrong
 
 // Sends a command to SD Card using SPI with a 32 bit argument
 uint8_t Send_Command(uint8_t command, uint32_t argument);

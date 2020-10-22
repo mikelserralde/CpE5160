@@ -11,12 +11,14 @@ uint8_t Send_Command(uint8_t command, uint32_t argument)
 {
 	uint8_t checksum = 0x01;
 	uint8_t received_byte;
-
+	
+	// Checks to see that message is only 6 bits
 	if(command > 63)
 	{
 		return ILLEGAL_COMMAND;
 	}
 	
+	// Checksums for CMD8 and CMD0, otherwise, it stays at 0x01 (for stop bit)
 	if(command == CMD8)
 	{
 		checksum = 0x87;
@@ -31,6 +33,7 @@ uint8_t Send_Command(uint8_t command, uint32_t argument)
 	command |= 0x40;
 	received_byte=SPI_Transfer(&SPI0, command);
 	
+	// Sends all 4 bytes of argument
 	for(index=0;index<4;index++){
 		send_value=(uint8_t)(argument>>(24-(index*8)));
 		received_byte=SPI_Transfer(&SD_PORT,send_value);
@@ -47,6 +50,8 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 {
 	uint8_t received_byte;
 	uint8_t timeout = 0;
+	
+	// Sends 0xFF until R1 is received (msb is 0)
 	do{
 		received_byte = SPI_Transfer(&SPI0, 0xFF);
 		timeout++;
@@ -57,13 +62,16 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 		// delay_ms(50);
 	}while((received_byte & 0x80) != 0x80);
 	
+	// If R1 has an error, stop the function
 	if(received_byte != 0x01 | received_byte != 0x00)
 	{
 		return received_byte;
 	}
 	
+	// Store the R1 response in the array
 	*(array_name) = received_byte;
 	
+	// Store the rest of the response in the array
 	if(number_of_bytes > 1)
 	{
 		for(uint8_t i = 1; i < number_of_bytes; i++)
@@ -72,13 +80,13 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 		}
 	}
 	
+	// Send one last 0xFF 
 	SPI_Transfer(&SPI0, 0xFF);
 	
 	return SUCCESS;
 }
 
 
-// Return Values: 
 uint8_t SD_Card_Init(void)
 {
 	uint8_t response[8]; 
@@ -99,7 +107,7 @@ uint8_t SD_Card_Init(void)
 	
 	// Send CMD0
 	received_value = Send_Command(CMD0, 0UL);
-	
+	//Check for errors
 	if(received_value != 0xFF)
 	{
 		return received_value;
