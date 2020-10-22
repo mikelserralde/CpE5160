@@ -1,8 +1,12 @@
 // sdcard.h
 // by mikel
+// feat. hayden
 
 #ifndef SDCARD_H_
 #define SDCARD_H_
+
+#include <stdint.h>
+
 
 // SD Commands
 #define CMD0 0

@@ -8,14 +8,12 @@ Created by Hayden Long 10/20/2020
 #define SPI_H_
 
 
-#include <stdio.h>
+#include <stdint.h>
 #include "board.h"
 
 
 #define SPR00 0
 #define SPR01 1
-#define CPHA 2
-#define CPOL 3
 #define MSTR 4
 #define DORD 5
 #define SPE 6
@@ -25,8 +23,8 @@ Created by Hayden Long 10/20/2020
 #define SPIF 7
 #define WCOL 6
 
-#define CPOL 0
-#define CPHA 0
+#define CPOL_VAL 0
+#define CPHA_VAL 0
 
 
 
