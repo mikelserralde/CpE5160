@@ -90,6 +90,8 @@ uint8_t SPI_Master_Init(uint8_t volatile* SPI_addr, uint32_t clock_freq)
 	//Set MOSI pin as output and initialize at 1
 	Output_Set(&PB, MOSI);
 	Output_Init(&PB, MOSI);
+	
+	
 
 	return return_value;
 }
@@ -105,7 +107,7 @@ uint8_t SPI_Transfer(uint8_t volatile * SPI_addr, uint8_t data)
 	do
 	{
 		status = *(SPI_addr + SPSR);
-		UART_Transmit(&UART1,status);
+		//UART_Transmit(&UART1,status);
 	//} while ((status & (1 << SPIF)) == 0);
 	}while((status & 0x80) == 0);
 

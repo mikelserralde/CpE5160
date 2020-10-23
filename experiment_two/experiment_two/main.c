@@ -53,7 +53,7 @@ int main()
 		selected_sd_block = long_serial_input(&UART1);
 		
 		// Clear /CS
-		Output_Clear(&PB, (1<<SD_CS));
+		Output_Clear(&PB, (SD_CS));
 		
 		// Select Data Block
 		if(Send_Command(CMD17, selected_sd_block) != SUCCESS)
@@ -69,11 +69,12 @@ int main()
 		{
 			while(1)
 			{
+				UART_Transmit_String(&UART1, 22, SD_init_string);
 				// Ends Program
 			}
 		}
 		// Set /CS = 1
-		Output_Set(&PB, (1<<SD_CS));
+		Output_Set(&PB, (SD_CS));
 		
 		print_memory(&UART1, 512, data);
 		

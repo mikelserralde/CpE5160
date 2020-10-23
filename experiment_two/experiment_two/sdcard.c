@@ -4,6 +4,9 @@
 #include "sdcard.h"
 #include "board.h"
 #include "Control_Outputs.h"
+#include "UART.h"
+#include "UART_Print.h"
+#include "SPI.h"
 #include <stdint.h>
 
 
@@ -51,8 +54,9 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 {
 	uint8_t received_byte;
 	uint8_t timeout = 0;
+	int8_t error_string[33] = "Broken while loop still read this";
 	
-	// Sends 0xFF until R1 is received (msb is 0)
+	// Sends 0xFF until R1 is * received (msb is 0)
 	do{
 		received_byte = SPI_Transfer(&SPI0, 0xFF);
 		timeout++;
@@ -60,17 +64,22 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 		{
 			return TIMEOUT;
 		}
-		// delay_ms(50);
-	}while((received_byte & 0x80) != 0x80);
+		
+	}while(received_byte == 0xFF);
 	
-	// If R1 has an error, stop the function
-	if(received_byte != 0x01 | received_byte != 0x00)
-	{
-		return received_byte;
-	}
+	UART_Transmit_String(&UART1, 33, error_string);
 	
 	// Store the R1 response in the array
 	*(array_name) = received_byte;
+	
+	// If R1 has an error, stop the function
+	if((received_byte != 0x01) && (received_byte != 0x00))
+	{
+		UART_Transmit_String(&UART1, 33, error_string);
+		return received_byte;
+	}
+	
+	
 	
 	// Store the rest of the response in the array
 	if(number_of_bytes > 1)
@@ -96,7 +105,7 @@ uint8_t SD_Card_Init(void)
 	uint32_t ACMD41_argument = 0x40000000;
 	
 	// Set /CS = 1
-	Output_Init(&PB, (1<<SD_CS));
+	Output_Init(&PB, SD_CS);
 	
 	// Send at least 74 clock cycles on SCK
 	for(uint8_t i = 0; i<10; i++)
@@ -105,7 +114,7 @@ uint8_t SD_Card_Init(void)
 	}
 	
 	// Clear /CS (= 0) 
-	Output_Clear(&PB, (1<<SD_CS));
+	Output_Clear(&PB, SD_CS);
 	
 	// Send CMD0
 	received_value = Send_Command(CMD0, 0UL);
@@ -129,9 +138,9 @@ uint8_t SD_Card_Init(void)
 	}
 	
 	// Set /CS = 1
-	Output_Set(&PB, (1<<SD_CS));
+	Output_Set(&PB, SD_CS);
 	// Clear /CS and send CMD8 
-	Output_Clear(&PB, (1<<SD_CS));
+	Output_Clear(&PB, SD_CS);
 	received_value = Send_Command(CMD8, 0x000001AA);
 	
 	if(received_value != 0xFF)
@@ -143,7 +152,7 @@ uint8_t SD_Card_Init(void)
 	received_value = Receive_Response(5 , &response);
 	
 	// Set /CS = 1 after response
-	Output_Set(&PB, (1<<SD_CS));
+	Output_Set(&PB, SD_CS);
 	
 	// If R1 is = 0x05 (Illegal Command) then SD card is v1.x typedef (handle this)
 	if(received_value == 0x05)
@@ -152,13 +161,13 @@ uint8_t SD_Card_Init(void)
 	}	
 
 	// Handle other R1 errors
-	if(received_value != 0xFF & received_value != 0x05)
+	if((received_value != 0xFF) && (received_value != 0x05))
 	{
 		return received_value;
 	}
 	
 	// If R1 is not 0x01 (otherwise), function should exit with error flag
-	if(response[0] != 0x01 & response[0] != 0x05)
+	if((response[0] != 0x01) && (response[0] != 0x05))
 	{
 		return UNEXPECTED_ACTIVE_STATE;
 	}
@@ -172,7 +181,7 @@ uint8_t SD_Card_Init(void)
 	
 		
 	// Clear /CS 
-	Output_Clear(&PB, (1<<SD_CS));
+	Output_Clear(&PB, SD_CS);
 	// Send CMD58
 	received_value = Send_Command(CMD58, 0UL);
 	if(received_value != SUCCESS)
@@ -202,15 +211,15 @@ uint8_t SD_Card_Init(void)
 	}
 	
 	// Set /CS = 1
-	Output_Set(&PB, (1<<SD_CS));
+	Output_Set(&PB, SD_CS);
 	// Clear /CS
-	Output_Clear(&PB, (1<<SD_CS));
+	Output_Clear(&PB, SD_CS);
 	// Send ACMD41: Send CMD 55 and receive R1, then send ACMD41
 	// Send command sequence until R1 response returns as 0x00 (active state) (or if error occurs), 
 	// or until timeout if it doesn't ever go into active state
 	do
 	{
-		Send_Command(CMD55, 0UL);
+		received_value = Send_Command(CMD55, 0UL);
 		if(received_value != SUCCESS)
 		{
 			return received_value;
@@ -244,7 +253,7 @@ uint8_t SD_Card_Init(void)
 		{
 			return TIMEOUT;
 		}
-	}while(received_value != 0x00);
+	}while(response[0] != 0x00);
 	
 	
 	// Send CMD58
@@ -275,7 +284,7 @@ uint8_t SD_Card_Init(void)
 		return CARD_CAPACITY_ERROR;
 	}
 	
-	Output_Set(&PB, (1<<SD_CS));
+	Output_Set(&PB, SD_CS);
 	return SUCCESS;
 }
 
@@ -285,7 +294,7 @@ uint8_t Read_Block(uint16_t number_of_bytes, uint8_t * array)
 	uint8_t timeout = 0;
 
 	// Clear /CS
-	Output_Clear(&PB, (1<<SD_CS));
+	Output_Clear(&PB, SD_CS);
 
 	// Loop until receive R1 response
 	do{
@@ -295,8 +304,8 @@ uint8_t Read_Block(uint16_t number_of_bytes, uint8_t * array)
 		{
 			return TIMEOUT;
 		}
-		// delay_ms(50);
-	}while((received_byte & 0x80) != 0x80);
+		
+	}while(received_byte == 0xFF);
 	
 	if(received_byte != 0x00)
 	{
@@ -320,10 +329,11 @@ uint8_t Read_Block(uint16_t number_of_bytes, uint8_t * array)
 	}
 	
 	// Read all bytes of data block
-	for(uint8_t i = 0; i<number_of_bytes; i++)
+	for(uint32_t i = 0; i<number_of_bytes; i++)
 	{
 		received_byte = SPI_Transfer(&SPI0,0xFF);
-		*(array+i) = received_byte;
+		//*(array+i) = received_byte;
+		array[i] = received_byte;     // :)
 	}
 	
 	// Receive CRC16 (do nothing with it) and send a final 0xFF
@@ -333,7 +343,7 @@ uint8_t Read_Block(uint16_t number_of_bytes, uint8_t * array)
 	}
 
 	// Set /CS = 1
-	Output_Set(&PB, (1<<SD_CS));
+	Output_Set(&PB, SD_CS);
 	
 	return SUCCESS;
 }
