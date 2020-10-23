@@ -24,33 +24,38 @@ int main()
 	uint8_t SD_Status;
 	uint32_t selected_sd_block;
 	uint8_t data[512];
-	int8_t SD_init_string[22] = "SD CARD INIT FAILED :("; 
+	int8_t SD_Fail_String[22] = "SD CARD INIT FAILED.\r\n"; 
+	int8_t SD_SUCCESS_String[35] = "SD CARD INITIALIZED SUCCESSFULLY!\r\n";
+	int8_t USER_PROMPT[26] = "\r\nINPUT DESIRED SD BLOCK: ";
+	int8_t POST_PROMPT[2] = "\r\n";
+	int8_t SD_ReadBlock_String[27] = "SD CARD READ BLOCK ERROR.\r\n";
 
 	UART_init(&UART1,9600);
-	
 
 	SPI_Master_Init(&SPI0, SPI_FREQ_SD_INIT);
-//	UART_Transmit_String(&UART1, 22, SD_init_string);
 
 	SD_Status = SD_Card_Init();
-	UART_Transmit_String(&UART1, 22, SD_init_string);
 
 	if(SD_Status != SUCCESS)
 	{
+		UART_Transmit_String(&UART1, 22, SD_Fail_String);
 		while(1)
 		{
 			// Ends Program
-			UART_Transmit_String(&UART1, 22, SD_init_string);
+			
 		}
 	}
 
+	UART_Transmit_String(&UART1, 35, SD_SUCCESS_String);
 		
 	while(1)
 	{
 		// super loop, one loop one equation
 		
 		// Prompt User
+		UART_Transmit_String(&UART1, 26, USER_PROMPT);
 		selected_sd_block = long_serial_input(&UART1);
+		UART_Transmit_String(&UART1, 2, POST_PROMPT);
 		
 		// Clear /CS
 		Output_Clear(&PB, (SD_CS));
@@ -67,9 +72,9 @@ int main()
 		// Read Data Block
 		if(Read_Block(512, data) != SUCCESS)
 		{
+			UART_Transmit_String(&UART1, 27, SD_ReadBlock_String);
 			while(1)
 			{
-				UART_Transmit_String(&UART1, 22, SD_init_string);
 				// Ends Program
 			}
 		}

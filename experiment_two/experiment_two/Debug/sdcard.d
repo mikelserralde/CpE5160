@@ -11,7 +11,7 @@ sdcard.d sdcard.o: .././sdcard.c .././sdcard.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- .././Control_Outputs.h .././UART.h .././UART_Print.h .././SPI.h
+ .././Control_Outputs.h .././SPI.h .././UART.h .././UART_Print.h
 
 .././sdcard.h:
 
@@ -41,8 +41,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././Control_Outputs.h:
 
+.././SPI.h:
+
 .././UART.h:
 
 .././UART_Print.h:
-
-.././SPI.h:

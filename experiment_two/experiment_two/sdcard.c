@@ -4,10 +4,10 @@
 #include "sdcard.h"
 #include "board.h"
 #include "Control_Outputs.h"
-#include "UART.h"
-#include "UART_Print.h"
 #include "SPI.h"
 #include <stdint.h>
+#include "UART.h"
+#include "UART_Print.h"
 
 
 uint8_t Send_Command(uint8_t command, uint32_t argument)
@@ -54,7 +54,6 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 {
 	uint8_t received_byte;
 	uint8_t timeout = 0;
-	int8_t error_string[33] = "Broken while loop still read this";
 	
 	// Sends 0xFF until R1 is * received (msb is 0)
 	do{
@@ -67,7 +66,6 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 		
 	}while(received_byte == 0xFF);
 	
-	UART_Transmit_String(&UART1, 33, error_string);
 	
 	// Store the R1 response in the array
 	*(array_name) = received_byte;
@@ -75,7 +73,6 @@ uint8_t Receive_Response(uint8_t number_of_bytes, uint8_t * array_name)
 	// If R1 has an error, stop the function
 	if((received_byte != 0x01) && (received_byte != 0x00))
 	{
-		UART_Transmit_String(&UART1, 33, error_string);
 		return received_byte;
 	}
 	
@@ -157,8 +154,15 @@ uint8_t SD_Card_Init(void)
 	// If R1 is = 0x05 (Illegal Command) then SD card is v1.x typedef (handle this)
 	if(received_value == 0x05)
 	{
+		int8_t LOW_CAPACITY_MSG[64] = "SD card version: v1.x - LOW CAPACITY\r\n"; 
+		UART_Transmit_String(&UART1, 64, LOW_CAPACITY_MSG);
 		ACMD41_argument = 0UL;
-	}	
+	}
+	else
+	{
+		int8_t H_CAPACITY_MSG[64] = "HIGH CAPACITY SD CARD DETECTED\r\n"; 
+		UART_Transmit_String(&UART1, 64, H_CAPACITY_MSG);
+	}
 
 	// Handle other R1 errors
 	if((received_value != 0xFF) && (received_value != 0x05))
