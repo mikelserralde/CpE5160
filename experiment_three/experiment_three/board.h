@@ -192,7 +192,7 @@
 
 /******* TWI PORTs ********/
 #define TWI0  _SFR_MEM8(0xB8)
-#define TWI1  _SFR_MEM8(0	xD8)
+#define TWI1  _SFR_MEM8(0xD8)
 
 #define TWBR (0)
 #define TWSR (1)

@@ -5,19 +5,24 @@
  *  Author: Hayden Long and Mikel Serralde
  */ 
 
-#include "STA013.h"
-#include <avr/pgmspace.h> 
+#include "STA013.h" 
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+#include <stdint.h>
+#include <stdio.h>
 #include "UART.h"
+#include "UART_Print.h"
 #include "Control_Outputs.h"
 #include "board.h"
-
+#include "TWI.h"
+#include <util/delay.h>
 
 
 
 // Import the labels 
-extern const uint8_t CONFIG;
-extern const uint8_t CONFIG2;
-extern const uint8_t CONFIG3;
+extern const uint8_t *CONFIG;
+extern const uint8_t *CONFIG2;
+extern const uint8_t *CONFIG3;
 
 uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the function is supposed to be
 {
@@ -31,7 +36,7 @@ uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the 
 	
 	// Clear RESET then wait 1 ms
 	Output_Clear(&PB, PIN_B1);
-	_delay(1);
+	_delay_ms(1);
 	// Set Reset
 	Output_Set(&PB, PIN_B1);
 
@@ -43,10 +48,10 @@ uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the 
 
 	do
 	{
-		status = TWI_Master Recieve(&TWI_addr, 0x43, 3, receive_array);
+		status = TWI_Master_Receive(TWI_addr, 0x43, 3, receive_array);
 		timeout++;
 	}while((timeout<50) && (status != SUCCESS));
-	sprintf(prnt_bffr, “Received Value = %2.2X\n\r”, receive_array[2]);
+	sprintf(prnt_bffr, "Received Value = %2.2X\n\r", receive_array[2]);
 	UART_Transmit_String(&UART1,0,prnt_bffr);
 
 	
@@ -58,18 +63,18 @@ uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the 
 		index++;
 		timeout = 0;
 		do{
-			status = TWI_Master_Transmit(&TWI_addr, 0x43,2, send_array);
+			status = TWI_Master_Transmit(TWI_addr, 0x43,2, send_array);
 			timeout++;
 		}while((status != SUCCESS) && (timeout < 50));
 	}while((send_array[0] != 0xFF) && (timeout < 50));
 
 	if(timeout< 50)
 	{
-		sprintf(prnt_bffr,“Config 1 sent...”\n\r);
+		sprintf(prnt_bffr,"Config 1 sent...\n\r");
 		UART_Transmit_String(&UART1, 0, prnt_bffr);
 	}
 	
-	_delay(50);
+	_delay_ms(50);
 	
 	do
 	{
@@ -86,7 +91,7 @@ uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the 
 
 	if(timeout< 50)
 	{
-		sprintf(prnt_bffr,“Config 2 sent...”\n\r);
+		sprintf(prnt_bffr,"Config 2 sent...\n\r");
 		UART_Transmit_String(&UART1, 0, prnt_bffr);
 	}
 	
@@ -107,7 +112,7 @@ uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the 
 
 	if(timeout< 50)
 	{
-		sprintf(prnt_bffr,“User Config sent...”\n\r);
+		sprintf(prnt_bffr,"User Config sent...\n\r");
 		UART_Transmit_String(&UART1, 0, prnt_bffr);
 	}
 

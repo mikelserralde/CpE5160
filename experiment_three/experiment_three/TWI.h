@@ -16,6 +16,7 @@
 #define NACK_ERROR_DATA		3
 #define ARBITRATION_ERROR	4
 #define NACK_ERROR_REC_ON_R	5
+#define SUCCESS 0xFF
 
 //Register Bits
 //TWCR

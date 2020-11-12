@@ -22,7 +22,7 @@
 #define DRA 0x48
 #define RUN 0x72
 
-const  uint8_t CONFIG[3998] PROGMEM = 
+const uint8_t CONFIG[3998] PROGMEM = 
 {  58, 1,
    42, 4,
    40, 0,
@@ -2025,7 +2025,7 @@ const  uint8_t CONFIG[3998] PROGMEM =
 
 
 
-const  uint8_t CONFIG2[50] PROGMEM =
+const uint8_t CONFIG2[50] PROGMEM =
   {58, 0,
    100, 58,
    101, 187,
@@ -2054,9 +2054,9 @@ const  uint8_t CONFIG2[50] PROGMEM =
 
 
 // User Configuration
-const  uint8_t CONFIG3[24] PROGMEM =
+const uint8_t CONFIG3[38] PROGMEM =
   {
-	PCM_DIV, 0x07, // Oversampling rate of 512
+	PCM_DIV, 0x07, // Oversampling ra	te of 512
 	PCMCONF, 0x10, // 16 bit output value
 	RES1, 9,
 	RES2, 2,

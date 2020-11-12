@@ -6,11 +6,15 @@
  */ 
 
 #include <avr/io.h>
+#include <stdint.h>
 #include "STA013.h"
+#include "Control_Outputs.h"
+#include "board.h"
+#include "TWI.h"
 
 #define TWI_CLK_RATE 400000
 
-int main(void)
+int main()
 {
 	
 		// Initialize RESET Pin
