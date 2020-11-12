@@ -2075,7 +2075,7 @@ const  uint8_t CONFIG3[24] PROGMEM =
 	PLLCTL, 161,
 	SCLK_POL, 0,
 	DATA_REQ_ENABLE, 1,
-	REQ_POL, 0,
+	REQ_POL, 1, // Active High?
 	DLA, 0x07,
 	DRA, 0x07,
 	RUN, 1,

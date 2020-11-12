@@ -21,19 +21,18 @@ void STA013_Config(void) //??? Definitely not what the function is supposed to b
 	uint8_t send_array[2];
 	int8_t prnt_bffr[64];
 	
-	// Initialize RESET Pin
-	Output_Init(&PB, PIN_B1);
-	// Initialize DATA_REQ Pin
-	Output_Init(&PC, PIN_C6);
-	// Initialize BIT_EN Pin
-	Output_Init(&PD, PIN_D6);
-	
-	// Clear RESET
+	// Clear RESET then wait 1 ms
 	Output_Clear(&PB, PIN_B1);
 	_delay(1);
 	// Set Reset
 	Output_Set(&PB, PIN_B1);
-	
+
+	// Clear BIT_EN, no data being sent on SPI
+	Output_Clear(&PD, PIN_D6);
+
+	// Set DATA_REQ to receive data from STA013
+	Output_Set(&PC, PIN_C6);
+
 	do
 	{
 		status = TWI_Master Recieve(&TWI1, 0x43, 3, receive_array);
@@ -104,6 +103,9 @@ void STA013_Config(void) //??? Definitely not what the function is supposed to b
 		UART_Transmit_String(&UART1, 0, prnt_bffr);
 	}
 
+
+	// Clear DATA_REQ no more data from STA013
+	Output_Clear(&PC, PIN_C6);
 	
 }
 
