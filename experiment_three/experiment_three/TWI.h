@@ -10,7 +10,7 @@
 #define TWI_H_
 
 
-void TWI_Init(uint8_t volatile *TWI_addr, uint32_t clock_rate);
+uint8_t TWI_Init(uint8_t volatile *TWI_addr, uint32_t clock_rate);
 
 
 uint8_t TWI_Master_Transmit(uint8_t volatile* TWI_addr, uint8_t slave_addr,
