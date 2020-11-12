@@ -39,7 +39,7 @@ uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the 
 		status = TWI_Master Recieve(&TWI_addr, 0x43, 3, receive_array);
 		timeout++;
 	}while((timeout<50) && (status != SUCCESS));
-	sprintf(prnt_bffr, “Received Value = %2.2bX\n\r”, receive_array[2]);
+	sprintf(prnt_bffr, “Received Value = %2.2X\n\r”, receive_array[2]);
 	UART_Transmit_String(&UART1,0,prnt_bffr);
 
 	
