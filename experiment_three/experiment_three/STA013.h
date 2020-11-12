@@ -1,3 +1,10 @@
+/*
+ * STA013.h
+ *
+ * Created: 11/11/2020 
+ *  Author: Hayden Long and Mikel Serralde
+ */ 
+
 #ifndef STA013_H_
 #define STA013_H_
 

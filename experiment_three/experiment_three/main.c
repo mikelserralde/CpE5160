@@ -2,10 +2,11 @@
  * experiment_three.c
  *
  * Created: 11/6/2020 6:00:58 PM
- * Author : Mikel
+ *  Author: Hayden Long and Mikel Serralde
  */ 
 
 #include <avr/io.h>
+#include "STA013.h"
 
 #define TWI_CLK_RATE 400000
 
@@ -23,7 +24,6 @@ int main(void)
 	
 	STA013_Config(&TWI1);
 
-    /* Replace with your application code */
     while (1) 
     {
 		

@@ -1,3 +1,10 @@
+/*
+ * STA013.c
+ *
+ * Created: 11/11/2020 
+ *  Author: Hayden Long and Mikel Serralde
+ */ 
+
 #include "STA013.h"
 #include <avr/pgmspace.h> 
 #include "UART.h"

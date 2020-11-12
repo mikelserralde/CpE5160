@@ -2052,12 +2052,6 @@ const  uint8_t CONFIG2[50] PROGMEM =
    0xff, 0xff,
    0xff, 0xff};
 
-#define SCLK_POL 0x0D
-#define DATA_REQ_ENABLE 0x18
-#define REQ_POL 0x0C
-#define DLA 0x46
-#define DRA 0x48
-#define RUN 0x72
 
 // User Configuration
 const  uint8_t CONFIG3[24] PROGMEM =
