@@ -2,6 +2,26 @@
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 
+// STA013 Configuration Register Addresses
+#define PCM_DIV 0x54
+#define PCMCONF 0x55
+#define RES1 0x06
+#define RES2 0x0B
+#define PLLFRAC_441_H 0x52
+#define PLLFRAC_441_L 0x51
+#define PLLFRAC_H 0x65
+#define PLLFRAC_L 0x64
+#define MFSDF_441 0x50
+#define MFSDF 0x61
+#define PLLCTL 0x05
+
+#define SCLK_POL 0x0D
+#define DATA_REQ_ENABLE 0x18
+#define REQ_POL 0x0C
+#define DLA 0x46
+#define DRA 0x48
+#define RUN 0x72
+
 const  uint8_t CONFIG[3998] PROGMEM = 
 {  58, 1,
    42, 4,
@@ -2004,6 +2024,7 @@ const  uint8_t CONFIG[3998] PROGMEM =
    0xff, 0xff};
 
 
+
 const  uint8_t CONFIG2[50] PROGMEM =
   {58, 0,
    100, 58,
@@ -2030,5 +2051,35 @@ const  uint8_t CONFIG2[50] PROGMEM =
    24, 4,
    0xff, 0xff,
    0xff, 0xff};
+
+#define SCLK_POL 0x0D
+#define DATA_REQ_ENABLE 0x18
+#define REQ_POL 0x0C
+#define DLA 0x46
+#define DRA 0x48
+#define RUN 0x72
+
+// User Configuration
+const  uint8_t CONFIG3[24] PROGMEM =
+  {
+	PCM_DIV, 0x07, // Oversampling rate of 512
+	PCMCONF, 0x10, // 16 bit output value
+	RES1, 9,
+	RES2, 2,
+	MFSDF, 5,
+	MFSDF_441,6,
+	PLLFRAC_H, 0,
+	PLLFRAC_441_H, 184,
+	PLLFRAC_L, 0,
+	PLLFRAC_441_L, 0,
+	PLLCTL, 161,
+	SCLK_POL, 0,
+	DATA_REQ_ENABLE, 1,
+	REQ_POL, 0,
+	DLA, 0x07,
+	DRA, 0x07,
+	RUN, 1,
+	0xff, 0xff,
+	0xff, 0xff};
 
 
