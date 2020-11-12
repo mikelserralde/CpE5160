@@ -6,6 +6,7 @@
  */ 
 
 #include "board.h"
+#include "TWI.h"
 #include <avrio.h>
 
 uint8_t TWI_Init(uint8_t volatile* TWI_addr, uint32_t clock_rate)
@@ -41,7 +42,7 @@ uint8_t TWI_Init(uint8_t volatile* TWI_addr, uint32_t clock_rate)
 
 	else
 	{
-		//ERROR MESSAGE SET CLOCK FREQ TOO LOW
+		return LOW_CLOCK_FREQ;
 	}
 
 
@@ -50,7 +51,7 @@ uint8_t TWI_Init(uint8_t volatile* TWI_addr, uint32_t clock_rate)
 
 	if (TWI_Baud_Rate > 255)
 	{
-		//ERROR MESSAGE RECALCULATE PRESCALE / CLOCK FREQ TOO LOW
+		return RECALC_PRESCALE;
 	}
 	else
 	{
@@ -71,7 +72,7 @@ uint8_t TWI_Master_Transmit(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 	*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTA) | (1 << TWEN));
 
 
-	//Wait for TWCR to be set, meaning command has been sent
+	//Wait for TWINT to be set, meaning command has been sent
 	do
 	{
 		status = *(TWI_addr + TWCR);
@@ -86,16 +87,14 @@ uint8_t TWI_Master_Transmit(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 		*(TWI_addr + TWDR) = send_value;
 		*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWEN));
 	}
-
-	//Check other values for error conditions HERE?????????????????????????????????????
-	if (return_value != SUCCESS)
+	else
 	{
-
+		return temp8;
 	}
 
 	//While loop sends data bytes until all bytes are sent or error
 	uint16_t index = 0;
-	while ((num_bytes != 0) && (return_value == SUCCESS))
+	while (num_bytes != 0)
 	{
 		send_value = array[index];
 		index++;
@@ -123,23 +122,52 @@ uint8_t TWI_Master_Transmit(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 		}
 		else if (temp8 = 0x20)  //Check if SLA+W was sent but NACK was received
 		{
+			//Stop Transfer
 			*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTO) | (1 << TWEN));
 			do
 			{
 				status = *(TWI_addr + TWCR);
 			} while ((status& (1 << TWSTO)) != 0); //Wait for stop = 0
 			
-			return_value = NACK_ERROR;
+			return_value = NACK_ERROR_SLAW;
 		}
+		else if (temp8 = 0x30)  //Check if Data was sent but NACK was received
+		{
+			*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTO) | (1 << TWEN));
+			do
+			{
+				status = *(TWI_addr + TWCR);
+			} while ((status & (1 << TWSTO)) != 0); //Wait for stop = 0
 
-		//CHECK A FEW MORE IN THE TRANSMIT STATUS CODES HERE
-		//0x30, maybe 0x38
+			return NACK_ERROR_DATA;
+		}
+		else if (temp8 = 0x38)  //Check if arbitration lost in SLA+W or Data bytes
+		{
+			//Stop transfer here, SDA is low when it should be high
+			//Super weird if we get this, since no other masters on line
+			*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTO) | (1 << TWEN));
+			do
+			{
+				status = *(TWI_addr + TWCR);
+			} while ((status & (1 << TWSTO)) != 0); //Wait for stop = 0
 
+			return ARBITRATION_ERROR;
+		}
 
 	}
 
 	//All bytes have been sent, send stop condition
 	if (temp8 == 0x18)
+	{
+		//Stop Transfer
+		*(TWI_addr + TWDR) = send_value;
+		*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTO) | (1 << TWEN));
+		do
+		{
+			status = *(TWI_addr + TWCR);
+		} while ((status& (1 << TWSTO)) != 0); //wait for stop=0, stop condition was sent
+	}
+	else if (temp8 = 0x28)  //Check if Data was sent and ACK received 
 	{
 		*(TWI_addr + TWDR) = send_value;
 		*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTO) | (1 << TWEN));
@@ -147,6 +175,39 @@ uint8_t TWI_Master_Transmit(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 		{
 			status = *(TWI_addr + TWCR);
 		} while ((status& (1 << TWSTO)) != 0); //wait for stop=0, stop condition was sent
+	}
+	else if (temp8 = 0x20)  //Check if SLA+W was sent but NACK was received
+	{
+		//Stop Transfer
+		*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTO) | (1 << TWEN));
+		do
+		{
+			status = *(TWI_addr + TWCR);
+		} while ((status & (1 << TWSTO)) != 0); //Wait for stop = 0
+
+		return_value = NACK_ERROR_SLAW;
+	}
+	else if (temp8 = 0x30)  //Check if Data was sent but NACK was received
+	{
+		*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTO) | (1 << TWEN));
+		do
+		{
+			status = *(TWI_addr + TWCR);
+		} while ((status & (1 << TWSTO)) != 0); //Wait for stop = 0
+
+		return NACK_ERROR_DATA;
+	}
+	else if (temp8 = 0x38)  //Check if arbitration lost in SLA+W or Data bytes
+	{
+		//Stop transfer here, SDA is low when it should be high
+		//Super weird if we get this, since no other masters on line
+		*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTO) | (1 << TWEN));
+		do
+		{
+			status = *(TWI_addr + TWCR);
+		} while ((status & (1 << TWSTO)) != 0); //Wait for stop = 0
+
+		return ARBITRATION_ERROR;
 	}
 
 	//CHECK A FEW MORE IN THE TRANSMIT STATUS CODES HERE
@@ -168,7 +229,7 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 	*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTA) | (1 << TWEN));
 
 
-	//Wait for TWCR to be set, meaning command has been sent
+	//Wait for TWINT to be set, meaning command has been sent
 	do
 	{
 		status = *(TWI_addr + TWCR);
@@ -177,21 +238,21 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 	//Read status code to determine next steps
 	temp8 = (*(TWI_addr + TWSR) & 0xF8);
 
-	//Check that start signal or repeated Start was sent then send SLA+W
+	//Check that start signal or repeated Start was sent then send SLA+R
 	if ((temp8 == 0x08) || (temp8 == 0x18))
 	{
 		*(TWI_addr + TWDR) = send_value;
 		*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWEN));
 	}
-
-	//Check other values for error conditions HERE?????????????????????????????????????
-	if (return_value != SUCCESS)
+	else
 	{
-
+		return temp8;
 	}
 
 
-	//Read Status (not shown)? and check for ACK or NACK from slave
+	//Read Status and check for ACK or NACK from slave
+	temp8 = (*(TWI_addr + TWSR) & 0xF8);
+
 	//Check if SLA+R sent and ACK received
 	if (temp8 == 0x40)
 	{
@@ -207,12 +268,19 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 	}
 	else if (temp8 == 0x48)  //check is SLA+R sent and NACK received
 	{
-		//??????????? What should we do
+		//Stop communication, assuming slave thinks we are in write mode
+		*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTO) | (1 << TWEN));
+		do
+		{
+			status = *(TWI_addr + TWCR);
+		} while ((status & (1 << TWSTO)) != 0); //Wait for stop = 0
+
+		return NACK_ERROR_REC_ON_R;
 	}
 
 	//While loop sends data bytes until all bytes are sent or error
 	uint16_t index = 0;
-	while ((num_bytes != 0) && (return_value == SUCCESS))
+	while (num_bytes != 0)
 	{
 
 		//wait until TWINT is set, command is done sending
@@ -224,12 +292,12 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 		//Read status code to determine next steps
 		temp8 = (*(TWI_addr + TWSR) & 0xF8);
 
-		//Check if Data received and NACK sent
+		//Check if Data received and ACK sent
 		if (temp8 == 0x50)
 		{
 			//record data received
 			num_bytes--;
-			rec_array[index] = *(TWI_addr + TWDR);
+			array[index] = *(TWI_addr + TWDR);
 			index++;
 
 			//send stop condition (NACK) if only 1 byte is received
@@ -247,21 +315,12 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 		{
 			//record data received
 			num_bytes--;
-			rec_array[index] = *(TWI_addr + TWDR);
+			array[index] = *(TWI_addr + TWDR);
 			index++;
 
-			*(TWI_addr + TWCR) = ((1 << TWINT) | (1<<TWSTO) | (1 << TWEN));
-
-			//wait until TWSTO returns to 0, Stop command was sent
-			do
-			{
-				status = *(TWI_addr + TWCR);
-			} while ((status & (1<<TWSTO) == 0);
+			*(TWI_addr + TWCR) = ((1 << TWINT) | (0<<TWEA) | (1 << TWEN));
 
 		}
-
-		//CHECK A FEW MORE IN THE TRANSMIT STATUS CODES HERE
-		//0x30, maybe 0x38
 
 
 	}
