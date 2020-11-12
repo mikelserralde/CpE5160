@@ -10,12 +10,13 @@
 #define TWI_H_
 
 //Error Messages
-#define LOW_CLOCK_FREQ		0
-#define RECALC_PRESCALE		1
-#define NACK_ERROR_SLAW		2
-#define NACK_ERROR_DATA		3
-#define ARBITRATION_ERROR	4
-#define NACK_ERROR_REC_ON_R	5
+#define LOW_CLOCK_FREQ			0
+#define RECALC_PRESCALE			1
+#define NACK_ERROR_SLAW			2
+#define NACK_ERROR_DATA			3
+#define ARBITRATION_ERROR		4
+#define NACK_ERROR_REC_ON_R		5
+#define NACK_ERROR_ON_RECEIVE	6
 #define SUCCESS 0xFF
 
 //Register Bits
