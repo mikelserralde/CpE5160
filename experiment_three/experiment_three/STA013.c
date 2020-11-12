@@ -1,6 +1,7 @@
 #include "STA013.h"
 #include <avr/pgmspace.h> 
 #include "UART.h"
+#include "Control_Outputs.h"
 
 
 
@@ -20,17 +21,18 @@ void STA013_Config(void) //??? Definitely not what the function is supposed to b
 	uint8_t send_array[2];
 	int8_t prnt_bffr[64];
 	
+	// Initialize RESET Pin
+	Output_Init(&PB, PIN_B1);
+	// Initialize DATA_REQ Pin
+	Output_Init(&PC, PIN_C6);
+	// Initialize BIT_EN Pin
+	Output_Init(&PD, PIN_D6);
 	
-	/*
-	i=timeout_val; // This value is the number of attempts
-	do
-	{
-	error=TWI_Master_Read(&TWI1,0x43,0,0,3,array_name);
-	i--;
-	}while((error!=no_errors)&&(i!=0));
-	sprintf(prnt_bffr, “Received Value = %2.2bX\n\r”, array_name[2]);
-	UART_Transmit_String(&UART1,0,prnt_bffr);
-*/
+	// Clear RESET
+	Output_Clear(&PB, PIN_B1);
+	_delay(1);
+	// Set Reset
+	Output_Set(&PB, PIN_B1);
 	
 	do
 	{
