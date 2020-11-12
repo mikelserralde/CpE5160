@@ -7,6 +7,7 @@
 
 #include <avr/io.h>
 
+#define TWI_CLK_RATE 400000
 
 int main(void)
 {
@@ -18,10 +19,14 @@ int main(void)
 	// Initialize BIT_EN Pin
 	Output_Init(&PD, PIN_D6);
 	
+	TWI_Init(&TWI1, TWI_CLK_RATE);
+	
+	STA013_Config(&TWI1);
 
     /* Replace with your application code */
     while (1) 
     {
+		
     }
 }
 

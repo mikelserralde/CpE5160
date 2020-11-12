@@ -2,6 +2,7 @@
 #include <avr/pgmspace.h> 
 #include "UART.h"
 #include "Control_Outputs.h"
+#include "board.h"
 
 
 
@@ -11,7 +12,7 @@ extern const uint8_t CONFIG;
 extern const uint8_t CONFIG2;
 extern const uint8_t CONFIG3;
 
-void STA013_Config(void) //??? Definitely not what the function is supposed to be
+uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the function is supposed to be
 {
 	// Read 0xAC from ID register
 	uint8_t timeout = 0;
@@ -35,7 +36,7 @@ void STA013_Config(void) //??? Definitely not what the function is supposed to b
 
 	do
 	{
-		status = TWI_Master Recieve(&TWI1, 0x43, 3, receive_array);
+		status = TWI_Master Recieve(&TWI_addr, 0x43, 3, receive_array);
 		timeout++;
 	}while((timeout<50) && (status != SUCCESS));
 	sprintf(prnt_bffr, “Received Value = %2.2bX\n\r”, receive_array[2]);
@@ -50,7 +51,7 @@ void STA013_Config(void) //??? Definitely not what the function is supposed to b
 		index++;
 		timeout = 0;
 		do{
-			status = TWI_Master_Transmit(&TWI1, 0x43,2, send_array);
+			status = TWI_Master_Transmit(&TWI_addr, 0x43,2, send_array);
 			timeout++;
 		}while((status != SUCCESS) && (timeout < 50));
 	}while((send_array[0] != 0xFF) && (timeout < 50));
