@@ -26,6 +26,7 @@ extern const uint8_t *CONFIG3;
 
 uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the function is supposed to be
 {
+	int8_t Starting_String[24] = "STA013 Config contuing\r\n";
 	// Read 0xAC from ID register
 	uint8_t timeout = 0;
 	uint8_t index = 0;
@@ -62,6 +63,7 @@ uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the 
 		send_array[1] = pgm_read_byte(&CONFIG[index]);
 		index++;
 		timeout = 0;
+		UART_Transmit_String(&UART1, 24, Starting_String);
 		do{
 			status = TWI_Master_Transmit(TWI_addr, 0x43,2, send_array);
 			timeout++;

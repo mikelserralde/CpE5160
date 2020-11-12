@@ -11,7 +11,7 @@
 
 uint8_t TWI_Init(uint8_t volatile* TWI_addr, uint32_t clock_rate)
 {
-	uint32_t prescale = (((F_CPU / F_DIV) / (uint32_t) * (clock_rate)) - 16UL) / (2UL * 255);
+	uint32_t prescale = (((F_CPU / F_DIV) / (uint32_t)(clock_rate)) - 16UL) / (2UL * 255);
 
 	uint32_t TWI_Baud_Rate;
 	
@@ -45,7 +45,7 @@ uint8_t TWI_Init(uint8_t volatile* TWI_addr, uint32_t clock_rate)
 	}
 
 
-	TWI_Baud_Rate = (((F_CPU / F_DIV) / (uint32_t) *(clock_rate)) - 16UL) / (2UL * prescale);
+	TWI_Baud_Rate = (((F_CPU / F_DIV) / (uint32_t)(clock_rate)) - 16UL) / (2UL * prescale);
 
 	if (TWI_Baud_Rate > 255)
 	{
