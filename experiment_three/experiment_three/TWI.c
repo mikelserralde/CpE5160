@@ -339,7 +339,11 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 			array[index] = *(TWI_addr + TWDR);
 			index++;
 
-			*(TWI_addr + TWCR) = ((1 << TWINT) | (0<<TWEA) | (1 << TWEN));
+			*(TWI_addr + TWCR) = ((1 << TWINT) | (1<<TWSTO) | (1 << TWEN));
+			do
+			{
+				status = *(TWI_addr + TWCR);
+			} while ((status& (1 << TWSTO)) != 0); //Wait for stop = 0
 
 			return NACK_ERROR_ON_RECEIVE;
 		}else
