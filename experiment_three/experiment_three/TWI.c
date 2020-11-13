@@ -244,6 +244,14 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 	uint8_t write_array[2];
 
 
+	//Wait for TWINT to be set, meaning command has been sent
+	do
+	{
+		status = *(TWI_addr + TWCR);
+	} while ((status & 0x80) == 0);
+
+
+
 	//Write internal address to slave
 	write_array[0] = 0x00;
 	status = TWI_Master_Transmit(&TWI1, 0x43, 1, write_array);
