@@ -1,8 +1,10 @@
 /*
  * TWI.c
- *
+ * 
  * Created: 11/11/2020 
  *  Author: Hayden Long and Mikel Serralde
+ * Contains function definitions for TWI / I2C Initialization, Transmit, and Receive
+ * functions, assuming master mode operation
  */ 
 
 #include "board.h"
@@ -170,6 +172,7 @@ uint8_t TWI_Master_Transmit(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 
 
 	//All bytes have been sent, send stop condition
+	//Check if SLA+W was sent and ACK received
 	if(temp8 == 0x18)
 	{
 		//Stop Transfer
@@ -238,11 +241,24 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 	uint8_t status;
 	uint8_t temp8;
 	uint8_t send_value;
-	
+	uint8_t write_array[2];
+
+
+	//Write internal address to slave
+	write_array[0] = 0x00;
+	status = TWI_Master_Transmit(&TWI1, 0x43, 1, write_array);
+	if (status != SUCCESS)
+	{
+		return status;
+	}
+
+
 
 	//first send Slave address + R bit
 	send_value = ((slave_addr << 1) | 0x01);
 
+
+	
 	//Start TWI Communication
 	*(TWI_addr + TWCR) = ((1 << TWINT) | (1 << TWSTA) | (1 << TWEN));
 
@@ -349,13 +365,13 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 			array[index] = *(TWI_addr + TWDR);
 			index++;
 
+			//Stop data transfer
 			*(TWI_addr + TWCR) = ((1 << TWINT) | (1<<TWSTO) | (1 << TWEN));
 			do
 			{
 				status = *(TWI_addr + TWCR);
 			} while ((status& (1 << TWSTO)) != 0); //Wait for stop = 0
 
-			//return NACK_ERROR_ON_RECEIVE;
 		}else
 		{
 			return temp8;
