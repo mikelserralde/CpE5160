@@ -20,6 +20,8 @@ int main()
 {
 	int8_t Starting_String[24] = "STA013 Config Starting\r\n";
 	int8_t TWI_IN[17] = "TWI Initialized\r\n";
+	int8_t Success_string[10] = "AAAAAAA!\r\n";
+	uint8_t status;
 		// Initialize RESET Pin
 	Output_Init(&PB, PIN_B1);
 	// Initialize DATA_REQ Pin
@@ -34,7 +36,15 @@ int main()
 	TWI_Init(&TWI1, TWI_CLK_RATE);
 	UART_Transmit_String(&UART1, 24, TWI_IN);
 
-	STA013_Config(&TWI1);
+	status = STA013_Config(&TWI1);
+	if(status == 0xFF)
+	{
+		UART_Transmit_String(&UART1, 10, Success_string);
+
+	}else
+	{
+			UART_Transmit_String(&UART1, 17, TWI_IN);
+	}
 
     while (1) 
     {

@@ -54,7 +54,10 @@ uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the 
 	}while((timeout<50) && (status != SUCCESS));
 	sprintf(prnt_bffr, "Received Value = %2.2X\n\r", receive_array[2]);
 	UART_Transmit_String(&UART1,0,prnt_bffr);
-
+	if(status != SUCCESS)
+	{
+		UART_Transmit_String(&UART1,0,prnt_bffr);
+	}
 	
 	do
 	{
@@ -122,5 +125,13 @@ uint8_t STA013_Config(uint8_t volatile* TWI_addr) //??? Definitely not what the 
 	// Clear DATA_REQ no more data from STA013
 	Output_Clear(&PC, PIN_C6);
 	
+	if(timeout >= 50)
+	{
+		return 0;
+	}
+	else 
+	{
+		return 0xFF;
+	}
 }
 

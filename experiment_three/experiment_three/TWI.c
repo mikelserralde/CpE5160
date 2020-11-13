@@ -228,7 +228,7 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 	uint8_t status;
 	uint8_t temp8;
 	uint8_t send_value;
-	uint8_t write_array[];
+	//uint8_t write_array[];
 	
 
 	//first send Slave address + W bit
@@ -371,7 +371,7 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 		do
 		{
 			status = *(TWI_addr + TWCR);
-		} while ((status & 0x80) == 0);
+		}while ((status & 0x80) == 0);
 
 		//Read status code to determine next steps
 		temp8 = (*(TWI_addr + TWSR) & 0xF8);
@@ -405,13 +405,12 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 			*(TWI_addr + TWCR) = ((1 << TWINT) | (0<<TWEA) | (1 << TWEN));
 
 			return NACK_ERROR_ON_RECEIVE;
-		}
-		else
+		}else
 		{
 			return temp8;
 		}
 
 
 	}
-	return status;
+	return SUCCESS;
 }
