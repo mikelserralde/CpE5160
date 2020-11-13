@@ -159,6 +159,16 @@ uint8_t TWI_Master_Transmit(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 
 	}
 
+	//wait until TWINT is set, command is done sending
+	do
+	{
+		status = *(TWI_addr + TWCR);
+	} while ((status & 0x80) == 0);
+
+	//Read status code to determine next steps
+	temp8 = (*(TWI_addr + TWSR) & 0xF8);
+
+
 	//All bytes have been sent, send stop condition
 	if(temp8 == 0x18)
 	{
@@ -345,7 +355,7 @@ uint8_t TWI_Master_Receive(uint8_t volatile* TWI_addr, uint8_t slave_addr,
 				status = *(TWI_addr + TWCR);
 			} while ((status& (1 << TWSTO)) != 0); //Wait for stop = 0
 
-			return NACK_ERROR_ON_RECEIVE;
+			//return NACK_ERROR_ON_RECEIVE;
 		}else
 		{
 			return temp8;
