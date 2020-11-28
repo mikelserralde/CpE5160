@@ -1,9 +1,4 @@
-/*
- * I2C.c
- *
- * Created: 7/2/2020 1:57:23 PM
- * Author : youngerr
- */ 
+
 
 #include <avr/io.h>
 #include <stdio.h>
