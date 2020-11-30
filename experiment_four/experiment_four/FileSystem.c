@@ -1,32 +1,3 @@
-#include <stdio.h>
-#include "FileSystem.h"
-#include "SDCard.h"
-#include "Directory_Functions_struct.h"
-
-FS_values_t*Drive_p;
-Drive_p = Export_Drive_values();
-
-uint8_t read_value_8(uint16_t offset, uint8_t *array_name)
-{
-	uint8_t temp8;
-	temp8 = *(array_name+offset);
-	return temp8;
-}
-
-uint16_t read_value_16(uint16_t offset, uint8_t *array_name)
-{
-	uint16_t temp16;
-	temp16 = *(array_name+offset);
-	return temp16;
-}
-
-uint32_t read_value_32(uint16_t offset, uint8_t *array_name)
-{
-	uint32_t temp32;
-	temp32 = *(array_name+offset);
-	return temp32;
-}
-
 
 ///////////////////////////////////////////////////////////////////////////
 /*
@@ -42,9 +13,68 @@ uint32_t read_value_32(uint16_t offset, uint8_t *array_name)
 #define all of the offsets in the function below. Mikel is too lazy to do it :p
 
 also look at all comments that have this: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	
+
+Also, .h file is missing functions, I'm too lazy
+
+
+// For Mikel
+MBR_RelativeSectors is used incorrectly.
+Look at 4a in the procedure.
+Should read the BPB into SRAM, not treat it relatively.
+
 *///////////////////////////////////////////////////////////////////////////
 
+
+
+#include <stdio.h>
+#include "FileSystem.h"
+#include "SDCard.h"
+#include "Directory_Functions_struct.h"
+
+FS_values_t*Drive_p;
+Drive_p = Export_Drive_values();
+
+uint8_t read_value_8(uint16_t offset, uint8_t *array_name)
+{
+	uint8_t temp8;
+	temp8 = *(array_name+offset);
+	return temp8;
+}
+
+// FOR HAYDEN LONG !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Look at lecture 18f, he gives us the correct function for read_value_32
+// I am assuming read_value_16 acts the same way, but check me on it.
+uint16_t read_value_16(uint16_t offset, uint8_t *array_name)
+{
+	uint16_t return_val = 0;
+	uint8_t temp;
+	uint8_t	i;
+	
+	for(i=0;i<2;i++)
+	{   
+		temp = *(array_name + offset + (1-i));
+		return_val = return_val<<8;
+		return_val |= temp;
+	}
+	
+	return return_val;
+}
+
+uint32_t read_value_32(uint16_t offset, uint8_t *array_name)
+{
+	uint32_t return_val = 0;
+	uint8_t temp;
+	uint8_t	i;
+	
+	for(i=0;i<4;i++)
+	{   
+		temp = *(array_name + offset + (3-i));
+		return_val = return_val<<8;
+		return_val |= temp;
+	}
+	
+	return return_val;
+}
 
 uint8_t mount_drive(uint8_t * array)
 {
@@ -127,4 +157,35 @@ uint8_t mount_drive(uint8_t * array)
 		// FirstRootDirSecNum = ((BPB_RootClus-2)*BPB_SecPerClus)+FirstDataSec
 		Drive_p->FirstRootDirSec =  ((*(array+ 0x002C + MBR_RelativeSectors) - 2) * Drive_p->SecPerClus) + Drive_p->FirstDataSec;
 	}
+}
+
+
+uint32_t First_Sector(uint32_t cluster_num)
+{
+	if(cluster_num != 0)
+		return (((cluster_num - 2) * Drive_p->SecPerClus) + Drive_p->FirstDataSec);
+	else
+		return Drive_p->FirstRootDirSec;
+}
+
+uint32_t Find_Next_Clus(uint32_t cluster_num, uint8_t * array)
+{
+	uint32_t sector_num;
+	uint32_t cluster;
+	// Step 1: Determine the FAT sector number for the cluster
+	sector_num = ((cluster_num*Drive_p->FATtype) / Drive_p->BytesPerSec) + Drive_p->StartofFAT;
+	
+	// Step 2: Read the FAT sector into SRAM
+	Read_Sector(sector_num, Drive_p->BytesPerSec, &array);
+	
+	// Step 3: Determine the offset of the cluster within this sector
+	FATOffset = (uint16_t)((cluster_num*Drive_p->FATtype)%(Drive_p->BytesPerSec));
+	
+	// Step 4: Read cluster entry from FAT sector in SRAM
+	if(Drive_p->FATtype == FAT_Type32)
+		cluster = (read_value_32(FATOffset, &array)&0x0FFFFFFF);
+	else
+		cluster = (uint32_t)(read_value_16(FATOffset, &array);
+	
+	return cluster;
 }
