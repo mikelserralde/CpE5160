@@ -1,6 +1,10 @@
 #ifndef FILE_SYSTEM_H_
 #define FILE_SYSTEM_H_
 
+#define FAT_Type32 32
+#define FAT_Type16 16
+#define FAT_Type12 12
+
 uint8_t read_value_8(uint16_t offset, uint8_t *array_name);
 
 uint16_t read_value_16(uint16_t offset, uint8_t *array_name);
