@@ -10,17 +10,13 @@
 	
 //	FOR HAYDEN LONG
 
-#define all of the offsets in the function below. Mikel is too lazy to do it :p
+#̶d̶e̶f̶i̶n̶e̶ ̶a̶l̶l̶ ̶o̶f̶ ̶t̶h̶e̶ ̶o̶f̶f̶s̶e̶t̶s̶ ̶i̶n̶ ̶t̶h̶e̶ ̶f̶u̶n̶c̶t̶i̶o̶n̶ ̶b̶e̶l̶o̶w̶.̶ ̶M̶i̶k̶e̶l̶ ̶i̶s̶ ̶t̶o̶o̶ ̶l̶a̶z̶y̶ ̶t̶o̶ ̶d̶o̶ ̶i̶t̶ ̶:̶p̶
+(Turns out Mikel wasn't too lazy)
 
 also look at all comments that have this: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-Also, .h file is missing functions, I'm too lazy
-
-
-// For Mikel
-MBR_RelativeSectors is used incorrectly.
-Look at 4a in the procedure.
-Should read the BPB into SRAM, not treat it relatively.
+A̶l̶s̶o̶,̶ ̶.̶h̶ ̶f̶i̶l̶e̶ ̶i̶s̶ ̶m̶i̶s̶s̶i̶n̶g̶ ̶f̶u̶n̶c̶t̶i̶o̶n̶s̶,̶ ̶I̶'̶m̶ ̶t̶o̶o̶ ̶l̶a̶z̶y̶
+(See line 14)
 
 *///////////////////////////////////////////////////////////////////////////
 
@@ -31,7 +27,7 @@ Should read the BPB into SRAM, not treat it relatively.
 #include "SDCard.h"
 #include "Directory_Functions_struct.h"
 
-FS_values_t*Drive_p;
+FS_values_t *Drive_p;
 Drive_p = Export_Drive_values();
 
 uint8_t read_value_8(uint16_t offset, uint8_t *array_name)
@@ -86,18 +82,26 @@ uint8_t mount_drive(uint8_t * array)
 	uint32_t CountofClusters;
 	// Step 1: Read Block 0
 	result = Read_Block(0, &array);
+	if(result != no_errors)
+		return result;
+	
+	
 	if( (*(array+0) != 0xEB) && (*(array+0) != 0xE9) )
 	{
 		MBR_RelativeSectors = *(array+0x001C6);
 	}
 	
-	if((*(array+0x0000+MBR_RelativeSectors) != 0xEB) && (*(array+0x0000+MBR_RelativeSectors) != 0xE9))
+	result = Read_Block(MBR_RelativeSectors, &array);
+	if(result != no_errors)
+		return result;
+	
+	if((*(array+BS_jmpBoot) != 0xEB) && (*(array+BS_jmpBoot) != 0xE9))
 	{
 		return BPB_NOT_FOUND;
 	}
 	
-	Drive_p->BytesPerSec = *(array+0x000B+MBR_RelativeSectors);
-	Drive_p->SecPerClus = *(array+0x000D+MBR_RelativeSectors);
+	Drive_p->BytesPerSec = *(array+BPB_BytsPerSec);
+	Drive_p->SecPerClus = *(array+BPB_SecPerClus);
 	
 	// Step 2: Determine # of Sectors in Root Dir
 	// Should be 0 for FAT32
@@ -107,18 +111,18 @@ uint8_t mount_drive(uint8_t * array)
 	
 	
 	// Step 3: Find # of data sectors
-	if(*(array+0x0016+MBR_RelativeSectors) != 0)
-		FATSz = *(array+0x0016+MBR_RelativeSectors);
+	if(*(array+BPB_FATSz16) != 0)
+		FATSz = *(array+BPB_FATSz16);
 	else
-		FATSz = *(array+0x0024+MBR_RelativeSectors);
+		FATSz = *(array+BPB_FATSz32);
 	
-	if(*(array+0x0013+MBR_RelativeSectors) != 0)
-		TotSec = *(array+0x0013+MBR_RelativeSectors);
+	if(*(array+BPB_TotSec16) != 0)
+		TotSec = *(array+BPB_TotSec16);
 	else
-		TotSec = *(array+0x0020+MBR_RelativeSectors);
+		TotSec = *(array+BPB_TotSec32);
 	
 	// DataSec = BPB_TotSec32 – (BPB_ResvdSecCnt+(BPB_NumFATs*BPB_FATSz32)+RootDirSectors)
-	DataSec = TotSec – (*(array+ 0x000E + MBR_RelativeSectors)+((array+0x0010+MBR_RelativeSectors)*FATSz)+Drive_p->RootDirSecs);
+	DataSec = TotSec – (*(array+BPB_ResvdSecCnt)+((array+BPB_NumFATs)*FATSz)+Drive_p->RootDirSecs);
 	
 	// Step 4: Determine FAT Type and Count of Clusters
 	CountofClusters = DataSec / Drive_p->SecPerClus;
@@ -140,23 +144,25 @@ uint8_t mount_drive(uint8_t * array)
 	// FATOffset = 0
 	// ThisFATSecNum = *(array+ 0x000E + MBR_RelativeSectors);
 	// StartofFAT = = BPB_ResvdSecCnt + MBR_RelativeSectors
-	Drive_p->StartofFAT = *(array+ 0x000E + MBR_RelativeSectors) + MBR_RelativeSectors;
+	Drive_p->StartofFAT = *(array+BPB_ResvdSecCnt) + MBR_RelativeSectors;
 	
 	// Step 6: Determine First Sector
 	// FirstDataSector = BPB_ResvdSecCnt + (BPB_NumFATs*FATSz) + RootDirSectors + MBR_RelativeSectors
-	Drive_p->FirstDataSec = *(array+ 0x000E + MBR_RelativeSectors) + (*(array+ 0x0010 + MBR_RelativeSectors) * FATSz) + Drive_p->RootDirSecs + MBR_RelativeSectors;
+	Drive_p->FirstDataSec = *(array+BPB_ResvdSecCnt) + (*(array+BPB_NumFATs) * FATSz) + Drive_p->RootDirSecs + MBR_RelativeSectors;
 
 	// Step 7: Determine FirstRootDirSecNum
 	if(Drive_p->FATtype == FAT_Type16)
 	{
 		// FirstRootDirSecNum = BPB_ResvdSecCnt + (BPB_NumFATs*FATSz) + MBR_RelativeSectors
-		Drive_p->FirstRootDirSec = *(array+ 0x000E + MBR_RelativeSectors) + (*(array+ 0x0010 + MBR_RelativeSectors) * FATSz) + MBR_RelativeSectors;
+		Drive_p->FirstRootDirSec = *(array+BPB_ResvdSecCnt) + (*(array+BPB_NumFATs) * FATSz) + MBR_RelativeSectors;
 	}
 	else
 	{
 		// FirstRootDirSecNum = ((BPB_RootClus-2)*BPB_SecPerClus)+FirstDataSec
-		Drive_p->FirstRootDirSec =  ((*(array+ 0x002C + MBR_RelativeSectors) - 2) * Drive_p->SecPerClus) + Drive_p->FirstDataSec;
+		Drive_p->FirstRootDirSec =  ((*(array+BPB_RootClus) - 2) * Drive_p->SecPerClus) + Drive_p->FirstDataSec;
 	}
+	
+	return SUCCESS;
 }
 
 
