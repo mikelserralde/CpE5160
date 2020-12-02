@@ -26,9 +26,9 @@ A̶l̶s̶o̶,̶ ̶.̶h̶ ̶f̶i̶l̶e̶ ̶i̶s̶ ̶m̶i̶s̶s̶i̶n̶g̶ ̶f̶u�
 #include "FileSystem.h"
 #include "SDCard.h"
 #include "Directory_Functions_struct.h"
+#include "board.h"
 
 FS_values_t *Drive_p;
-Drive_p = Export_Drive_values();
 
 uint8_t read_value_8(uint16_t offset, uint8_t *array_name)
 {
@@ -74,6 +74,8 @@ uint32_t read_value_32(uint16_t offset, uint8_t *array_name)
 
 uint8_t mount_drive(uint8_t * array)
 {
+	Drive_p = Export_Drive_values();
+	
 	uint8_t result;
 	uint32_t MBR_RelativeSectors = 0;
 	uint32_t FATSz;
@@ -122,10 +124,10 @@ uint8_t mount_drive(uint8_t * array)
 		TotSec = *(array+BPB_TotSec32);
 	
 	// DataSec = BPB_TotSec32 – (BPB_ResvdSecCnt+(BPB_NumFATs*BPB_FATSz32)+RootDirSectors)
-	DataSec = TotSec – (*(array+BPB_ResvdSecCnt)+((array+BPB_NumFATs)*FATSz)+Drive_p->RootDirSecs);
-	
+	DataSec = (TotSec-(*(array+BPB_ResvdSecCnt)+(*(array+BPB_NumFATs)*FATSz)+Drive_p->RootDirSecs));
+
 	// Step 4: Determine FAT Type and Count of Clusters
-	CountofClusters = DataSec / Drive_p->SecPerClus;
+	CountofClusters = DataSec / (Drive_p->SecPerClus);
 	
 	if(CountofClusters < 4085)
 	{
@@ -159,7 +161,7 @@ uint8_t mount_drive(uint8_t * array)
 	else
 	{
 		// FirstRootDirSecNum = ((BPB_RootClus-2)*BPB_SecPerClus)+FirstDataSec
-		Drive_p->FirstRootDirSec =  ((*(array+BPB_RootClus) - 2) * Drive_p->SecPerClus) + Drive_p->FirstDataSec;
+		Drive_p->FirstRootDirSec =  ((*(array+BPB_RootClus) - 2) * (Drive_p->SecPerClus)) + Drive_p->FirstDataSec;
 	}
 	
 	return SUCCESS;
@@ -169,7 +171,7 @@ uint8_t mount_drive(uint8_t * array)
 uint32_t First_Sector(uint32_t cluster_num)
 {
 	if(cluster_num != 0)
-		return (((cluster_num - 2) * Drive_p->SecPerClus) + Drive_p->FirstDataSec);
+		return (((cluster_num - 2) * (Drive_p->SecPerClus)) + Drive_p->FirstDataSec);
 	else
 		return Drive_p->FirstRootDirSec;
 }
@@ -178,20 +180,21 @@ uint32_t Find_Next_Clus(uint32_t cluster_num, uint8_t * array)
 {
 	uint32_t sector_num;
 	uint32_t cluster;
+	uint16_t FATOffset;
 	// Step 1: Determine the FAT sector number for the cluster
-	sector_num = ((cluster_num*Drive_p->FATtype) / Drive_p->BytesPerSec) + Drive_p->StartofFAT;
+	sector_num = ((cluster_num* (Drive_p->FATtype)) / Drive_p->BytesPerSec) + Drive_p->StartofFAT;
 	
 	// Step 2: Read the FAT sector into SRAM
 	Read_Sector(sector_num, Drive_p->BytesPerSec, &array);
 	
 	// Step 3: Determine the offset of the cluster within this sector
-	FATOffset = (uint16_t)((cluster_num*Drive_p->FATtype)%(Drive_p->BytesPerSec));
+	FATOffset = (uint16_t)((cluster_num * (Drive_p->FATtype))%(Drive_p->BytesPerSec));
 	
 	// Step 4: Read cluster entry from FAT sector in SRAM
 	if(Drive_p->FATtype == FAT_Type32)
 		cluster = (read_value_32(FATOffset, &array)&0x0FFFFFFF);
 	else
-		cluster = (uint32_t)(read_value_16(FATOffset, &array);
+		cluster = (uint32_t)(read_value_16(FATOffset, &array));
 	
 	return cluster;
 }

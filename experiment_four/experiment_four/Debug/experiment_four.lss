@@ -1,0 +1,4575 @@
+
+experiment_four.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000026  00800100  00001b6a  00001bfe  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00001b6a  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000469  00800126  00800126  00001c24  2**0
+                  ALLOC
+  3 .comment      0000005c  00000000  00000000  00001c24  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001c80  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000001b0  00000000  00000000  00001cc0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000035a1  00000000  00000000  00001e70  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00001227  00000000  00000000  00005411  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000016dc  00000000  00000000  00006638  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000004f4  00000000  00000000  00007d14  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000a1c  00000000  00000000  00008208  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00002350  00000000  00000000  00008c24  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000120  00000000  00000000  0000af74  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 f1 00 	jmp	0x1e2	; 0x1e2 <__ctors_end>
+       4:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+       8:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+       c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      10:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      14:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      18:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      1c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      20:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      24:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      28:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      2c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      30:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      34:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      38:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      3c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      40:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      44:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      48:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      4c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      50:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      54:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      58:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      5c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      60:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      64:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      68:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      6c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      70:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      74:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      78:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      7c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      80:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      84:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      88:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      8c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      90:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      94:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      98:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      9c:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      a0:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      a4:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      a8:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      ac:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      b0:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      b4:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      b8:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      bc:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      c0:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      c4:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+      c8:	0c 94 0e 01 	jmp	0x21c	; 0x21c <__bad_interrupt>
+
+000000cc <SD_Card_BlSz>:
+      cc:	42 6c 6f 63 6b 20 73 69 7a 65 20 73 65 74 20 74     Block size set t
+      dc:	6f 20 35 31 32 20 62 79 74 65 73 0a 0d 00           o 512 bytes...
+
+000000ea <SD_Card_HC>:
+      ea:	48 69 67 68 20 43 61 70 61 63 69 74 79 20 43 61     High Capacity Ca
+      fa:	72 64 20 64 65 74 65 63 74 65 64 2e 0a 0d 00        rd detected....
+
+00000109 <SD_Card_SC>:
+     109:	53 74 61 6e 64 61 72 64 20 43 61 70 61 63 69 74     Standard Capacit
+     119:	79 20 43 61 72 64 20 64 65 74 65 63 74 65 64 2e     y Card detected.
+     129:	0a 0d 00                                            ...
+
+0000012c <SD_Card_V2>:
+     12c:	56 65 72 73 69 6f 6e 20 32 20 53 44 20 43 61 72     Version 2 SD Car
+     13c:	64 20 64 65 74 65 63 74 65 64 2e 0a 0d 00           d detected....
+
+0000014a <SD_Card_V1>:
+     14a:	56 65 72 73 69 6f 6e 20 31 20 53 44 20 43 61 72     Version 1 SD Car
+     15a:	64 20 64 65 74 65 63 74 65 64 2e 0a 0d 00           d detected....
+
+00000168 <SD_Card_Resp>:
+     168:	52 65 73 70 6f 6e 73 65 20 3d 20 00                 Response = .
+
+00000174 <SD_Card_ACMD41>:
+     174:	41 43 4d 44 34 31 20 73 65 6e 74 20 2e 2e 2e 20     ACMD41 sent ... 
+	...
+
+00000185 <SD_Card_CMD58>:
+     185:	43 4d 44 35 38 20 73 65 6e 74 20 2e 2e 2e 20 00     CMD58 sent ... .
+
+00000195 <SD_Card_CMD16>:
+     195:	43 4d 44 31 36 20 73 65 6e 74 20 2e 2e 2e 20 00     CMD16 sent ... .
+
+000001a5 <SD_Card_CMD8>:
+     1a5:	43 4d 44 38 20 73 65 6e 74 20 2e 2e 2e 20 00        CMD8 sent ... .
+
+000001b4 <SD_Card_CMD0>:
+     1b4:	43 4d 44 30 20 73 65 6e 74 20 2e 2e 2e 20 00        CMD0 sent ... .
+
+000001c3 <SD_Card_Intro>:
+     1c3:	53 44 20 43 61 72 64 20 49 6e 69 74 69 61 6c 69     SD Card Initiali
+     1d3:	7a 61 74 69 6f 6e 20 2e 2e 2e 20 0a 0d 00 00        zation ... ....
+
+000001e2 <__ctors_end>:
+     1e2:	11 24       	eor	r1, r1
+     1e4:	1f be       	out	0x3f, r1	; 63
+     1e6:	cf ef       	ldi	r28, 0xFF	; 255
+     1e8:	d8 e0       	ldi	r29, 0x08	; 8
+     1ea:	de bf       	out	0x3e, r29	; 62
+     1ec:	cd bf       	out	0x3d, r28	; 61
+
+000001ee <__do_copy_data>:
+     1ee:	11 e0       	ldi	r17, 0x01	; 1
+     1f0:	a0 e0       	ldi	r26, 0x00	; 0
+     1f2:	b1 e0       	ldi	r27, 0x01	; 1
+     1f4:	ea e6       	ldi	r30, 0x6A	; 106
+     1f6:	fb e1       	ldi	r31, 0x1B	; 27
+     1f8:	02 c0       	rjmp	.+4      	; 0x1fe <__do_copy_data+0x10>
+     1fa:	05 90       	lpm	r0, Z+
+     1fc:	0d 92       	st	X+, r0
+     1fe:	a6 32       	cpi	r26, 0x26	; 38
+     200:	b1 07       	cpc	r27, r17
+     202:	d9 f7       	brne	.-10     	; 0x1fa <__do_copy_data+0xc>
+
+00000204 <__do_clear_bss>:
+     204:	25 e0       	ldi	r18, 0x05	; 5
+     206:	a6 e2       	ldi	r26, 0x26	; 38
+     208:	b1 e0       	ldi	r27, 0x01	; 1
+     20a:	01 c0       	rjmp	.+2      	; 0x20e <.do_clear_bss_start>
+
+0000020c <.do_clear_bss_loop>:
+     20c:	1d 92       	st	X+, r1
+
+0000020e <.do_clear_bss_start>:
+     20e:	af 38       	cpi	r26, 0x8F	; 143
+     210:	b2 07       	cpc	r27, r18
+     212:	e1 f7       	brne	.-8      	; 0x20c <.do_clear_bss_loop>
+     214:	0e 94 c9 03 	call	0x792	; 0x792 <main>
+     218:	0c 94 b3 0d 	jmp	0x1b66	; 0x1b66 <_exit>
+
+0000021c <__bad_interrupt>:
+     21c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000220 <Output_Init>:
+#include "Control_Outputs.h"
+
+void Output_Init(uint8_t volatile * port_addr, uint8_t pin_mask)
+{
+	//Set Port Pin to be an output with initial value '1'
+	*(port_addr+1)|=(pin_mask);    // Set DDRx to make port pin an output
+     220:	fc 01       	movw	r30, r24
+     222:	21 81       	ldd	r18, Z+1	; 0x01
+     224:	62 2b       	or	r22, r18
+     226:	61 83       	std	Z+1, r22	; 0x01
+     228:	08 95       	ret
+
+0000022a <Output_Set>:
+
+
+void Output_Set(uint8_t volatile * port_addr, uint8_t pin_mask)
+{
+	//control = 0, LED off; control = 1, LED on 
+		*(port_addr+2)|=(pin_mask);    // Set PORTx PORTx pin to value of '1'
+     22a:	fc 01       	movw	r30, r24
+     22c:	22 81       	ldd	r18, Z+2	; 0x02
+     22e:	62 2b       	or	r22, r18
+     230:	62 83       	std	Z+2, r22	; 0x02
+     232:	08 95       	ret
+
+00000234 <Output_Clear>:
+}
+
+void Output_Clear(uint8_t volatile * port_addr, uint8_t pin_mask)
+{
+     234:	fc 01       	movw	r30, r24
+	//control = 0, LED off; control = 1, LED on
+		*(port_addr+2)&=~(pin_mask);    // Clear PORTx pin to value of '0'
+     236:	92 81       	ldd	r25, Z+2	; 0x02
+     238:	60 95       	com	r22
+     23a:	69 23       	and	r22, r25
+     23c:	62 83       	std	Z+2, r22	; 0x02
+     23e:	08 95       	ret
+
+00000240 <Export_Drive_values>:
+************************************************************************/
+
+FS_values_t * Export_Drive_values(void)
+{
+   return &Drive_values;
+}
+     240:	87 e7       	ldi	r24, 0x77	; 119
+     242:	91 e0       	ldi	r25, 0x01	; 1
+     244:	08 95       	ret
+
+00000246 <Print_Directory>:
+************************************************************************/
+
+
+
+uint16_t  Print_Directory(uint32_t Sector_num, uint8_t * array_in)
+{ 
+     246:	2f 92       	push	r2
+     248:	3f 92       	push	r3
+     24a:	4f 92       	push	r4
+     24c:	5f 92       	push	r5
+     24e:	6f 92       	push	r6
+     250:	7f 92       	push	r7
+     252:	8f 92       	push	r8
+     254:	9f 92       	push	r9
+     256:	af 92       	push	r10
+     258:	bf 92       	push	r11
+     25a:	cf 92       	push	r12
+     25c:	df 92       	push	r13
+     25e:	ef 92       	push	r14
+     260:	ff 92       	push	r15
+     262:	0f 93       	push	r16
+     264:	1f 93       	push	r17
+     266:	cf 93       	push	r28
+     268:	df 93       	push	r29
+     26a:	cd b7       	in	r28, 0x3d	; 61
+     26c:	de b7       	in	r29, 0x3e	; 62
+     26e:	2c 97       	sbiw	r28, 0x0c	; 12
+     270:	0f b6       	in	r0, 0x3f	; 63
+     272:	f8 94       	cli
+     274:	de bf       	out	0x3e, r29	; 62
+     276:	0f be       	out	0x3f, r0	; 63
+     278:	cd bf       	out	0x3d, r28	; 61
+     27a:	2b 01       	movw	r4, r22
+     27c:	3c 01       	movw	r6, r24
+     27e:	5a 83       	std	Y+2, r21	; 0x02
+     280:	49 83       	std	Y+1, r20	; 0x01
+   uint16_t i, entries;
+   uint8_t temp8, j, attr, out_val, error_flag;
+   uint8_t * values;
+   uint8_t *prnt_bffr;
+
+   prnt_bffr=Export_print_buffer();
+     282:	0e 94 1c 0a 	call	0x1438	; 0x1438 <Export_print_buffer>
+     286:	28 2e       	mov	r2, r24
+     288:	9a 87       	std	Y+10, r25	; 0x0a
+   
+   values=array_in;
+   entries=0;
+   i=0;
+   if (Drive_values.FATtype==FAT16)  // included for FAT16 compatibility
+     28a:	80 91 78 01 	lds	r24, 0x0178	; 0x800178 <Drive_values+0x1>
+     28e:	82 30       	cpi	r24, 0x02	; 2
+     290:	69 f4       	brne	.+26     	; 0x2ac <Print_Directory+0x66>
+   { 
+      max_sectors=Drive_values.RootDirSecs;   // maximum sectors in a FAT16 root directory
+     292:	20 91 89 01 	lds	r18, 0x0189	; 0x800189 <Drive_values+0x12>
+     296:	30 91 8a 01 	lds	r19, 0x018A	; 0x80018a <Drive_values+0x13>
+     29a:	40 91 8b 01 	lds	r20, 0x018B	; 0x80018b <Drive_values+0x14>
+     29e:	50 91 8c 01 	lds	r21, 0x018C	; 0x80018c <Drive_values+0x15>
+     2a2:	2b 83       	std	Y+3, r18	; 0x03
+     2a4:	3c 83       	std	Y+4, r19	; 0x04
+     2a6:	4d 83       	std	Y+5, r20	; 0x05
+     2a8:	5e 83       	std	Y+6, r21	; 0x06
+     2aa:	0a c0       	rjmp	.+20     	; 0x2c0 <Print_Directory+0x7a>
+   }
+   else
+   {
+      max_sectors=Drive_values.SecPerClus;
+     2ac:	80 91 77 01 	lds	r24, 0x0177	; 0x800177 <Drive_values>
+     2b0:	28 2f       	mov	r18, r24
+     2b2:	30 e0       	ldi	r19, 0x00	; 0
+     2b4:	40 e0       	ldi	r20, 0x00	; 0
+     2b6:	50 e0       	ldi	r21, 0x00	; 0
+     2b8:	2b 83       	std	Y+3, r18	; 0x03
+     2ba:	3c 83       	std	Y+4, r19	; 0x04
+     2bc:	4d 83       	std	Y+5, r20	; 0x05
+     2be:	5e 83       	std	Y+6, r21	; 0x06
+   }
+   Sector=Sector_num;
+   error_flag=Read_Sector(Sector,Drive_values.BytesPerSec,values);
+     2c0:	40 91 7b 01 	lds	r20, 0x017B	; 0x80017b <Drive_values+0x4>
+     2c4:	50 91 7c 01 	lds	r21, 0x017C	; 0x80017c <Drive_values+0x5>
+     2c8:	29 81       	ldd	r18, Y+1	; 0x01
+     2ca:	3a 81       	ldd	r19, Y+2	; 0x02
+     2cc:	c3 01       	movw	r24, r6
+     2ce:	b2 01       	movw	r22, r4
+     2d0:	0e 94 1b 04 	call	0x836	; 0x836 <Read_Sector>
+   if(error_flag==no_errors)
+     2d4:	88 23       	and	r24, r24
+     2d6:	31 f0       	breq	.+12     	; 0x2e4 <Print_Directory+0x9e>
+         
+	  }while(temp8!=0);
+	}
+	else
+	{
+	   entries=0;    // no entries found indicates disk read error
+     2d8:	a1 2c       	mov	r10, r1
+     2da:	b1 2c       	mov	r11, r1
+     2dc:	eb c0       	rjmp	.+470    	; 0x4b4 <__LOCK_REGION_LENGTH__+0xb4>
+			     if(error_flag!=no_errors)
+			     {
+			        entries=0;   // no entries found indicates disk read error
+				    temp8=0;     // forces a function exit
+			     }
+                 i=0;
+     2de:	81 2c       	mov	r8, r1
+     2e0:	91 2c       	mov	r9, r1
+     2e2:	06 c0       	rjmp	.+12     	; 0x2f0 <Print_Directory+0xaa>
+     2e4:	73 01       	movw	r14, r6
+     2e6:	62 01       	movw	r12, r4
+     2e8:	a1 2c       	mov	r10, r1
+     2ea:	b1 2c       	mov	r11, r1
+     2ec:	81 2c       	mov	r8, r1
+     2ee:	91 2c       	mov	r9, r1
+   error_flag=Read_Sector(Sector,Drive_values.BytesPerSec,values);
+   if(error_flag==no_errors)
+   {
+     do
+     {
+        temp8=read_value_8(0+i,values);  // read first byte to see if empty
+     2f0:	69 81       	ldd	r22, Y+1	; 0x01
+     2f2:	7a 81       	ldd	r23, Y+2	; 0x02
+     2f4:	c4 01       	movw	r24, r8
+     2f6:	0e 94 74 02 	call	0x4e8	; 0x4e8 <read_value_8>
+     2fa:	38 2e       	mov	r3, r24
+        if((temp8!=0xE5)&&(temp8!=0x00))
+     2fc:	35 ee       	ldi	r19, 0xE5	; 229
+     2fe:	83 17       	cp	r24, r19
+     300:	09 f4       	brne	.+2      	; 0x304 <Print_Directory+0xbe>
+     302:	cc c0       	rjmp	.+408    	; 0x49c <__LOCK_REGION_LENGTH__+0x9c>
+     304:	88 23       	and	r24, r24
+     306:	09 f4       	brne	.+2      	; 0x30a <Print_Directory+0xc4>
+     308:	c0 c0       	rjmp	.+384    	; 0x48a <__LOCK_REGION_LENGTH__+0x8a>
+	    {  
+	       attr=read_value_8(0x0b+i,values);
+     30a:	a4 01       	movw	r20, r8
+     30c:	45 5f       	subi	r20, 0xF5	; 245
+     30e:	5f 4f       	sbci	r21, 0xFF	; 255
+     310:	58 87       	std	Y+8, r21	; 0x08
+     312:	4f 83       	std	Y+7, r20	; 0x07
+     314:	69 81       	ldd	r22, Y+1	; 0x01
+     316:	7a 81       	ldd	r23, Y+2	; 0x02
+     318:	ca 01       	movw	r24, r20
+     31a:	0e 94 74 02 	call	0x4e8	; 0x4e8 <read_value_8>
+     31e:	89 87       	std	Y+9, r24	; 0x09
+		   if((attr&0x0E)==0)   // if hidden, system or Vol_ID bit is set do not print
+     320:	8e 70       	andi	r24, 0x0E	; 14
+     322:	09 f0       	breq	.+2      	; 0x326 <Print_Directory+0xe0>
+     324:	a8 c0       	rjmp	.+336    	; 0x476 <__LOCK_REGION_LENGTH__+0x76>
+		   {
+		      entries++;
+     326:	5f ef       	ldi	r21, 0xFF	; 255
+     328:	a5 1a       	sub	r10, r21
+     32a:	b5 0a       	sbc	r11, r21
+			  sprintf(prnt_bffr,"%5d. ",entries);  // print entry number with a fixed width specifier
+     32c:	bf 92       	push	r11
+     32e:	af 92       	push	r10
+     330:	80 e0       	ldi	r24, 0x00	; 0
+     332:	91 e0       	ldi	r25, 0x01	; 1
+     334:	9f 93       	push	r25
+     336:	8f 93       	push	r24
+     338:	ba 85       	ldd	r27, Y+10	; 0x0a
+     33a:	bf 93       	push	r27
+     33c:	2f 92       	push	r2
+     33e:	0e 94 c9 0a 	call	0x1592	; 0x1592 <sprintf>
+		      UART_Transmit_String(&UART1,0,prnt_bffr);
+     342:	42 2d       	mov	r20, r2
+     344:	5a 85       	ldd	r21, Y+10	; 0x0a
+     346:	60 e0       	ldi	r22, 0x00	; 0
+     348:	88 ec       	ldi	r24, 0xC8	; 200
+     34a:	90 e0       	ldi	r25, 0x00	; 0
+     34c:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     350:	94 01       	movw	r18, r8
+     352:	28 5f       	subi	r18, 0xF8	; 248
+     354:	3f 4f       	sbci	r19, 0xFF	; 255
+     356:	0f 90       	pop	r0
+     358:	0f 90       	pop	r0
+     35a:	0f 90       	pop	r0
+     35c:	0f 90       	pop	r0
+     35e:	0f 90       	pop	r0
+     360:	0f 90       	pop	r0
+     362:	84 01       	movw	r16, r8
+     364:	3c 87       	std	Y+12, r19	; 0x0c
+     366:	2b 87       	std	Y+11, r18	; 0x0b
+			  for(j=0;j<8;j++)
+			  {
+			     out_val=read_value_8(i+j,values);   // print the 8 byte name
+     368:	69 81       	ldd	r22, Y+1	; 0x01
+     36a:	7a 81       	ldd	r23, Y+2	; 0x02
+     36c:	c8 01       	movw	r24, r16
+     36e:	0e 94 74 02 	call	0x4e8	; 0x4e8 <read_value_8>
+			     UART_Transmit(&UART1,out_val);
+     372:	68 2f       	mov	r22, r24
+     374:	88 ec       	ldi	r24, 0xC8	; 200
+     376:	90 e0       	ldi	r25, 0x00	; 0
+     378:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+     37c:	0f 5f       	subi	r16, 0xFF	; 255
+     37e:	1f 4f       	sbci	r17, 0xFF	; 255
+		   if((attr&0x0E)==0)   // if hidden, system or Vol_ID bit is set do not print
+		   {
+		      entries++;
+			  sprintf(prnt_bffr,"%5d. ",entries);  // print entry number with a fixed width specifier
+		      UART_Transmit_String(&UART1,0,prnt_bffr);
+			  for(j=0;j<8;j++)
+     380:	4b 85       	ldd	r20, Y+11	; 0x0b
+     382:	5c 85       	ldd	r21, Y+12	; 0x0c
+     384:	40 17       	cp	r20, r16
+     386:	51 07       	cpc	r21, r17
+     388:	79 f7       	brne	.-34     	; 0x368 <Print_Directory+0x122>
+			  {
+			     out_val=read_value_8(i+j,values);   // print the 8 byte name
+			     UART_Transmit(&UART1,out_val);
+			  }
+              if((attr&0x10)==0x10)  // indicates directory
+     38a:	59 85       	ldd	r21, Y+9	; 0x09
+     38c:	54 ff       	sbrs	r21, 4
+     38e:	26 c0       	rjmp	.+76     	; 0x3dc <Print_Directory+0x196>
+     390:	0f 81       	ldd	r16, Y+7	; 0x07
+     392:	18 85       	ldd	r17, Y+8	; 0x08
+			  {
+			     for(j=8;j<11;j++)
+			     {
+			        out_val=read_value_8(i+j,values);
+     394:	69 81       	ldd	r22, Y+1	; 0x01
+     396:	7a 81       	ldd	r23, Y+2	; 0x02
+     398:	8b 85       	ldd	r24, Y+11	; 0x0b
+     39a:	9c 85       	ldd	r25, Y+12	; 0x0c
+     39c:	0e 94 74 02 	call	0x4e8	; 0x4e8 <read_value_8>
+			        UART_Transmit(&UART1,out_val);
+     3a0:	68 2f       	mov	r22, r24
+     3a2:	88 ec       	ldi	r24, 0xC8	; 200
+     3a4:	90 e0       	ldi	r25, 0x00	; 0
+     3a6:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+     3aa:	ab 85       	ldd	r26, Y+11	; 0x0b
+     3ac:	bc 85       	ldd	r27, Y+12	; 0x0c
+     3ae:	11 96       	adiw	r26, 0x01	; 1
+     3b0:	bc 87       	std	Y+12, r27	; 0x0c
+     3b2:	ab 87       	std	Y+11, r26	; 0x0b
+			     out_val=read_value_8(i+j,values);   // print the 8 byte name
+			     UART_Transmit(&UART1,out_val);
+			  }
+              if((attr&0x10)==0x10)  // indicates directory
+			  {
+			     for(j=8;j<11;j++)
+     3b4:	0a 17       	cp	r16, r26
+     3b6:	1b 07       	cpc	r17, r27
+     3b8:	69 f7       	brne	.-38     	; 0x394 <Print_Directory+0x14e>
+			     {
+			        out_val=read_value_8(i+j,values);
+			        UART_Transmit(&UART1,out_val);
+			     }
+			     sprintf(prnt_bffr,"[DIR]\n\r");
+     3ba:	88 e0       	ldi	r24, 0x08	; 8
+     3bc:	e6 e0       	ldi	r30, 0x06	; 6
+     3be:	f1 e0       	ldi	r31, 0x01	; 1
+     3c0:	a2 2d       	mov	r26, r2
+     3c2:	ba 85       	ldd	r27, Y+10	; 0x0a
+     3c4:	01 90       	ld	r0, Z+
+     3c6:	0d 92       	st	X+, r0
+     3c8:	8a 95       	dec	r24
+     3ca:	e1 f7       	brne	.-8      	; 0x3c4 <Print_Directory+0x17e>
+				 UART_Transmit_String(&UART1,0,prnt_bffr);
+     3cc:	42 2d       	mov	r20, r2
+     3ce:	5a 85       	ldd	r21, Y+10	; 0x0a
+     3d0:	60 e0       	ldi	r22, 0x00	; 0
+     3d2:	88 ec       	ldi	r24, 0xC8	; 200
+     3d4:	90 e0       	ldi	r25, 0x00	; 0
+     3d6:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     3da:	4d c0       	rjmp	.+154    	; 0x476 <__LOCK_REGION_LENGTH__+0x76>
+			  }
+			  else       // print a period and the three byte extension for a file
+			  {
+			     UART_Transmit(&UART1,0x2E);       
+     3dc:	6e e2       	ldi	r22, 0x2E	; 46
+     3de:	88 ec       	ldi	r24, 0xC8	; 200
+     3e0:	90 e0       	ldi	r25, 0x00	; 0
+     3e2:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+     3e6:	0f 81       	ldd	r16, Y+7	; 0x07
+     3e8:	18 85       	ldd	r17, Y+8	; 0x08
+			     for(j=8;j<11;j++)
+			     {
+			        out_val=read_value_8(i+j,values);
+     3ea:	69 81       	ldd	r22, Y+1	; 0x01
+     3ec:	7a 81       	ldd	r23, Y+2	; 0x02
+     3ee:	8b 85       	ldd	r24, Y+11	; 0x0b
+     3f0:	9c 85       	ldd	r25, Y+12	; 0x0c
+     3f2:	0e 94 74 02 	call	0x4e8	; 0x4e8 <read_value_8>
+			        UART_Transmit(&UART1,out_val);
+     3f6:	68 2f       	mov	r22, r24
+     3f8:	88 ec       	ldi	r24, 0xC8	; 200
+     3fa:	90 e0       	ldi	r25, 0x00	; 0
+     3fc:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+     400:	4b 85       	ldd	r20, Y+11	; 0x0b
+     402:	5c 85       	ldd	r21, Y+12	; 0x0c
+     404:	4f 5f       	subi	r20, 0xFF	; 255
+     406:	5f 4f       	sbci	r21, 0xFF	; 255
+     408:	5c 87       	std	Y+12, r21	; 0x0c
+     40a:	4b 87       	std	Y+11, r20	; 0x0b
+				 UART_Transmit_String(&UART1,0,prnt_bffr);
+			  }
+			  else       // print a period and the three byte extension for a file
+			  {
+			     UART_Transmit(&UART1,0x2E);       
+			     for(j=8;j<11;j++)
+     40c:	04 17       	cp	r16, r20
+     40e:	15 07       	cpc	r17, r21
+     410:	61 f7       	brne	.-40     	; 0x3ea <Print_Directory+0x1a4>
+			     {
+			        out_val=read_value_8(i+j,values);
+			        UART_Transmit(&UART1,out_val);
+			     }
+			     UART_Transmit(&UART1,CR);
+     412:	6d e0       	ldi	r22, 0x0D	; 13
+     414:	88 ec       	ldi	r24, 0xC8	; 200
+     416:	90 e0       	ldi	r25, 0x00	; 0
+     418:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+                 UART_Transmit(&UART1,LF);
+     41c:	6a e0       	ldi	r22, 0x0A	; 10
+     41e:	88 ec       	ldi	r24, 0xC8	; 200
+     420:	90 e0       	ldi	r25, 0x00	; 0
+     422:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+     426:	27 c0       	rjmp	.+78     	; 0x476 <__LOCK_REGION_LENGTH__+0x76>
+		    }
+		}
+		    i=i+32;  // next entry
+		    if(i>510)
+		    {
+			  Sector++;
+     428:	5f ef       	ldi	r21, 0xFF	; 255
+     42a:	c5 1a       	sub	r12, r21
+     42c:	d5 0a       	sbc	r13, r21
+     42e:	e5 0a       	sbc	r14, r21
+     430:	f5 0a       	sbc	r15, r21
+              if((Sector-Sector_num)<max_sectors)
+     432:	d7 01       	movw	r26, r14
+     434:	c6 01       	movw	r24, r12
+     436:	84 19       	sub	r24, r4
+     438:	95 09       	sbc	r25, r5
+     43a:	a6 09       	sbc	r26, r6
+     43c:	b7 09       	sbc	r27, r7
+     43e:	2b 81       	ldd	r18, Y+3	; 0x03
+     440:	3c 81       	ldd	r19, Y+4	; 0x04
+     442:	4d 81       	ldd	r20, Y+5	; 0x05
+     444:	5e 81       	ldd	r21, Y+6	; 0x06
+     446:	82 17       	cp	r24, r18
+     448:	93 07       	cpc	r25, r19
+     44a:	a4 07       	cpc	r26, r20
+     44c:	b5 07       	cpc	r27, r21
+     44e:	68 f4       	brcc	.+26     	; 0x46a <__LOCK_REGION_LENGTH__+0x6a>
+			  {
+                 error_flag=Read_Sector(Sector,Drive_values.BytesPerSec,values);
+     450:	40 91 7b 01 	lds	r20, 0x017B	; 0x80017b <Drive_values+0x4>
+     454:	50 91 7c 01 	lds	r21, 0x017C	; 0x80017c <Drive_values+0x5>
+     458:	29 81       	ldd	r18, Y+1	; 0x01
+     45a:	3a 81       	ldd	r19, Y+2	; 0x02
+     45c:	c7 01       	movw	r24, r14
+     45e:	b6 01       	movw	r22, r12
+     460:	0e 94 1b 04 	call	0x836	; 0x836 <Read_Sector>
+			     if(error_flag!=no_errors)
+     464:	81 11       	cpse	r24, r1
+     466:	24 c0       	rjmp	.+72     	; 0x4b0 <__LOCK_REGION_LENGTH__+0xb0>
+     468:	03 c0       	rjmp	.+6      	; 0x470 <__LOCK_REGION_LENGTH__+0x70>
+			     }
+                 i=0;
+			  }
+			  else
+			  {
+			     entries=entries|more_entries;  // set msb to indicate more entries in another cluster
+     46a:	68 94       	set
+     46c:	b7 f8       	bld	r11, 7
+     46e:	22 c0       	rjmp	.+68     	; 0x4b4 <__LOCK_REGION_LENGTH__+0xb4>
+			     temp8=0;                       // forces a function exit
+			  }
+		    }
+         
+	  }while(temp8!=0);
+     470:	31 10       	cpse	r3, r1
+     472:	35 cf       	rjmp	.-406    	; 0x2de <Print_Directory+0x98>
+     474:	1f c0       	rjmp	.+62     	; 0x4b4 <__LOCK_REGION_LENGTH__+0xb4>
+			     UART_Transmit(&UART1,CR);
+                 UART_Transmit(&UART1,LF);
+			  }
+		    }
+		}
+		    i=i+32;  // next entry
+     476:	30 e2       	ldi	r19, 0x20	; 32
+     478:	83 0e       	add	r8, r19
+     47a:	91 1c       	adc	r9, r1
+		    if(i>510)
+     47c:	4f ef       	ldi	r20, 0xFF	; 255
+     47e:	84 16       	cp	r8, r20
+     480:	41 e0       	ldi	r20, 0x01	; 1
+     482:	94 06       	cpc	r9, r20
+     484:	08 f4       	brcc	.+2      	; 0x488 <__LOCK_REGION_LENGTH__+0x88>
+     486:	34 cf       	rjmp	.-408    	; 0x2f0 <Print_Directory+0xaa>
+     488:	cf cf       	rjmp	.-98     	; 0x428 <__LOCK_REGION_LENGTH__+0x28>
+     48a:	50 e2       	ldi	r21, 0x20	; 32
+     48c:	85 0e       	add	r8, r21
+     48e:	91 1c       	adc	r9, r1
+     490:	8f ef       	ldi	r24, 0xFF	; 255
+     492:	88 16       	cp	r8, r24
+     494:	81 e0       	ldi	r24, 0x01	; 1
+     496:	98 06       	cpc	r9, r24
+     498:	38 f6       	brcc	.-114    	; 0x428 <__LOCK_REGION_LENGTH__+0x28>
+     49a:	0c c0       	rjmp	.+24     	; 0x4b4 <__LOCK_REGION_LENGTH__+0xb4>
+			     UART_Transmit(&UART1,CR);
+                 UART_Transmit(&UART1,LF);
+			  }
+		    }
+		}
+		    i=i+32;  // next entry
+     49c:	90 e2       	ldi	r25, 0x20	; 32
+     49e:	89 0e       	add	r8, r25
+     4a0:	91 1c       	adc	r9, r1
+		    if(i>510)
+     4a2:	af ef       	ldi	r26, 0xFF	; 255
+     4a4:	8a 16       	cp	r8, r26
+     4a6:	a1 e0       	ldi	r26, 0x01	; 1
+     4a8:	9a 06       	cpc	r9, r26
+     4aa:	08 f4       	brcc	.+2      	; 0x4ae <__LOCK_REGION_LENGTH__+0xae>
+     4ac:	21 cf       	rjmp	.-446    	; 0x2f0 <Print_Directory+0xaa>
+     4ae:	bc cf       	rjmp	.-136    	; 0x428 <__LOCK_REGION_LENGTH__+0x28>
+              if((Sector-Sector_num)<max_sectors)
+			  {
+                 error_flag=Read_Sector(Sector,Drive_values.BytesPerSec,values);
+			     if(error_flag!=no_errors)
+			     {
+			        entries=0;   // no entries found indicates disk read error
+     4b0:	a1 2c       	mov	r10, r1
+     4b2:	b1 2c       	mov	r11, r1
+	else
+	{
+	   entries=0;    // no entries found indicates disk read error
+	}
+   return entries;
+ }
+     4b4:	c5 01       	movw	r24, r10
+     4b6:	2c 96       	adiw	r28, 0x0c	; 12
+     4b8:	0f b6       	in	r0, 0x3f	; 63
+     4ba:	f8 94       	cli
+     4bc:	de bf       	out	0x3e, r29	; 62
+     4be:	0f be       	out	0x3f, r0	; 63
+     4c0:	cd bf       	out	0x3d, r28	; 61
+     4c2:	df 91       	pop	r29
+     4c4:	cf 91       	pop	r28
+     4c6:	1f 91       	pop	r17
+     4c8:	0f 91       	pop	r16
+     4ca:	ff 90       	pop	r15
+     4cc:	ef 90       	pop	r14
+     4ce:	df 90       	pop	r13
+     4d0:	cf 90       	pop	r12
+     4d2:	bf 90       	pop	r11
+     4d4:	af 90       	pop	r10
+     4d6:	9f 90       	pop	r9
+     4d8:	8f 90       	pop	r8
+     4da:	7f 90       	pop	r7
+     4dc:	6f 90       	pop	r6
+     4de:	5f 90       	pop	r5
+     4e0:	4f 90       	pop	r4
+     4e2:	3f 90       	pop	r3
+     4e4:	2f 90       	pop	r2
+     4e6:	08 95       	ret
+
+000004e8 <read_value_8>:
+		return_val = return_val<<8;
+		return_val |= temp;
+	}
+	
+	return return_val;
+}
+     4e8:	86 0f       	add	r24, r22
+     4ea:	97 1f       	adc	r25, r23
+     4ec:	fc 01       	movw	r30, r24
+     4ee:	80 81       	ld	r24, Z
+     4f0:	08 95       	ret
+
+000004f2 <mount_drive>:
+
+uint8_t mount_drive(uint8_t * array)
+{
+     4f2:	4f 92       	push	r4
+     4f4:	5f 92       	push	r5
+     4f6:	6f 92       	push	r6
+     4f8:	7f 92       	push	r7
+     4fa:	8f 92       	push	r8
+     4fc:	9f 92       	push	r9
+     4fe:	af 92       	push	r10
+     500:	bf 92       	push	r11
+     502:	cf 92       	push	r12
+     504:	df 92       	push	r13
+     506:	ef 92       	push	r14
+     508:	ff 92       	push	r15
+     50a:	0f 93       	push	r16
+     50c:	1f 93       	push	r17
+     50e:	cf 93       	push	r28
+     510:	df 93       	push	r29
+     512:	00 d0       	rcall	.+0      	; 0x514 <mount_drive+0x22>
+     514:	00 d0       	rcall	.+0      	; 0x516 <mount_drive+0x24>
+     516:	00 d0       	rcall	.+0      	; 0x518 <mount_drive+0x26>
+     518:	cd b7       	in	r28, 0x3d	; 61
+     51a:	de b7       	in	r29, 0x3e	; 62
+     51c:	9a 83       	std	Y+2, r25	; 0x02
+     51e:	89 83       	std	Y+1, r24	; 0x01
+	Drive_p = Export_Drive_values();
+     520:	0e 94 20 01 	call	0x240	; 0x240 <Export_Drive_values>
+     524:	90 93 8e 01 	sts	0x018E, r25	; 0x80018e <Drive_p+0x1>
+     528:	80 93 8d 01 	sts	0x018D, r24	; 0x80018d <Drive_p>
+	uint32_t FATSz;
+	uint32_t TotSec;
+	uint32_t DataSec;
+	uint32_t CountofClusters;
+	// Step 1: Read Block 0
+	result = Read_Block(0, &array);
+     52c:	be 01       	movw	r22, r28
+     52e:	6f 5f       	subi	r22, 0xFF	; 255
+     530:	7f 4f       	sbci	r23, 0xFF	; 255
+     532:	80 e0       	ldi	r24, 0x00	; 0
+     534:	90 e0       	ldi	r25, 0x00	; 0
+     536:	0e 94 e0 04 	call	0x9c0	; 0x9c0 <Read_Block>
+	if(result != no_errors)
+     53a:	81 11       	cpse	r24, r1
+     53c:	13 c1       	rjmp	.+550    	; 0x764 <mount_drive+0x272>
+		return result;
+	
+	
+	if( (*(array+0) != 0xEB) && (*(array+0) != 0xE9) )
+     53e:	e9 81       	ldd	r30, Y+1	; 0x01
+     540:	fa 81       	ldd	r31, Y+2	; 0x02
+     542:	80 81       	ld	r24, Z
+     544:	8d 7f       	andi	r24, 0xFD	; 253
+     546:	89 3e       	cpi	r24, 0xE9	; 233
+     548:	39 f0       	breq	.+14     	; 0x558 <mount_drive+0x66>
+	{
+		MBR_RelativeSectors = *(array+0x001C6);
+     54a:	ea 53       	subi	r30, 0x3A	; 58
+     54c:	fe 4f       	sbci	r31, 0xFE	; 254
+     54e:	c0 80       	ld	r12, Z
+     550:	d1 2c       	mov	r13, r1
+     552:	e1 2c       	mov	r14, r1
+     554:	f1 2c       	mov	r15, r1
+     556:	03 c0       	rjmp	.+6      	; 0x55e <mount_drive+0x6c>
+uint8_t mount_drive(uint8_t * array)
+{
+	Drive_p = Export_Drive_values();
+	
+	uint8_t result;
+	uint32_t MBR_RelativeSectors = 0;
+     558:	c1 2c       	mov	r12, r1
+     55a:	d1 2c       	mov	r13, r1
+     55c:	76 01       	movw	r14, r12
+	if( (*(array+0) != 0xEB) && (*(array+0) != 0xE9) )
+	{
+		MBR_RelativeSectors = *(array+0x001C6);
+	}
+	
+	result = Read_Block(MBR_RelativeSectors, &array);
+     55e:	be 01       	movw	r22, r28
+     560:	6f 5f       	subi	r22, 0xFF	; 255
+     562:	7f 4f       	sbci	r23, 0xFF	; 255
+     564:	c6 01       	movw	r24, r12
+     566:	0e 94 e0 04 	call	0x9c0	; 0x9c0 <Read_Block>
+	if(result != no_errors)
+     56a:	81 11       	cpse	r24, r1
+     56c:	fb c0       	rjmp	.+502    	; 0x764 <mount_drive+0x272>
+		return result;
+	
+	if((*(array+BS_jmpBoot) != 0xEB) && (*(array+BS_jmpBoot) != 0xE9))
+     56e:	e9 81       	ldd	r30, Y+1	; 0x01
+     570:	fa 81       	ldd	r31, Y+2	; 0x02
+     572:	80 81       	ld	r24, Z
+     574:	8d 7f       	andi	r24, 0xFD	; 253
+     576:	89 3e       	cpi	r24, 0xE9	; 233
+     578:	09 f0       	breq	.+2      	; 0x57c <mount_drive+0x8a>
+     57a:	f3 c0       	rjmp	.+486    	; 0x762 <mount_drive+0x270>
+	{
+		return BPB_NOT_FOUND;
+	}
+	
+	Drive_p->BytesPerSec = *(array+BPB_BytsPerSec);
+     57c:	a0 91 8d 01 	lds	r26, 0x018D	; 0x80018d <Drive_p>
+     580:	b0 91 8e 01 	lds	r27, 0x018E	; 0x80018e <Drive_p+0x1>
+     584:	83 85       	ldd	r24, Z+11	; 0x0b
+     586:	90 e0       	ldi	r25, 0x00	; 0
+     588:	15 96       	adiw	r26, 0x05	; 5
+     58a:	9c 93       	st	X, r25
+     58c:	8e 93       	st	-X, r24
+     58e:	14 97       	sbiw	r26, 0x04	; 4
+	Drive_p->SecPerClus = *(array+BPB_SecPerClus);
+     590:	85 85       	ldd	r24, Z+13	; 0x0d
+     592:	8c 93       	st	X, r24
+	
+	// Step 2: Determine # of Sectors in Root Dir
+	// Should be 0 for FAT32
+	// FOR HAYDEN LONG !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// Idk what the max value for this can be if it's FAT16, but I made it 32 bit just in case
+	Drive_p->RootDirSecs = ((BPB_RootEntCnt * 32) + (Drive_p->BytesPerSec - 1)) / (Drive_p->BytesPerSec);
+     594:	00 91 8d 01 	lds	r16, 0x018D	; 0x80018d <Drive_p>
+     598:	10 91 8e 01 	lds	r17, 0x018E	; 0x80018e <Drive_p+0x1>
+     59c:	d8 01       	movw	r26, r16
+     59e:	14 96       	adiw	r26, 0x04	; 4
+     5a0:	6d 91       	ld	r22, X+
+     5a2:	7c 91       	ld	r23, X
+     5a4:	15 97       	sbiw	r26, 0x05	; 5
+     5a6:	cb 01       	movw	r24, r22
+     5a8:	81 5e       	subi	r24, 0xE1	; 225
+     5aa:	9d 4f       	sbci	r25, 0xFD	; 253
+     5ac:	0e 94 79 0a 	call	0x14f2	; 0x14f2 <__udivmodhi4>
+     5b0:	2b 01       	movw	r4, r22
+     5b2:	61 2c       	mov	r6, r1
+     5b4:	71 2c       	mov	r7, r1
+     5b6:	f8 01       	movw	r30, r16
+     5b8:	42 8a       	std	Z+18, r4	; 0x12
+     5ba:	53 8a       	std	Z+19, r5	; 0x13
+     5bc:	64 8a       	std	Z+20, r6	; 0x14
+     5be:	75 8a       	std	Z+21, r7	; 0x15
+	
+	
+	// Step 3: Find # of data sectors
+	if(*(array+BPB_FATSz16) != 0)
+     5c0:	e9 81       	ldd	r30, Y+1	; 0x01
+     5c2:	fa 81       	ldd	r31, Y+2	; 0x02
+     5c4:	86 88       	ldd	r8, Z+22	; 0x16
+     5c6:	88 20       	and	r8, r8
+     5c8:	49 f0       	breq	.+18     	; 0x5dc <mount_drive+0xea>
+		FATSz = *(array+BPB_FATSz16);
+     5ca:	28 2d       	mov	r18, r8
+     5cc:	30 e0       	ldi	r19, 0x00	; 0
+     5ce:	40 e0       	ldi	r20, 0x00	; 0
+     5d0:	50 e0       	ldi	r21, 0x00	; 0
+     5d2:	2b 83       	std	Y+3, r18	; 0x03
+     5d4:	3c 83       	std	Y+4, r19	; 0x04
+     5d6:	4d 83       	std	Y+5, r20	; 0x05
+     5d8:	5e 83       	std	Y+6, r21	; 0x06
+     5da:	09 c0       	rjmp	.+18     	; 0x5ee <mount_drive+0xfc>
+	else
+		FATSz = *(array+BPB_FATSz32);
+     5dc:	84 a0       	ldd	r8, Z+36	; 0x24
+     5de:	88 2d       	mov	r24, r8
+     5e0:	90 e0       	ldi	r25, 0x00	; 0
+     5e2:	a0 e0       	ldi	r26, 0x00	; 0
+     5e4:	b0 e0       	ldi	r27, 0x00	; 0
+     5e6:	8b 83       	std	Y+3, r24	; 0x03
+     5e8:	9c 83       	std	Y+4, r25	; 0x04
+     5ea:	ad 83       	std	Y+5, r26	; 0x05
+     5ec:	be 83       	std	Y+6, r27	; 0x06
+	
+	if(*(array+BPB_TotSec16) != 0)
+     5ee:	63 89       	ldd	r22, Z+19	; 0x13
+     5f0:	66 23       	and	r22, r22
+     5f2:	29 f0       	breq	.+10     	; 0x5fe <mount_drive+0x10c>
+		TotSec = *(array+BPB_TotSec16);
+     5f4:	86 2e       	mov	r8, r22
+     5f6:	91 2c       	mov	r9, r1
+     5f8:	a1 2c       	mov	r10, r1
+     5fa:	b1 2c       	mov	r11, r1
+     5fc:	05 c0       	rjmp	.+10     	; 0x608 <mount_drive+0x116>
+	else
+		TotSec = *(array+BPB_TotSec32);
+     5fe:	60 a1       	ldd	r22, Z+32	; 0x20
+     600:	86 2e       	mov	r8, r22
+     602:	91 2c       	mov	r9, r1
+     604:	a1 2c       	mov	r10, r1
+     606:	b1 2c       	mov	r11, r1
+	
+	// DataSec = BPB_TotSec32 – (BPB_ResvdSecCnt+(BPB_NumFATs*BPB_FATSz32)+RootDirSectors)
+	DataSec = (TotSec-(*(array+BPB_ResvdSecCnt)+(*(array+BPB_NumFATs)*FATSz)+Drive_p->RootDirSecs));
+
+	// Step 4: Determine FAT Type and Count of Clusters
+	CountofClusters = DataSec / (Drive_p->SecPerClus);
+     608:	a0 89       	ldd	r26, Z+16	; 0x10
+     60a:	b0 e0       	ldi	r27, 0x00	; 0
+     60c:	2b 81       	ldd	r18, Y+3	; 0x03
+     60e:	3c 81       	ldd	r19, Y+4	; 0x04
+     610:	4d 81       	ldd	r20, Y+5	; 0x05
+     612:	5e 81       	ldd	r21, Y+6	; 0x06
+     614:	0e 94 af 0a 	call	0x155e	; 0x155e <__muluhisi3>
+     618:	26 85       	ldd	r18, Z+14	; 0x0e
+     61a:	42 0e       	add	r4, r18
+     61c:	51 1c       	adc	r5, r1
+     61e:	61 1c       	adc	r6, r1
+     620:	71 1c       	adc	r7, r1
+     622:	dc 01       	movw	r26, r24
+     624:	cb 01       	movw	r24, r22
+     626:	84 0d       	add	r24, r4
+     628:	95 1d       	adc	r25, r5
+     62a:	a6 1d       	adc	r26, r6
+     62c:	b7 1d       	adc	r27, r7
+     62e:	a5 01       	movw	r20, r10
+     630:	94 01       	movw	r18, r8
+     632:	28 1b       	sub	r18, r24
+     634:	39 0b       	sbc	r19, r25
+     636:	4a 0b       	sbc	r20, r26
+     638:	5b 0b       	sbc	r21, r27
+     63a:	ca 01       	movw	r24, r20
+     63c:	b9 01       	movw	r22, r18
+     63e:	d8 01       	movw	r26, r16
+     640:	2c 91       	ld	r18, X
+     642:	30 e0       	ldi	r19, 0x00	; 0
+     644:	40 e0       	ldi	r20, 0x00	; 0
+     646:	50 e0       	ldi	r21, 0x00	; 0
+     648:	0e 94 8d 0a 	call	0x151a	; 0x151a <__udivmodsi4>
+	
+	if(CountofClusters < 4085)
+     64c:	25 3f       	cpi	r18, 0xF5	; 245
+     64e:	bf e0       	ldi	r27, 0x0F	; 15
+     650:	3b 07       	cpc	r19, r27
+     652:	41 05       	cpc	r20, r1
+     654:	51 05       	cpc	r21, r1
+     656:	20 f4       	brcc	.+8      	; 0x660 <mount_drive+0x16e>
+	{
+		Drive_p->FATtype = FAT_Type12;
+     658:	82 e0       	ldi	r24, 0x02	; 2
+     65a:	f8 01       	movw	r30, r16
+     65c:	81 83       	std	Z+1, r24	; 0x01
+     65e:	0d c0       	rjmp	.+26     	; 0x67a <mount_drive+0x188>
+	} else if(CountofClusters < 65525)
+     660:	25 3f       	cpi	r18, 0xF5	; 245
+     662:	3f 4f       	sbci	r19, 0xFF	; 255
+     664:	41 05       	cpc	r20, r1
+     666:	51 05       	cpc	r21, r1
+     668:	28 f4       	brcc	.+10     	; 0x674 <mount_drive+0x182>
+	{	
+		Drive_p->FATtype = FAT_Type16;
+     66a:	81 e0       	ldi	r24, 0x01	; 1
+     66c:	d8 01       	movw	r26, r16
+     66e:	11 96       	adiw	r26, 0x01	; 1
+     670:	8c 93       	st	X, r24
+     672:	03 c0       	rjmp	.+6      	; 0x67a <mount_drive+0x188>
+		
+	} else
+	{
+		Drive_p->FATtype = FAT_Type32;
+     674:	84 e0       	ldi	r24, 0x04	; 4
+     676:	f8 01       	movw	r30, r16
+     678:	81 83       	std	Z+1, r24	; 0x01
+	// Step 5: Determine the First Sector of FAT
+	// ThisFATSecNum = BPB_ResvdSecCnt + (FATOffset / BPB_BytsPerSec) 
+	// FATOffset = 0
+	// ThisFATSecNum = *(array+ 0x000E + MBR_RelativeSectors);
+	// StartofFAT = = BPB_ResvdSecCnt + MBR_RelativeSectors
+	Drive_p->StartofFAT = *(array+BPB_ResvdSecCnt) + MBR_RelativeSectors;
+     67a:	e0 91 8d 01 	lds	r30, 0x018D	; 0x80018d <Drive_p>
+     67e:	f0 91 8e 01 	lds	r31, 0x018E	; 0x80018e <Drive_p+0x1>
+     682:	09 81       	ldd	r16, Y+1	; 0x01
+     684:	1a 81       	ldd	r17, Y+2	; 0x02
+     686:	d8 01       	movw	r26, r16
+     688:	1e 96       	adiw	r26, 0x0e	; 14
+     68a:	8c 91       	ld	r24, X
+     68c:	a7 01       	movw	r20, r14
+     68e:	96 01       	movw	r18, r12
+     690:	28 0f       	add	r18, r24
+     692:	31 1d       	adc	r19, r1
+     694:	41 1d       	adc	r20, r1
+     696:	51 1d       	adc	r21, r1
+     698:	26 87       	std	Z+14, r18	; 0x0e
+     69a:	37 87       	std	Z+15, r19	; 0x0f
+     69c:	40 8b       	std	Z+16, r20	; 0x10
+     69e:	51 8b       	std	Z+17, r21	; 0x11
+	
+	// Step 6: Determine First Sector
+	// FirstDataSector = BPB_ResvdSecCnt + (BPB_NumFATs*FATSz) + RootDirSectors + MBR_RelativeSectors
+	Drive_p->FirstDataSec = *(array+BPB_ResvdSecCnt) + (*(array+BPB_NumFATs) * FATSz) + Drive_p->RootDirSecs + MBR_RelativeSectors;
+     6a0:	d8 01       	movw	r26, r16
+     6a2:	1e 96       	adiw	r26, 0x0e	; 14
+     6a4:	2c 91       	ld	r18, X
+     6a6:	82 89       	ldd	r24, Z+18	; 0x12
+     6a8:	93 89       	ldd	r25, Z+19	; 0x13
+     6aa:	a4 89       	ldd	r26, Z+20	; 0x14
+     6ac:	b5 89       	ldd	r27, Z+21	; 0x15
+     6ae:	82 0f       	add	r24, r18
+     6b0:	91 1d       	adc	r25, r1
+     6b2:	a1 1d       	adc	r26, r1
+     6b4:	b1 1d       	adc	r27, r1
+     6b6:	2c 01       	movw	r4, r24
+     6b8:	3d 01       	movw	r6, r26
+     6ba:	4c 0c       	add	r4, r12
+     6bc:	5d 1c       	adc	r5, r13
+     6be:	6e 1c       	adc	r6, r14
+     6c0:	7f 1c       	adc	r7, r15
+     6c2:	d8 01       	movw	r26, r16
+     6c4:	50 96       	adiw	r26, 0x10	; 16
+     6c6:	8c 91       	ld	r24, X
+     6c8:	a8 2f       	mov	r26, r24
+     6ca:	b0 e0       	ldi	r27, 0x00	; 0
+     6cc:	2b 81       	ldd	r18, Y+3	; 0x03
+     6ce:	3c 81       	ldd	r19, Y+4	; 0x04
+     6d0:	4d 81       	ldd	r20, Y+5	; 0x05
+     6d2:	5e 81       	ldd	r21, Y+6	; 0x06
+     6d4:	0e 94 af 0a 	call	0x155e	; 0x155e <__muluhisi3>
+     6d8:	46 0e       	add	r4, r22
+     6da:	57 1e       	adc	r5, r23
+     6dc:	68 1e       	adc	r6, r24
+     6de:	79 1e       	adc	r7, r25
+     6e0:	42 86       	std	Z+10, r4	; 0x0a
+     6e2:	53 86       	std	Z+11, r5	; 0x0b
+     6e4:	64 86       	std	Z+12, r6	; 0x0c
+     6e6:	75 86       	std	Z+13, r7	; 0x0d
+
+	// Step 7: Determine FirstRootDirSecNum
+	if(Drive_p->FATtype == FAT_Type16)
+     6e8:	21 81       	ldd	r18, Z+1	; 0x01
+     6ea:	21 30       	cpi	r18, 0x01	; 1
+     6ec:	f1 f4       	brne	.+60     	; 0x72a <mount_drive+0x238>
+	{
+		// FirstRootDirSecNum = BPB_ResvdSecCnt + (BPB_NumFATs*FATSz) + MBR_RelativeSectors
+		Drive_p->FirstRootDirSec = *(array+BPB_ResvdSecCnt) + (*(array+BPB_NumFATs) * FATSz) + MBR_RelativeSectors;
+     6ee:	d8 01       	movw	r26, r16
+     6f0:	50 96       	adiw	r26, 0x10	; 16
+     6f2:	8c 91       	ld	r24, X
+     6f4:	a8 2f       	mov	r26, r24
+     6f6:	b0 e0       	ldi	r27, 0x00	; 0
+     6f8:	2b 81       	ldd	r18, Y+3	; 0x03
+     6fa:	3c 81       	ldd	r19, Y+4	; 0x04
+     6fc:	4d 81       	ldd	r20, Y+5	; 0x05
+     6fe:	5e 81       	ldd	r21, Y+6	; 0x06
+     700:	0e 94 af 0a 	call	0x155e	; 0x155e <__muluhisi3>
+     704:	d8 01       	movw	r26, r16
+     706:	1e 96       	adiw	r26, 0x0e	; 14
+     708:	2c 91       	ld	r18, X
+     70a:	c2 0e       	add	r12, r18
+     70c:	d1 1c       	adc	r13, r1
+     70e:	e1 1c       	adc	r14, r1
+     710:	f1 1c       	adc	r15, r1
+     712:	dc 01       	movw	r26, r24
+     714:	cb 01       	movw	r24, r22
+     716:	8c 0d       	add	r24, r12
+     718:	9d 1d       	adc	r25, r13
+     71a:	ae 1d       	adc	r26, r14
+     71c:	bf 1d       	adc	r27, r15
+     71e:	86 83       	std	Z+6, r24	; 0x06
+     720:	97 83       	std	Z+7, r25	; 0x07
+     722:	a0 87       	std	Z+8, r26	; 0x08
+     724:	b1 87       	std	Z+9, r27	; 0x09
+	{
+		// FirstRootDirSecNum = ((BPB_RootClus-2)*BPB_SecPerClus)+FirstDataSec
+		Drive_p->FirstRootDirSec =  ((*(array+BPB_RootClus) - 2) * (Drive_p->SecPerClus)) + Drive_p->FirstDataSec;
+	}
+	
+	return SUCCESS;
+     726:	8f ef       	ldi	r24, 0xFF	; 255
+     728:	1d c0       	rjmp	.+58     	; 0x764 <mount_drive+0x272>
+		Drive_p->FirstRootDirSec = *(array+BPB_ResvdSecCnt) + (*(array+BPB_NumFATs) * FATSz) + MBR_RelativeSectors;
+	}
+	else
+	{
+		// FirstRootDirSecNum = ((BPB_RootClus-2)*BPB_SecPerClus)+FirstDataSec
+		Drive_p->FirstRootDirSec =  ((*(array+BPB_RootClus) - 2) * (Drive_p->SecPerClus)) + Drive_p->FirstDataSec;
+     72a:	d8 01       	movw	r26, r16
+     72c:	9c 96       	adiw	r26, 0x2c	; 44
+     72e:	2c 91       	ld	r18, X
+     730:	30 e0       	ldi	r19, 0x00	; 0
+     732:	22 50       	subi	r18, 0x02	; 2
+     734:	31 09       	sbc	r19, r1
+     736:	40 81       	ld	r20, Z
+     738:	42 9f       	mul	r20, r18
+     73a:	80 01       	movw	r16, r0
+     73c:	43 9f       	mul	r20, r19
+     73e:	10 0d       	add	r17, r0
+     740:	11 24       	eor	r1, r1
+     742:	01 2e       	mov	r0, r17
+     744:	00 0c       	add	r0, r0
+     746:	22 0b       	sbc	r18, r18
+     748:	33 0b       	sbc	r19, r19
+     74a:	d3 01       	movw	r26, r6
+     74c:	c2 01       	movw	r24, r4
+     74e:	80 0f       	add	r24, r16
+     750:	91 1f       	adc	r25, r17
+     752:	a2 1f       	adc	r26, r18
+     754:	b3 1f       	adc	r27, r19
+     756:	86 83       	std	Z+6, r24	; 0x06
+     758:	97 83       	std	Z+7, r25	; 0x07
+     75a:	a0 87       	std	Z+8, r26	; 0x08
+     75c:	b1 87       	std	Z+9, r27	; 0x09
+	}
+	
+	return SUCCESS;
+     75e:	8f ef       	ldi	r24, 0xFF	; 255
+     760:	01 c0       	rjmp	.+2      	; 0x764 <mount_drive+0x272>
+	if(result != no_errors)
+		return result;
+	
+	if((*(array+BS_jmpBoot) != 0xEB) && (*(array+BS_jmpBoot) != 0xE9))
+	{
+		return BPB_NOT_FOUND;
+     762:	8c ec       	ldi	r24, 0xCC	; 204
+		// FirstRootDirSecNum = ((BPB_RootClus-2)*BPB_SecPerClus)+FirstDataSec
+		Drive_p->FirstRootDirSec =  ((*(array+BPB_RootClus) - 2) * (Drive_p->SecPerClus)) + Drive_p->FirstDataSec;
+	}
+	
+	return SUCCESS;
+}
+     764:	26 96       	adiw	r28, 0x06	; 6
+     766:	0f b6       	in	r0, 0x3f	; 63
+     768:	f8 94       	cli
+     76a:	de bf       	out	0x3e, r29	; 62
+     76c:	0f be       	out	0x3f, r0	; 63
+     76e:	cd bf       	out	0x3d, r28	; 61
+     770:	df 91       	pop	r29
+     772:	cf 91       	pop	r28
+     774:	1f 91       	pop	r17
+     776:	0f 91       	pop	r16
+     778:	ff 90       	pop	r15
+     77a:	ef 90       	pop	r14
+     77c:	df 90       	pop	r13
+     77e:	cf 90       	pop	r12
+     780:	bf 90       	pop	r11
+     782:	af 90       	pop	r10
+     784:	9f 90       	pop	r9
+     786:	8f 90       	pop	r8
+     788:	7f 90       	pop	r7
+     78a:	6f 90       	pop	r6
+     78c:	5f 90       	pop	r5
+     78e:	4f 90       	pop	r4
+     790:	08 95       	ret
+
+00000792 <main>:
+	int8_t *prnt_bffr;
+	uint32_t temp32;
+	uint8_t result;
+	uint32_t current_dir;
+
+	Drive_p = Export_Drive_values();
+     792:	0e 94 20 01 	call	0x240	; 0x240 <Export_Drive_values>
+     796:	ec 01       	movw	r28, r24
+
+	prnt_bffr=Export_print_buffer();
+     798:	0e 94 1c 0a 	call	0x1438	; 0x1438 <Export_print_buffer>
+	Output_Set(&PA,(LED3|OLED_C_D));
+     79c:	60 ec       	ldi	r22, 0xC0	; 192
+     79e:	80 e2       	ldi	r24, 0x20	; 32
+     7a0:	90 e0       	ldi	r25, 0x00	; 0
+     7a2:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	Output_Init(&PA,(LED3|OLED_C_D));
+     7a6:	60 ec       	ldi	r22, 0xC0	; 192
+     7a8:	80 e2       	ldi	r24, 0x20	; 32
+     7aa:	90 e0       	ldi	r25, 0x00	; 0
+     7ac:	0e 94 10 01 	call	0x220	; 0x220 <Output_Init>
+	Output_Set(&PB,(SD_CS|LED1|OLED_CS));
+     7b0:	69 e1       	ldi	r22, 0x19	; 25
+     7b2:	83 e2       	ldi	r24, 0x23	; 35
+     7b4:	90 e0       	ldi	r25, 0x00	; 0
+     7b6:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	Output_Init(&PB,(SD_CS|LED1|OLED_CS));
+     7ba:	69 e1       	ldi	r22, 0x19	; 25
+     7bc:	83 e2       	ldi	r24, 0x23	; 35
+     7be:	90 e0       	ldi	r25, 0x00	; 0
+     7c0:	0e 94 10 01 	call	0x220	; 0x220 <Output_Init>
+	Output_Set(&PC,(USER_LED));
+     7c4:	60 e8       	ldi	r22, 0x80	; 128
+     7c6:	86 e2       	ldi	r24, 0x26	; 38
+     7c8:	90 e0       	ldi	r25, 0x00	; 0
+     7ca:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	Output_Init(&PC,(USER_LED));
+     7ce:	60 e8       	ldi	r22, 0x80	; 128
+     7d0:	86 e2       	ldi	r24, 0x26	; 38
+     7d2:	90 e0       	ldi	r25, 0x00	; 0
+     7d4:	0e 94 10 01 	call	0x220	; 0x220 <Output_Init>
+	Output_Set(&PE,(LED2));
+     7d8:	60 e1       	ldi	r22, 0x10	; 16
+     7da:	8c e2       	ldi	r24, 0x2C	; 44
+     7dc:	90 e0       	ldi	r25, 0x00	; 0
+     7de:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	Output_Init(&PE,(LED2));
+     7e2:	60 e1       	ldi	r22, 0x10	; 16
+     7e4:	8c e2       	ldi	r24, 0x2C	; 44
+     7e6:	90 e0       	ldi	r25, 0x00	; 0
+     7e8:	0e 94 10 01 	call	0x220	; 0x220 <Output_Init>
+	
+	SPI_Master_Init(&SPI0,400000);
+     7ec:	40 e8       	ldi	r20, 0x80	; 128
+     7ee:	5a e1       	ldi	r21, 0x1A	; 26
+     7f0:	66 e0       	ldi	r22, 0x06	; 6
+     7f2:	70 e0       	ldi	r23, 0x00	; 0
+     7f4:	8c e4       	ldi	r24, 0x4C	; 76
+     7f6:	90 e0       	ldi	r25, 0x00	; 0
+     7f8:	0e 94 60 09 	call	0x12c0	; 0x12c0 <SPI_Master_Init>
+	//OLED_Init();
+	UART_init(&UART1,9600);
+     7fc:	60 e8       	ldi	r22, 0x80	; 128
+     7fe:	75 e2       	ldi	r23, 0x25	; 37
+     800:	88 ec       	ldi	r24, 0xC8	; 200
+     802:	90 e0       	ldi	r25, 0x00	; 0
+     804:	0e 94 ee 09 	call	0x13dc	; 0x13dc <UART_init>
+	SD_Card_Init();
+     808:	0e 94 3b 05 	call	0xa76	; 0xa76 <SD_Card_Init>
+	SPI_Master_Init(&SPI0,2000000);
+     80c:	40 e8       	ldi	r20, 0x80	; 128
+     80e:	54 e8       	ldi	r21, 0x84	; 132
+     810:	6e e1       	ldi	r22, 0x1E	; 30
+     812:	70 e0       	ldi	r23, 0x00	; 0
+     814:	8c e4       	ldi	r24, 0x4C	; 76
+     816:	90 e0       	ldi	r25, 0x00	; 0
+     818:	0e 94 60 09 	call	0x12c0	; 0x12c0 <SPI_Master_Init>
+
+	result = mount_drive(&buffer1);
+     81c:	8f e8       	ldi	r24, 0x8F	; 143
+     81e:	93 e0       	ldi	r25, 0x03	; 3
+     820:	0e 94 79 02 	call	0x4f2	; 0x4f2 <mount_drive>
+		
+
+	current_dir = Drive_p->FirstRootDirSec;
+	Print_Directory(current_dir, buffer1);
+     824:	6e 81       	ldd	r22, Y+6	; 0x06
+     826:	7f 81       	ldd	r23, Y+7	; 0x07
+     828:	88 85       	ldd	r24, Y+8	; 0x08
+     82a:	99 85       	ldd	r25, Y+9	; 0x09
+     82c:	4f e8       	ldi	r20, 0x8F	; 143
+     82e:	53 e0       	ldi	r21, 0x03	; 3
+     830:	0e 94 23 01 	call	0x246	; 0x246 <Print_Directory>
+     834:	ff cf       	rjmp	.-2      	; 0x834 <main+0xa2>
+
+00000836 <Read_Sector>:
+#include "SDCard.h"
+#include "Directory_Functions_struct.h"
+#include "board.h"
+
+uint8_t Read_Sector(uint32_t sector_number, uint16_t sector_size, uint8_t * data_array)
+{
+     836:	bf 92       	push	r11
+     838:	cf 92       	push	r12
+     83a:	df 92       	push	r13
+     83c:	ef 92       	push	r14
+     83e:	ff 92       	push	r15
+     840:	0f 93       	push	r16
+     842:	1f 93       	push	r17
+     844:	cf 93       	push	r28
+     846:	df 93       	push	r29
+     848:	6b 01       	movw	r12, r22
+     84a:	7c 01       	movw	r14, r24
+     84c:	ea 01       	movw	r28, r20
+     84e:	89 01       	movw	r16, r18
+	uint8_t SDtype;
+	uint8_t error_flag;
+
+	SDtype=Return_SD_Card_Type(); // HC=0, no change to sector number
+     850:	0e 94 5d 09 	call	0x12ba	; 0x12ba <Return_SD_Card_Type>
+     854:	b8 2e       	mov	r11, r24
+
+	// SC=9, multiplies sector number by 512 to convert to byte addr.
+
+	Output_Clear(&PB,SD_CS);  //nCS0=0;
+     856:	60 e1       	ldi	r22, 0x10	; 16
+     858:	83 e2       	ldi	r24, 0x23	; 35
+     85a:	90 e0       	ldi	r25, 0x00	; 0
+     85c:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+	error_flag=Send_Command(17,(sector_number<<SDtype));
+     860:	b7 01       	movw	r22, r14
+     862:	a6 01       	movw	r20, r12
+     864:	04 c0       	rjmp	.+8      	; 0x86e <Read_Sector+0x38>
+     866:	44 0f       	add	r20, r20
+     868:	55 1f       	adc	r21, r21
+     86a:	66 1f       	adc	r22, r22
+     86c:	77 1f       	adc	r23, r23
+     86e:	ba 94       	dec	r11
+     870:	d2 f7       	brpl	.-12     	; 0x866 <Read_Sector+0x30>
+     872:	81 e1       	ldi	r24, 0x11	; 17
+     874:	0e 94 57 04 	call	0x8ae	; 0x8ae <Send_Command>
+     878:	f8 2e       	mov	r15, r24
+
+
+	Output_Set(&PB,SD_CS);  // nCS0=1;
+     87a:	60 e1       	ldi	r22, 0x10	; 16
+     87c:	83 e2       	ldi	r24, 0x23	; 35
+     87e:	90 e0       	ldi	r25, 0x00	; 0
+     880:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+
+	if(error_flag==no_errors)
+     884:	f1 10       	cpse	r15, r1
+     886:	08 c0       	rjmp	.+16     	; 0x898 <Read_Sector+0x62>
+		error_flag=Read_Block(sector_size,data_array);
+     888:	b8 01       	movw	r22, r16
+     88a:	ce 01       	movw	r24, r28
+     88c:	0e 94 e0 04 	call	0x9c0	; 0x9c0 <Read_Block>
+
+	if(error_flag!=no_errors)
+     890:	88 23       	and	r24, r24
+     892:	19 f0       	breq	.+6      	; 0x89a <Read_Sector+0x64>
+	{
+		error_flag=Disk_Error;
+     894:	80 ef       	ldi	r24, 0xF0	; 240
+     896:	01 c0       	rjmp	.+2      	; 0x89a <Read_Sector+0x64>
+     898:	80 ef       	ldi	r24, 0xF0	; 240
+	}
+
+	return error_flag;
+     89a:	df 91       	pop	r29
+     89c:	cf 91       	pop	r28
+     89e:	1f 91       	pop	r17
+     8a0:	0f 91       	pop	r16
+     8a2:	ff 90       	pop	r15
+     8a4:	ef 90       	pop	r14
+     8a6:	df 90       	pop	r13
+     8a8:	cf 90       	pop	r12
+     8aa:	bf 90       	pop	r11
+     8ac:	08 95       	ret
+
+000008ae <Send_Command>:
+RETURNS: error flag
+CAUTION: Must be followed by a read to capture SD card response
+         nCS0 must be set/cleared outside of this routine 
+************************************************************************/
+uint8_t Send_Command(uint8_t cmnd, uint32_t argum)
+{
+     8ae:	cf 92       	push	r12
+     8b0:	df 92       	push	r13
+     8b2:	ef 92       	push	r14
+     8b4:	ff 92       	push	r15
+     8b6:	cf 93       	push	r28
+ uint8_t SPI_send, return_val, SPI_return;
+
+ return_val=no_errors;
+ if(cmnd<64)
+     8b8:	80 34       	cpi	r24, 0x40	; 64
+     8ba:	a0 f5       	brcc	.+104    	; 0x924 <__stack+0x25>
+     8bc:	6a 01       	movw	r12, r20
+     8be:	7b 01       	movw	r14, r22
+     8c0:	c8 2f       	mov	r28, r24
+ {
+   SPI_send=cmnd | 0x40;
+   SPI_return=SPI_Transfer(&SD_PORT,SPI_send);
+     8c2:	68 2f       	mov	r22, r24
+     8c4:	60 64       	ori	r22, 0x40	; 64
+     8c6:	8c e4       	ldi	r24, 0x4C	; 76
+     8c8:	90 e0       	ldi	r25, 0x00	; 0
+     8ca:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+   //MSB of argument
+   SPI_send=argum>>24;   // MSB
+   SPI_return=SPI_Transfer(&SD_PORT,SPI_send);
+     8ce:	6f 2d       	mov	r22, r15
+     8d0:	77 27       	eor	r23, r23
+     8d2:	88 27       	eor	r24, r24
+     8d4:	99 27       	eor	r25, r25
+     8d6:	8c e4       	ldi	r24, 0x4C	; 76
+     8d8:	90 e0       	ldi	r25, 0x00	; 0
+     8da:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+   // Byte 2 of argument
+   argum=argum & 0x00ffffff;
+   SPI_send=argum>>16;  // BYTE2
+   SPI_return=SPI_Transfer(&SD_PORT,SPI_send);
+     8de:	6e 2d       	mov	r22, r14
+     8e0:	8c e4       	ldi	r24, 0x4C	; 76
+     8e2:	90 e0       	ldi	r25, 0x00	; 0
+     8e4:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+   // Byte 1 of argument
+   argum=argum & 0x0000ffff;
+     8e8:	ee 24       	eor	r14, r14
+     8ea:	ff 24       	eor	r15, r15
+   SPI_send=argum>>8;   // BYTE1
+   SPI_return=SPI_Transfer(&SD_PORT,SPI_send);
+     8ec:	99 27       	eor	r25, r25
+     8ee:	8f 2d       	mov	r24, r15
+     8f0:	7e 2d       	mov	r23, r14
+     8f2:	6d 2d       	mov	r22, r13
+     8f4:	8c e4       	ldi	r24, 0x4C	; 76
+     8f6:	90 e0       	ldi	r25, 0x00	; 0
+     8f8:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+   // LSB of argument
+   SPI_send=argum & 0x000000ff;  // LSB
+   SPI_return=SPI_Transfer(&SD_PORT,SPI_send);
+     8fc:	6c 2d       	mov	r22, r12
+     8fe:	8c e4       	ldi	r24, 0x4C	; 76
+     900:	90 e0       	ldi	r25, 0x00	; 0
+     902:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+   // CRC7 and end bit
+   if (cmnd == 0)
+     906:	cc 23       	and	r28, r28
+     908:	21 f0       	breq	.+8      	; 0x912 <__stack+0x13>
+   {
+      SPI_send=0x95;  // CRC7 and end bit for CMD0
+   }
+   else if (cmnd == 8)
+     90a:	c8 30       	cpi	r28, 0x08	; 8
+     90c:	21 f0       	breq	.+8      	; 0x916 <__stack+0x17>
+   {
+      SPI_send=0x87;   // CRC7 and end bit for CMD8
+   }
+   else
+   {
+      SPI_send=0x01;  // end bit only for other commands
+     90e:	61 e0       	ldi	r22, 0x01	; 1
+     910:	03 c0       	rjmp	.+6      	; 0x918 <__stack+0x19>
+   SPI_send=argum & 0x000000ff;  // LSB
+   SPI_return=SPI_Transfer(&SD_PORT,SPI_send);
+   // CRC7 and end bit
+   if (cmnd == 0)
+   {
+      SPI_send=0x95;  // CRC7 and end bit for CMD0
+     912:	65 e9       	ldi	r22, 0x95	; 149
+     914:	01 c0       	rjmp	.+2      	; 0x918 <__stack+0x19>
+   }
+   else if (cmnd == 8)
+   {
+      SPI_send=0x87;   // CRC7 and end bit for CMD8
+     916:	67 e8       	ldi	r22, 0x87	; 135
+   }
+   else
+   {
+      SPI_send=0x01;  // end bit only for other commands
+   }
+   SPI_return=SPI_Transfer(&SD_PORT,SPI_send);
+     918:	8c e4       	ldi	r24, 0x4C	; 76
+     91a:	90 e0       	ldi	r25, 0x00	; 0
+     91c:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+************************************************************************/
+uint8_t Send_Command(uint8_t cmnd, uint32_t argum)
+{
+ uint8_t SPI_send, return_val, SPI_return;
+
+ return_val=no_errors;
+     920:	80 e0       	ldi	r24, 0x00	; 0
+     922:	01 c0       	rjmp	.+2      	; 0x926 <__stack+0x27>
+   }
+   SPI_return=SPI_Transfer(&SD_PORT,SPI_send);
+ }
+ else
+ {
+   return_val=illegal_cmnd;
+     924:	82 e8       	ldi	r24, 0x82	; 130
+ }
+ return return_val;  
+}
+     926:	cf 91       	pop	r28
+     928:	ff 90       	pop	r15
+     92a:	ef 90       	pop	r14
+     92c:	df 90       	pop	r13
+     92e:	cf 90       	pop	r12
+     930:	08 95       	ret
+
+00000932 <Receive_Response>:
+         *valout=address of array of bytes read
+CAUTION: Used to capture SD card response
+         nCS0 must be set/cleared outside of this routine 
+************************************************************************/
+uint8_t Receive_Response(uint8_t num_bytes, uint8_t * valout)
+{
+     932:	ef 92       	push	r14
+     934:	ff 92       	push	r15
+     936:	0f 93       	push	r16
+     938:	1f 93       	push	r17
+     93a:	cf 93       	push	r28
+     93c:	df 93       	push	r29
+     93e:	d8 2f       	mov	r29, r24
+     940:	8b 01       	movw	r16, r22
+   uint8_t index,return_val, SPI_return;
+
+   index=0;
+     942:	c0 e0       	ldi	r28, 0x00	; 0
+   return_val=no_errors;
+   do
+   {
+      SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+     944:	6f ef       	ldi	r22, 0xFF	; 255
+     946:	8c e4       	ldi	r24, 0x4C	; 76
+     948:	90 e0       	ldi	r25, 0x00	; 0
+     94a:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+      index++;
+     94e:	cf 5f       	subi	r28, 0xFF	; 255
+   }while((SPI_return==0xFF)&&(index!=0));
+     950:	8f 3f       	cpi	r24, 0xFF	; 255
+     952:	21 f4       	brne	.+8      	; 0x95c <Receive_Response+0x2a>
+     954:	c1 11       	cpse	r28, r1
+     956:	f6 cf       	rjmp	.-20     	; 0x944 <Receive_Response+0x12>
+   if(index==0)
+   {
+      return_val=timeout_error;
+     958:	c1 e8       	ldi	r28, 0x81	; 129
+     95a:	25 c0       	rjmp	.+74     	; 0x9a6 <Receive_Response+0x74>
+   do
+   {
+      SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+      index++;
+   }while((SPI_return==0xFF)&&(index!=0));
+   if(index==0)
+     95c:	cc 23       	and	r28, r28
+     95e:	f1 f0       	breq	.+60     	; 0x99c <Receive_Response+0x6a>
+   {
+      return_val=timeout_error;
+   }
+   else
+   {
+     *valout=SPI_return;
+     960:	f8 01       	movw	r30, r16
+     962:	80 83       	st	Z, r24
+     if((SPI_return==0x00)||(SPI_return==0x01))
+     964:	82 30       	cpi	r24, 0x02	; 2
+     966:	e0 f4       	brcc	.+56     	; 0x9a0 <Receive_Response+0x6e>
+     {
+       if(num_bytes>1)
+     968:	d2 30       	cpi	r29, 0x02	; 2
+     96a:	e0 f0       	brcs	.+56     	; 0x9a4 <Receive_Response+0x72>
+     96c:	78 01       	movw	r14, r16
+     96e:	ff ef       	ldi	r31, 0xFF	; 255
+     970:	ef 1a       	sub	r14, r31
+     972:	ff 0a       	sbc	r15, r31
+     974:	8e ef       	ldi	r24, 0xFE	; 254
+     976:	8d 0f       	add	r24, r29
+     978:	90 e0       	ldi	r25, 0x00	; 0
+     97a:	02 96       	adiw	r24, 0x02	; 2
+     97c:	e8 01       	movw	r28, r16
+     97e:	c8 0f       	add	r28, r24
+     980:	d9 1f       	adc	r29, r25
+       {
+         for(index=1;index<num_bytes;index++)
+         {
+            SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+     982:	6f ef       	ldi	r22, 0xFF	; 255
+     984:	8c e4       	ldi	r24, 0x4C	; 76
+     986:	90 e0       	ldi	r25, 0x00	; 0
+     988:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+            *(valout+index)=SPI_return;
+     98c:	f7 01       	movw	r30, r14
+     98e:	81 93       	st	Z+, r24
+     990:	7f 01       	movw	r14, r30
+     *valout=SPI_return;
+     if((SPI_return==0x00)||(SPI_return==0x01))
+     {
+       if(num_bytes>1)
+       {
+         for(index=1;index<num_bytes;index++)
+     992:	ec 17       	cp	r30, r28
+     994:	fd 07       	cpc	r31, r29
+     996:	a9 f7       	brne	.-22     	; 0x982 <Receive_Response+0x50>
+uint8_t Receive_Response(uint8_t num_bytes, uint8_t * valout)
+{
+   uint8_t index,return_val, SPI_return;
+
+   index=0;
+   return_val=no_errors;
+     998:	c0 e0       	ldi	r28, 0x00	; 0
+     99a:	05 c0       	rjmp	.+10     	; 0x9a6 <Receive_Response+0x74>
+      SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+      index++;
+   }while((SPI_return==0xFF)&&(index!=0));
+   if(index==0)
+   {
+      return_val=timeout_error;
+     99c:	c1 e8       	ldi	r28, 0x81	; 129
+     99e:	03 c0       	rjmp	.+6      	; 0x9a6 <Receive_Response+0x74>
+         }
+       }
+     }
+     else
+     {
+        return_val=response_error;
+     9a0:	c3 e8       	ldi	r28, 0x83	; 131
+     9a2:	01 c0       	rjmp	.+2      	; 0x9a6 <Receive_Response+0x74>
+uint8_t Receive_Response(uint8_t num_bytes, uint8_t * valout)
+{
+   uint8_t index,return_val, SPI_return;
+
+   index=0;
+   return_val=no_errors;
+     9a4:	c0 e0       	ldi	r28, 0x00	; 0
+     else
+     {
+        return_val=response_error;
+     }
+   }
+   SPI_return=SPI_Transfer(&SD_PORT,0xFF);    // send 8 more clock cycles to complete read
+     9a6:	6f ef       	ldi	r22, 0xFF	; 255
+     9a8:	8c e4       	ldi	r24, 0x4C	; 76
+     9aa:	90 e0       	ldi	r25, 0x00	; 0
+     9ac:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+   return return_val;
+}
+     9b0:	8c 2f       	mov	r24, r28
+     9b2:	df 91       	pop	r29
+     9b4:	cf 91       	pop	r28
+     9b6:	1f 91       	pop	r17
+     9b8:	0f 91       	pop	r16
+     9ba:	ff 90       	pop	r15
+     9bc:	ef 90       	pop	r14
+     9be:	08 95       	ret
+
+000009c0 <Read_Block>:
+         block of data stored in array_out[]
+CAUTION: Used to capture SD card response
+         nCS0 must be set/cleared outside of this routine 
+************************************************************************/
+uint8_t Read_Block(uint16_t num_bytes, uint8_t * array_out)
+{
+     9c0:	ef 92       	push	r14
+     9c2:	ff 92       	push	r15
+     9c4:	0f 93       	push	r16
+     9c6:	1f 93       	push	r17
+     9c8:	cf 93       	push	r28
+     9ca:	df 93       	push	r29
+     9cc:	8c 01       	movw	r16, r24
+     9ce:	7b 01       	movw	r14, r22
+   uint8_t return_val,SPI_return;
+   uint16_t index;
+   index=0;
+     9d0:	c0 e0       	ldi	r28, 0x00	; 0
+     9d2:	d0 e0       	ldi	r29, 0x00	; 0
+   return_val=no_errors;
+   do
+   {
+      SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+     9d4:	6f ef       	ldi	r22, 0xFF	; 255
+     9d6:	8c e4       	ldi	r24, 0x4C	; 76
+     9d8:	90 e0       	ldi	r25, 0x00	; 0
+     9da:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+      index++;
+     9de:	21 96       	adiw	r28, 0x01	; 1
+   }while(((SPI_return&0x80)==0x80)&&(index!=0));
+     9e0:	88 23       	and	r24, r24
+     9e2:	24 f4       	brge	.+8      	; 0x9ec <Read_Block+0x2c>
+     9e4:	20 97       	sbiw	r28, 0x00	; 0
+     9e6:	b1 f7       	brne	.-20     	; 0x9d4 <Read_Block+0x14>
+   if(index==0)
+   {
+      return_val=timeout_error;
+     9e8:	c1 e8       	ldi	r28, 0x81	; 129
+     9ea:	38 c0       	rjmp	.+112    	; 0xa5c <Read_Block+0x9c>
+   do
+   {
+      SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+      index++;
+   }while(((SPI_return&0x80)==0x80)&&(index!=0));
+   if(index==0)
+     9ec:	cd 2b       	or	r28, r29
+     9ee:	79 f1       	breq	.+94     	; 0xa4e <Read_Block+0x8e>
+   {
+      return_val=timeout_error;
+   }
+   else
+   {
+     if (SPI_return==0x00)
+     9f0:	81 11       	cpse	r24, r1
+     9f2:	2f c0       	rjmp	.+94     	; 0xa52 <Read_Block+0x92>
+     9f4:	c0 e0       	ldi	r28, 0x00	; 0
+     9f6:	d0 e0       	ldi	r29, 0x00	; 0
+     {
+        index=0;
+	    do
+        { 
+           SPI_return=SPI_Transfer(&SD_PORT,0xFF); 
+     9f8:	6f ef       	ldi	r22, 0xFF	; 255
+     9fa:	8c e4       	ldi	r24, 0x4C	; 76
+     9fc:	90 e0       	ldi	r25, 0x00	; 0
+     9fe:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+           index++;
+     a02:	21 96       	adiw	r28, 0x01	; 1
+        }while((SPI_return==0xFF)&&(index!=0));          // wait for data token response  
+     a04:	8f 3f       	cpi	r24, 0xFF	; 255
+     a06:	21 f4       	brne	.+8      	; 0xa10 <Read_Block+0x50>
+     a08:	20 97       	sbiw	r28, 0x00	; 0
+     a0a:	b1 f7       	brne	.-20     	; 0x9f8 <Read_Block+0x38>
+        if(index==0)
+        {
+          return_val=timeout_error;
+     a0c:	c1 e8       	ldi	r28, 0x81	; 129
+     a0e:	26 c0       	rjmp	.+76     	; 0xa5c <Read_Block+0x9c>
+	    do
+        { 
+           SPI_return=SPI_Transfer(&SD_PORT,0xFF); 
+           index++;
+        }while((SPI_return==0xFF)&&(index!=0));          // wait for data token response  
+        if(index==0)
+     a10:	cd 2b       	or	r28, r29
+     a12:	09 f1       	breq	.+66     	; 0xa56 <Read_Block+0x96>
+        {
+          return_val=timeout_error;
+        }
+        else if(SPI_return==0xFE)
+     a14:	8e 3f       	cpi	r24, 0xFE	; 254
+     a16:	09 f5       	brne	.+66     	; 0xa5a <Read_Block+0x9a>
+        {
+          for(index=0;index<num_bytes;index++)
+     a18:	01 15       	cp	r16, r1
+     a1a:	11 05       	cpc	r17, r1
+     a1c:	61 f0       	breq	.+24     	; 0xa36 <Read_Block+0x76>
+     a1e:	e7 01       	movw	r28, r14
+     a20:	0e 0d       	add	r16, r14
+     a22:	1f 1d       	adc	r17, r15
+          {
+             SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+     a24:	6f ef       	ldi	r22, 0xFF	; 255
+     a26:	8c e4       	ldi	r24, 0x4C	; 76
+     a28:	90 e0       	ldi	r25, 0x00	; 0
+     a2a:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+             *(array_out + index)=SPI_return;
+     a2e:	89 93       	st	Y+, r24
+        {
+          return_val=timeout_error;
+        }
+        else if(SPI_return==0xFE)
+        {
+          for(index=0;index<num_bytes;index++)
+     a30:	c0 17       	cp	r28, r16
+     a32:	d1 07       	cpc	r29, r17
+     a34:	b9 f7       	brne	.-18     	; 0xa24 <Read_Block+0x64>
+          {
+             SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+             *(array_out + index)=SPI_return;
+          }
+          SPI_return=SPI_Transfer(&SD_PORT,0xFF);   // discard byte 1 of CRC16
+     a36:	6f ef       	ldi	r22, 0xFF	; 255
+     a38:	8c e4       	ldi	r24, 0x4C	; 76
+     a3a:	90 e0       	ldi	r25, 0x00	; 0
+     a3c:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+		  SPI_return=SPI_Transfer(&SD_PORT,0xFF);   // discard byte 2 of CRC16
+     a40:	6f ef       	ldi	r22, 0xFF	; 255
+     a42:	8c e4       	ldi	r24, 0x4C	; 76
+     a44:	90 e0       	ldi	r25, 0x00	; 0
+     a46:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+uint8_t Read_Block(uint16_t num_bytes, uint8_t * array_out)
+{
+   uint8_t return_val,SPI_return;
+   uint16_t index;
+   index=0;
+   return_val=no_errors;
+     a4a:	c0 e0       	ldi	r28, 0x00	; 0
+     a4c:	07 c0       	rjmp	.+14     	; 0xa5c <Read_Block+0x9c>
+      SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+      index++;
+   }while(((SPI_return&0x80)==0x80)&&(index!=0));
+   if(index==0)
+   {
+      return_val=timeout_error;
+     a4e:	c1 e8       	ldi	r28, 0x81	; 129
+     a50:	05 c0       	rjmp	.+10     	; 0xa5c <Read_Block+0x9c>
+	      return_val=data_error;
+	    }
+     }
+     else
+     {
+        return_val=response_error;
+     a52:	c3 e8       	ldi	r28, 0x83	; 131
+     a54:	03 c0       	rjmp	.+6      	; 0xa5c <Read_Block+0x9c>
+           SPI_return=SPI_Transfer(&SD_PORT,0xFF); 
+           index++;
+        }while((SPI_return==0xFF)&&(index!=0));          // wait for data token response  
+        if(index==0)
+        {
+          return_val=timeout_error;
+     a56:	c1 e8       	ldi	r28, 0x81	; 129
+     a58:	01 c0       	rjmp	.+2      	; 0xa5c <Read_Block+0x9c>
+          SPI_return=SPI_Transfer(&SD_PORT,0xFF);   // discard byte 1 of CRC16
+		  SPI_return=SPI_Transfer(&SD_PORT,0xFF);   // discard byte 2 of CRC16
+        }
+	    else
+	    {
+	      return_val=data_error;
+     a5a:	c4 e8       	ldi	r28, 0x84	; 132
+     else
+     {
+        return_val=response_error;
+     }
+   }
+   SPI_return=SPI_Transfer(&SD_PORT,0xFF);   // send 8 more clock cycles to complete read
+     a5c:	6f ef       	ldi	r22, 0xFF	; 255
+     a5e:	8c e4       	ldi	r24, 0x4C	; 76
+     a60:	90 e0       	ldi	r25, 0x00	; 0
+     a62:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+   return return_val;
+}
+     a66:	8c 2f       	mov	r24, r28
+     a68:	df 91       	pop	r29
+     a6a:	cf 91       	pop	r28
+     a6c:	1f 91       	pop	r17
+     a6e:	0f 91       	pop	r16
+     a70:	ff 90       	pop	r15
+     a72:	ef 90       	pop	r14
+     a74:	08 95       	ret
+
+00000a76 <SD_Card_Init>:
+DESC:    Sends the commands needed to initialize the SD card 
+RETURNS: error flag
+CAUTION:  
+************************************************************************/
+uint8_t SD_Card_Init(void)
+{
+     a76:	4f 92       	push	r4
+     a78:	5f 92       	push	r5
+     a7a:	6f 92       	push	r6
+     a7c:	7f 92       	push	r7
+     a7e:	9f 92       	push	r9
+     a80:	af 92       	push	r10
+     a82:	bf 92       	push	r11
+     a84:	cf 92       	push	r12
+     a86:	df 92       	push	r13
+     a88:	ef 92       	push	r14
+     a8a:	ff 92       	push	r15
+     a8c:	0f 93       	push	r16
+     a8e:	1f 93       	push	r17
+     a90:	cf 93       	push	r28
+     a92:	df 93       	push	r29
+     a94:	cd b7       	in	r28, 0x3d	; 61
+     a96:	de b7       	in	r29, 0x3e	; 62
+     a98:	28 97       	sbiw	r28, 0x08	; 8
+     a9a:	0f b6       	in	r0, 0x3f	; 63
+     a9c:	f8 94       	cli
+     a9e:	de bf       	out	0x3e, r29	; 62
+     aa0:	0f be       	out	0x3f, r0	; 63
+     aa2:	cd bf       	out	0x3d, r28	; 61
+   uint8_t error_status,error_flag,valsout[8],SPI_return;
+   uint32_t argument;
+   uint16_t i,timeout;
+   uint8_t *prnt_buffer;
+   
+   prnt_buffer=Export_print_buffer();
+     aa4:	0e 94 1c 0a 	call	0x1438	; 0x1438 <Export_print_buffer>
+     aa8:	e8 2e       	mov	r14, r24
+     aaa:	99 2e       	mov	r9, r25
+   
+   error_status=no_errors;
+   SD_Card_Type=unknown;
+     aac:	8f ef       	ldi	r24, 0xFF	; 255
+     aae:	80 93 26 01 	sts	0x0126, r24	; 0x800126 <__data_end>
+   
+   	
+   
+   Copy_String_to_Buffer(SD_Card_Intro,0,prnt_buffer);
+     ab2:	4e 2d       	mov	r20, r14
+     ab4:	59 2f       	mov	r21, r25
+     ab6:	60 e0       	ldi	r22, 0x00	; 0
+     ab8:	83 ec       	ldi	r24, 0xC3	; 195
+     aba:	91 e0       	ldi	r25, 0x01	; 1
+     abc:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+   UART_Transmit_String(&UART1,0,prnt_buffer);
+     ac0:	4e 2d       	mov	r20, r14
+     ac2:	59 2d       	mov	r21, r9
+     ac4:	60 e0       	ldi	r22, 0x00	; 0
+     ac6:	88 ec       	ldi	r24, 0xC8	; 200
+     ac8:	90 e0       	ldi	r25, 0x00	; 0
+     aca:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+   //LCD_Write(COMMAND,set_ddram_addr|line1);
+   //sprintf(print_buffer,"SD Card Init");
+   //LCD_Print(0,print_buffer);
+   
+   
+   Output_Clear(&PB,(LED1));
+     ace:	68 e0       	ldi	r22, 0x08	; 8
+     ad0:	83 e2       	ldi	r24, 0x23	; 35
+     ad2:	90 e0       	ldi	r25, 0x00	; 0
+     ad4:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+   Copy_String_to_Buffer(SD_Card_CMD0,0,prnt_buffer);
+     ad8:	4e 2d       	mov	r20, r14
+     ada:	59 2d       	mov	r21, r9
+     adc:	60 e0       	ldi	r22, 0x00	; 0
+     ade:	84 eb       	ldi	r24, 0xB4	; 180
+     ae0:	91 e0       	ldi	r25, 0x01	; 1
+     ae2:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+   UART_Transmit_String(&UART1,0,prnt_buffer);
+     ae6:	4e 2d       	mov	r20, r14
+     ae8:	59 2d       	mov	r21, r9
+     aea:	60 e0       	ldi	r22, 0x00	; 0
+     aec:	88 ec       	ldi	r24, 0xC8	; 200
+     aee:	90 e0       	ldi	r25, 0x00	; 0
+     af0:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+   timeout=0;
+     af4:	c1 2c       	mov	r12, r1
+     af6:	d1 2c       	mov	r13, r1
+		      error_flag=Receive_Response(1,valsout);
+		      Output_Set(&PB,(SD_CS));  // Set nCS = 1
+		      Output_Set(&PB,(LED1));  //GREENLED=1;
+		      Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+		      UART_Transmit_String(&UART1,0,prnt_buffer);
+		      sprintf(prnt_buffer, "%2.2X\n\r",valsout[0]);
+     af8:	0f 2e       	mov	r0, r31
+     afa:	fe e0       	ldi	r31, 0x0E	; 14
+     afc:	af 2e       	mov	r10, r31
+     afe:	f1 e0       	ldi	r31, 0x01	; 1
+     b00:	bf 2e       	mov	r11, r31
+     b02:	f0 2d       	mov	r31, r0
+   Copy_String_to_Buffer(SD_Card_CMD0,0,prnt_buffer);
+   UART_Transmit_String(&UART1,0,prnt_buffer);
+   timeout=0;
+   do 
+   {
+	      Output_Set(&PB,(SD_CS));
+     b04:	60 e1       	ldi	r22, 0x10	; 16
+     b06:	83 e2       	ldi	r24, 0x23	; 35
+     b08:	90 e0       	ldi	r25, 0x00	; 0
+     b0a:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	      Output_Init(&PB,(SD_CS));
+     b0e:	60 e1       	ldi	r22, 0x10	; 16
+     b10:	83 e2       	ldi	r24, 0x23	; 35
+     b12:	90 e0       	ldi	r25, 0x00	; 0
+     b14:	0e 94 10 01 	call	0x220	; 0x220 <Output_Init>
+     b18:	0a e0       	ldi	r16, 0x0A	; 10
+     b1a:	10 e0       	ldi	r17, 0x00	; 0
+		  
+		  for(i=0;i<10;i++)
+		  {
+			  SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+     b1c:	6f ef       	ldi	r22, 0xFF	; 255
+     b1e:	8c e4       	ldi	r24, 0x4C	; 76
+     b20:	90 e0       	ldi	r25, 0x00	; 0
+     b22:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+     b26:	01 50       	subi	r16, 0x01	; 1
+     b28:	11 09       	sbc	r17, r1
+   do 
+   {
+	      Output_Set(&PB,(SD_CS));
+	      Output_Init(&PB,(SD_CS));
+		  
+		  for(i=0;i<10;i++)
+     b2a:	c1 f7       	brne	.-16     	; 0xb1c <SD_Card_Init+0xa6>
+		  {
+			  SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+		  }
+		  
+		  
+		  Output_Clear(&PC,USER_LED);
+     b2c:	60 e8       	ldi	r22, 0x80	; 128
+     b2e:	86 e2       	ldi	r24, 0x26	; 38
+     b30:	90 e0       	ldi	r25, 0x00	; 0
+     b32:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+	      Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+     b36:	60 e1       	ldi	r22, 0x10	; 16
+     b38:	83 e2       	ldi	r24, 0x23	; 35
+     b3a:	90 e0       	ldi	r25, 0x00	; 0
+     b3c:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+	      error_flag=Send_Command(CMD0,0);
+     b40:	40 e0       	ldi	r20, 0x00	; 0
+     b42:	50 e0       	ldi	r21, 0x00	; 0
+     b44:	ba 01       	movw	r22, r20
+     b46:	80 e0       	ldi	r24, 0x00	; 0
+     b48:	0e 94 57 04 	call	0x8ae	; 0x8ae <Send_Command>
+     b4c:	f8 2e       	mov	r15, r24
+	      if(error_flag==no_errors)
+     b4e:	81 11       	cpse	r24, r1
+     b50:	36 c0       	rjmp	.+108    	; 0xbbe <SD_Card_Init+0x148>
+	      {
+		      error_flag=Receive_Response(1,valsout);
+     b52:	be 01       	movw	r22, r28
+     b54:	6f 5f       	subi	r22, 0xFF	; 255
+     b56:	7f 4f       	sbci	r23, 0xFF	; 255
+     b58:	81 e0       	ldi	r24, 0x01	; 1
+     b5a:	0e 94 99 04 	call	0x932	; 0x932 <Receive_Response>
+     b5e:	f8 2e       	mov	r15, r24
+		      Output_Set(&PB,(SD_CS));  // Set nCS = 1
+     b60:	60 e1       	ldi	r22, 0x10	; 16
+     b62:	83 e2       	ldi	r24, 0x23	; 35
+     b64:	90 e0       	ldi	r25, 0x00	; 0
+     b66:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+		      Output_Set(&PB,(LED1));  //GREENLED=1;
+     b6a:	68 e0       	ldi	r22, 0x08	; 8
+     b6c:	83 e2       	ldi	r24, 0x23	; 35
+     b6e:	90 e0       	ldi	r25, 0x00	; 0
+     b70:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+		      Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+     b74:	4e 2d       	mov	r20, r14
+     b76:	59 2d       	mov	r21, r9
+     b78:	60 e0       	ldi	r22, 0x00	; 0
+     b7a:	88 e6       	ldi	r24, 0x68	; 104
+     b7c:	91 e0       	ldi	r25, 0x01	; 1
+     b7e:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+		      UART_Transmit_String(&UART1,0,prnt_buffer);
+     b82:	4e 2d       	mov	r20, r14
+     b84:	59 2d       	mov	r21, r9
+     b86:	60 e0       	ldi	r22, 0x00	; 0
+     b88:	88 ec       	ldi	r24, 0xC8	; 200
+     b8a:	90 e0       	ldi	r25, 0x00	; 0
+     b8c:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+		      sprintf(prnt_buffer, "%2.2X\n\r",valsout[0]);
+     b90:	89 81       	ldd	r24, Y+1	; 0x01
+     b92:	1f 92       	push	r1
+     b94:	8f 93       	push	r24
+     b96:	bf 92       	push	r11
+     b98:	af 92       	push	r10
+     b9a:	9f 92       	push	r9
+     b9c:	ef 92       	push	r14
+     b9e:	0e 94 c9 0a 	call	0x1592	; 0x1592 <sprintf>
+		      UART_Transmit_String(&UART1,0,prnt_buffer);
+     ba2:	4e 2d       	mov	r20, r14
+     ba4:	59 2d       	mov	r21, r9
+     ba6:	60 e0       	ldi	r22, 0x00	; 0
+     ba8:	88 ec       	ldi	r24, 0xC8	; 200
+     baa:	90 e0       	ldi	r25, 0x00	; 0
+     bac:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     bb0:	0f 90       	pop	r0
+     bb2:	0f 90       	pop	r0
+     bb4:	0f 90       	pop	r0
+     bb6:	0f 90       	pop	r0
+     bb8:	0f 90       	pop	r0
+     bba:	0f 90       	pop	r0
+     bbc:	0f c0       	rjmp	.+30     	; 0xbdc <SD_Card_Init+0x166>
+	      }
+	      else
+	      {
+		      Output_Set(&PB,(SD_CS));  // Set nCS = 1
+     bbe:	60 e1       	ldi	r22, 0x10	; 16
+     bc0:	83 e2       	ldi	r24, 0x23	; 35
+     bc2:	90 e0       	ldi	r25, 0x00	; 0
+     bc4:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+		      Output_Set(&PB,(LED1));  //GREENLED=1;
+     bc8:	68 e0       	ldi	r22, 0x08	; 8
+     bca:	83 e2       	ldi	r24, 0x23	; 35
+     bcc:	90 e0       	ldi	r25, 0x00	; 0
+     bce:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+		      Output_Clear(&PA,(LED3)); //REDLED=0;   indicates error has occured.
+     bd2:	60 e8       	ldi	r22, 0x80	; 128
+     bd4:	80 e2       	ldi	r24, 0x20	; 32
+     bd6:	90 e0       	ldi	r25, 0x00	; 0
+     bd8:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+	      }
+		  if(valsout[0]!=0x01)
+     bdc:	89 81       	ldd	r24, Y+1	; 0x01
+     bde:	81 30       	cpi	r24, 0x01	; 1
+     be0:	09 f4       	brne	.+2      	; 0xbe4 <SD_Card_Init+0x16e>
+     be2:	0b c3       	rjmp	.+1558   	; 0x11fa <SD_Card_Init+0x784>
+		  {
+			  //**** If the IN_IDLE_STATE R1 response is not received ***//
+			  //**** Attempt to clear any incomplete communications ****//
+			  Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+     be4:	60 e1       	ldi	r22, 0x10	; 16
+     be6:	83 e2       	ldi	r24, 0x23	; 35
+     be8:	90 e0       	ldi	r25, 0x00	; 0
+     bea:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     bee:	02 e1       	ldi	r16, 0x12	; 18
+     bf0:	12 e0       	ldi	r17, 0x02	; 2
+			  for(i=0;i<530;i++)
+			  {
+				  SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+     bf2:	6f ef       	ldi	r22, 0xFF	; 255
+     bf4:	8c e4       	ldi	r24, 0x4C	; 76
+     bf6:	90 e0       	ldi	r25, 0x00	; 0
+     bf8:	0e 94 e7 09 	call	0x13ce	; 0x13ce <SPI_Transfer>
+     bfc:	01 50       	subi	r16, 0x01	; 1
+     bfe:	11 09       	sbc	r17, r1
+		  if(valsout[0]!=0x01)
+		  {
+			  //**** If the IN_IDLE_STATE R1 response is not received ***//
+			  //**** Attempt to clear any incomplete communications ****//
+			  Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+			  for(i=0;i<530;i++)
+     c00:	c1 f7       	brne	.-16     	; 0xbf2 <SD_Card_Init+0x17c>
+			  {
+				  SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+			  }
+			  Output_Set(&PB,(SD_CS));
+     c02:	60 e1       	ldi	r22, 0x10	; 16
+     c04:	83 e2       	ldi	r24, 0x23	; 35
+     c06:	90 e0       	ldi	r25, 0x00	; 0
+     c08:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+		  }
+		  timeout++;
+     c0c:	8f ef       	ldi	r24, 0xFF	; 255
+     c0e:	c8 1a       	sub	r12, r24
+     c10:	d8 0a       	sbc	r13, r24
+   } while ((valsout[0]!=0x01)&&(timeout<10));
+     c12:	89 81       	ldd	r24, Y+1	; 0x01
+     c14:	81 30       	cpi	r24, 0x01	; 1
+     c16:	51 f0       	breq	.+20     	; 0xc2c <SD_Card_Init+0x1b6>
+     c18:	ea e0       	ldi	r30, 0x0A	; 10
+     c1a:	ce 16       	cp	r12, r30
+     c1c:	d1 04       	cpc	r13, r1
+     c1e:	09 f0       	breq	.+2      	; 0xc22 <SD_Card_Init+0x1ac>
+     c20:	71 cf       	rjmp	.-286    	; 0xb04 <SD_Card_Init+0x8e>
+   if(timeout==10)
+   {
+	   error_flag=response_error;
+     c22:	0f 2e       	mov	r0, r31
+     c24:	f3 e8       	ldi	r31, 0x83	; 131
+     c26:	ff 2e       	mov	r15, r31
+     c28:	f0 2d       	mov	r31, r0
+     c2a:	11 c3       	rjmp	.+1570   	; 0x124e <SD_Card_Init+0x7d8>
+			  }
+			  Output_Set(&PB,(SD_CS));
+		  }
+		  timeout++;
+   } while ((valsout[0]!=0x01)&&(timeout<10));
+   if(timeout==10)
+     c2c:	fa e0       	ldi	r31, 0x0A	; 10
+     c2e:	cf 16       	cp	r12, r31
+     c30:	d1 04       	cpc	r13, r1
+     c32:	09 f0       	breq	.+2      	; 0xc36 <SD_Card_Init+0x1c0>
+     c34:	e6 c2       	rjmp	.+1484   	; 0x1202 <SD_Card_Init+0x78c>
+     c36:	da c2       	rjmp	.+1460   	; 0x11ec <SD_Card_Init+0x776>
+   {
+     error_status=error_flag;
+   }
+   if(error_status==no_errors)
+   {
+     Output_Clear(&PB,(LED1));  //GREENLED=0;
+     c38:	68 e0       	ldi	r22, 0x08	; 8
+     c3a:	83 e2       	ldi	r24, 0x23	; 35
+     c3c:	90 e0       	ldi	r25, 0x00	; 0
+     c3e:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     Copy_String_to_Buffer(SD_Card_CMD8,0,prnt_buffer);
+     c42:	4e 2d       	mov	r20, r14
+     c44:	59 2d       	mov	r21, r9
+     c46:	60 e0       	ldi	r22, 0x00	; 0
+     c48:	85 ea       	ldi	r24, 0xA5	; 165
+     c4a:	91 e0       	ldi	r25, 0x01	; 1
+     c4c:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+     UART_Transmit_String(&UART1,0,prnt_buffer);
+     c50:	4e 2d       	mov	r20, r14
+     c52:	59 2d       	mov	r21, r9
+     c54:	60 e0       	ldi	r22, 0x00	; 0
+     c56:	88 ec       	ldi	r24, 0xC8	; 200
+     c58:	90 e0       	ldi	r25, 0x00	; 0
+     c5a:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+     c5e:	60 e1       	ldi	r22, 0x10	; 16
+     c60:	83 e2       	ldi	r24, 0x23	; 35
+     c62:	90 e0       	ldi	r25, 0x00	; 0
+     c64:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     error_flag=Send_Command(CMD8,0x000001AA);
+     c68:	4a ea       	ldi	r20, 0xAA	; 170
+     c6a:	51 e0       	ldi	r21, 0x01	; 1
+     c6c:	60 e0       	ldi	r22, 0x00	; 0
+     c6e:	70 e0       	ldi	r23, 0x00	; 0
+     c70:	88 e0       	ldi	r24, 0x08	; 8
+     c72:	0e 94 57 04 	call	0x8ae	; 0x8ae <Send_Command>
+     c76:	f8 2e       	mov	r15, r24
+	 if(error_flag==no_errors)
+     c78:	81 11       	cpse	r24, r1
+     c7a:	56 c0       	rjmp	.+172    	; 0xd28 <SD_Card_Init+0x2b2>
+     {
+        error_flag=Receive_Response(5,valsout);
+     c7c:	be 01       	movw	r22, r28
+     c7e:	6f 5f       	subi	r22, 0xFF	; 255
+     c80:	7f 4f       	sbci	r23, 0xFF	; 255
+     c82:	85 e0       	ldi	r24, 0x05	; 5
+     c84:	0e 94 99 04 	call	0x932	; 0x932 <Receive_Response>
+     c88:	f8 2e       	mov	r15, r24
+		Output_Set(&PB,(SD_CS));  // Set nCS = 1
+     c8a:	60 e1       	ldi	r22, 0x10	; 16
+     c8c:	83 e2       	ldi	r24, 0x23	; 35
+     c8e:	90 e0       	ldi	r25, 0x00	; 0
+     c90:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+		Output_Set(&PB,(LED1));  //GREENLED=1;
+     c94:	68 e0       	ldi	r22, 0x08	; 8
+     c96:	83 e2       	ldi	r24, 0x23	; 35
+     c98:	90 e0       	ldi	r25, 0x00	; 0
+     c9a:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	    Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+     c9e:	4e 2d       	mov	r20, r14
+     ca0:	59 2d       	mov	r21, r9
+     ca2:	60 e0       	ldi	r22, 0x00	; 0
+     ca4:	88 e6       	ldi	r24, 0x68	; 104
+     ca6:	91 e0       	ldi	r25, 0x01	; 1
+     ca8:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+	    UART_Transmit_String(&UART1,0,prnt_buffer);
+     cac:	4e 2d       	mov	r20, r14
+     cae:	59 2d       	mov	r21, r9
+     cb0:	60 e0       	ldi	r22, 0x00	; 0
+     cb2:	88 ec       	ldi	r24, 0xC8	; 200
+     cb4:	90 e0       	ldi	r25, 0x00	; 0
+     cb6:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     cba:	8e 01       	movw	r16, r28
+     cbc:	0f 5f       	subi	r16, 0xFF	; 255
+     cbe:	1f 4f       	sbci	r17, 0xFF	; 255
+     cc0:	5e 01       	movw	r10, r28
+     cc2:	86 e0       	ldi	r24, 0x06	; 6
+     cc4:	a8 0e       	add	r10, r24
+     cc6:	b1 1c       	adc	r11, r1
+        for(i=0;i<5;i++)
+		{   
+		        sprintf(prnt_buffer, "%2.2X ",valsout[i]);
+     cc8:	0f 2e       	mov	r0, r31
+     cca:	f6 e1       	ldi	r31, 0x16	; 22
+     ccc:	cf 2e       	mov	r12, r31
+     cce:	f1 e0       	ldi	r31, 0x01	; 1
+     cd0:	df 2e       	mov	r13, r31
+     cd2:	f0 2d       	mov	r31, r0
+     cd4:	f8 01       	movw	r30, r16
+     cd6:	81 91       	ld	r24, Z+
+     cd8:	8f 01       	movw	r16, r30
+     cda:	1f 92       	push	r1
+     cdc:	8f 93       	push	r24
+     cde:	df 92       	push	r13
+     ce0:	cf 92       	push	r12
+     ce2:	9f 92       	push	r9
+     ce4:	ef 92       	push	r14
+     ce6:	0e 94 c9 0a 	call	0x1592	; 0x1592 <sprintf>
+				UART_Transmit_String(&UART1,0,prnt_buffer);
+     cea:	4e 2d       	mov	r20, r14
+     cec:	59 2d       	mov	r21, r9
+     cee:	60 e0       	ldi	r22, 0x00	; 0
+     cf0:	88 ec       	ldi	r24, 0xC8	; 200
+     cf2:	90 e0       	ldi	r25, 0x00	; 0
+     cf4:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+        error_flag=Receive_Response(5,valsout);
+		Output_Set(&PB,(SD_CS));  // Set nCS = 1
+		Output_Set(&PB,(LED1));  //GREENLED=1;
+	    Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+	    UART_Transmit_String(&UART1,0,prnt_buffer);
+        for(i=0;i<5;i++)
+     cf8:	0f 90       	pop	r0
+     cfa:	0f 90       	pop	r0
+     cfc:	0f 90       	pop	r0
+     cfe:	0f 90       	pop	r0
+     d00:	0f 90       	pop	r0
+     d02:	0f 90       	pop	r0
+     d04:	a0 16       	cp	r10, r16
+     d06:	b1 06       	cpc	r11, r17
+     d08:	29 f7       	brne	.-54     	; 0xcd4 <SD_Card_Init+0x25e>
+		{   
+		        sprintf(prnt_buffer, "%2.2X ",valsout[i]);
+				UART_Transmit_String(&UART1,0,prnt_buffer);
+		}
+        UART_Transmit(&UART1,CR);
+     d0a:	6d e0       	ldi	r22, 0x0D	; 13
+     d0c:	88 ec       	ldi	r24, 0xC8	; 200
+     d0e:	90 e0       	ldi	r25, 0x00	; 0
+     d10:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+        UART_Transmit(&UART1,LF);
+     d14:	6a e0       	ldi	r22, 0x0A	; 10
+     d16:	88 ec       	ldi	r24, 0xC8	; 200
+     d18:	90 e0       	ldi	r25, 0x00	; 0
+     d1a:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+		if(valsout[4]!=0xAA)
+     d1e:	8d 81       	ldd	r24, Y+5	; 0x05
+     d20:	8a 3a       	cpi	r24, 0xAA	; 170
+     d22:	09 f0       	breq	.+2      	; 0xd26 <SD_Card_Init+0x2b0>
+     d24:	a2 c2       	rjmp	.+1348   	; 0x126a <SD_Card_Init+0x7f4>
+     d26:	10 c0       	rjmp	.+32     	; 0xd48 <SD_Card_Init+0x2d2>
+		   error_flag=response_error;
+		}
+     }
+     else
+     {
+        Output_Set(&PB,(SD_CS));  // Set nCS = 1
+     d28:	60 e1       	ldi	r22, 0x10	; 16
+     d2a:	83 e2       	ldi	r24, 0x23	; 35
+     d2c:	90 e0       	ldi	r25, 0x00	; 0
+     d2e:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+        Output_Set(&PB,(LED1));  //GREENLED=1;
+     d32:	68 e0       	ldi	r22, 0x08	; 8
+     d34:	83 e2       	ldi	r24, 0x23	; 35
+     d36:	90 e0       	ldi	r25, 0x00	; 0
+     d38:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	    Output_Clear(&PA,(LED3)); //REDLED=0;  indicates error has occured.
+     d3c:	60 e8       	ldi	r22, 0x80	; 128
+     d3e:	80 e2       	ldi	r24, 0x20	; 32
+     d40:	90 e0       	ldi	r25, 0x00	; 0
+     d42:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     d46:	02 c0       	rjmp	.+4      	; 0xd4c <SD_Card_Init+0x2d6>
+     }
+	 if(error_flag!=no_errors)
+     d48:	ff 20       	and	r15, r15
+     d4a:	19 f1       	breq	.+70     	; 0xd92 <SD_Card_Init+0x31c>
+	 {
+        if(error_flag==illegal_cmnd)
+     d4c:	f2 e8       	ldi	r31, 0x82	; 130
+     d4e:	ff 12       	cpse	r15, r31
+     d50:	7e c2       	rjmp	.+1276   	; 0x124e <SD_Card_Init+0x7d8>
+        {
+           error_status=no_errors;
+		   SD_Card_Type=Standard_Capacity;
+     d52:	89 e0       	ldi	r24, 0x09	; 9
+     d54:	80 93 26 01 	sts	0x0126, r24	; 0x800126 <__data_end>
+		   Copy_String_to_Buffer(SD_Card_V1,0,prnt_buffer);
+     d58:	4e 2d       	mov	r20, r14
+     d5a:	59 2d       	mov	r21, r9
+     d5c:	60 e0       	ldi	r22, 0x00	; 0
+     d5e:	8a e4       	ldi	r24, 0x4A	; 74
+     d60:	91 e0       	ldi	r25, 0x01	; 1
+     d62:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+		   UART_Transmit_String(&UART1,0,prnt_buffer);
+     d66:	4e 2d       	mov	r20, r14
+     d68:	59 2d       	mov	r21, r9
+     d6a:	60 e0       	ldi	r22, 0x00	; 0
+     d6c:	88 ec       	ldi	r24, 0xC8	; 200
+     d6e:	90 e0       	ldi	r25, 0x00	; 0
+     d70:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+		   Copy_String_to_Buffer(SD_Card_SC,0,prnt_buffer);
+     d74:	4e 2d       	mov	r20, r14
+     d76:	59 2d       	mov	r21, r9
+     d78:	60 e0       	ldi	r22, 0x00	; 0
+     d7a:	89 e0       	ldi	r24, 0x09	; 9
+     d7c:	91 e0       	ldi	r25, 0x01	; 1
+     d7e:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+		   UART_Transmit_String(&UART1,0,prnt_buffer);
+     d82:	4e 2d       	mov	r20, r14
+     d84:	59 2d       	mov	r21, r9
+     d86:	60 e0       	ldi	r22, 0x00	; 0
+     d88:	88 ec       	ldi	r24, 0xC8	; 200
+     d8a:	90 e0       	ldi	r25, 0x00	; 0
+     d8c:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     d90:	3b c2       	rjmp	.+1142   	; 0x1208 <SD_Card_Init+0x792>
+		   error_status=error_flag;
+		}
+	 }
+	 else
+	 {
+		SD_Card_Type=Ver2;
+     d92:	82 e0       	ldi	r24, 0x02	; 2
+     d94:	80 93 26 01 	sts	0x0126, r24	; 0x800126 <__data_end>
+		Copy_String_to_Buffer(SD_Card_V2,0,prnt_buffer);
+     d98:	4e 2d       	mov	r20, r14
+     d9a:	59 2d       	mov	r21, r9
+     d9c:	60 e0       	ldi	r22, 0x00	; 0
+     d9e:	8c e2       	ldi	r24, 0x2C	; 44
+     da0:	91 e0       	ldi	r25, 0x01	; 1
+     da2:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+		UART_Transmit_String(&UART1,0,prnt_buffer);
+     da6:	4e 2d       	mov	r20, r14
+     da8:	59 2d       	mov	r21, r9
+     daa:	60 e0       	ldi	r22, 0x00	; 0
+     dac:	88 ec       	ldi	r24, 0xC8	; 200
+     dae:	90 e0       	ldi	r25, 0x00	; 0
+     db0:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     db4:	29 c2       	rjmp	.+1106   	; 0x1208 <SD_Card_Init+0x792>
+     UART_Transmit_String(&UART1,0,prnt_buffer);
+     Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+     error_flag=Send_Command(CMD58,0);
+	 if(error_flag==no_errors)
+     {
+        error_flag=Receive_Response(5,valsout);
+     db6:	be 01       	movw	r22, r28
+     db8:	6f 5f       	subi	r22, 0xFF	; 255
+     dba:	7f 4f       	sbci	r23, 0xFF	; 255
+     dbc:	85 e0       	ldi	r24, 0x05	; 5
+     dbe:	0e 94 99 04 	call	0x932	; 0x932 <Receive_Response>
+     dc2:	f8 2e       	mov	r15, r24
+		Output_Set(&PB,(SD_CS));  // Set nCS = 1
+     dc4:	60 e1       	ldi	r22, 0x10	; 16
+     dc6:	83 e2       	ldi	r24, 0x23	; 35
+     dc8:	90 e0       	ldi	r25, 0x00	; 0
+     dca:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+		Output_Set(&PB,(LED1));  //GREENLED=1;
+     dce:	68 e0       	ldi	r22, 0x08	; 8
+     dd0:	83 e2       	ldi	r24, 0x23	; 35
+     dd2:	90 e0       	ldi	r25, 0x00	; 0
+     dd4:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	    Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+     dd8:	4e 2d       	mov	r20, r14
+     dda:	59 2d       	mov	r21, r9
+     ddc:	60 e0       	ldi	r22, 0x00	; 0
+     dde:	88 e6       	ldi	r24, 0x68	; 104
+     de0:	91 e0       	ldi	r25, 0x01	; 1
+     de2:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+	    UART_Transmit_String(&UART1,0,prnt_buffer);
+     de6:	4e 2d       	mov	r20, r14
+     de8:	59 2d       	mov	r21, r9
+     dea:	60 e0       	ldi	r22, 0x00	; 0
+     dec:	88 ec       	ldi	r24, 0xC8	; 200
+     dee:	90 e0       	ldi	r25, 0x00	; 0
+     df0:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     df4:	8e 01       	movw	r16, r28
+     df6:	0f 5f       	subi	r16, 0xFF	; 255
+     df8:	1f 4f       	sbci	r17, 0xFF	; 255
+     dfa:	5e 01       	movw	r10, r28
+     dfc:	86 e0       	ldi	r24, 0x06	; 6
+     dfe:	a8 0e       	add	r10, r24
+     e00:	b1 1c       	adc	r11, r1
+        for(i=0;i<5;i++)
+		{   
+		     sprintf(prnt_buffer, "%2.2X ",valsout[i]);
+     e02:	0f 2e       	mov	r0, r31
+     e04:	f6 e1       	ldi	r31, 0x16	; 22
+     e06:	cf 2e       	mov	r12, r31
+     e08:	f1 e0       	ldi	r31, 0x01	; 1
+     e0a:	df 2e       	mov	r13, r31
+     e0c:	f0 2d       	mov	r31, r0
+     e0e:	f8 01       	movw	r30, r16
+     e10:	81 91       	ld	r24, Z+
+     e12:	8f 01       	movw	r16, r30
+     e14:	1f 92       	push	r1
+     e16:	8f 93       	push	r24
+     e18:	df 92       	push	r13
+     e1a:	cf 92       	push	r12
+     e1c:	9f 92       	push	r9
+     e1e:	ef 92       	push	r14
+     e20:	0e 94 c9 0a 	call	0x1592	; 0x1592 <sprintf>
+			 UART_Transmit_String(&UART1,0,prnt_buffer);
+     e24:	4e 2d       	mov	r20, r14
+     e26:	59 2d       	mov	r21, r9
+     e28:	60 e0       	ldi	r22, 0x00	; 0
+     e2a:	88 ec       	ldi	r24, 0xC8	; 200
+     e2c:	90 e0       	ldi	r25, 0x00	; 0
+     e2e:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+        error_flag=Receive_Response(5,valsout);
+		Output_Set(&PB,(SD_CS));  // Set nCS = 1
+		Output_Set(&PB,(LED1));  //GREENLED=1;
+	    Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+	    UART_Transmit_String(&UART1,0,prnt_buffer);
+        for(i=0;i<5;i++)
+     e32:	0f 90       	pop	r0
+     e34:	0f 90       	pop	r0
+     e36:	0f 90       	pop	r0
+     e38:	0f 90       	pop	r0
+     e3a:	0f 90       	pop	r0
+     e3c:	0f 90       	pop	r0
+     e3e:	a0 16       	cp	r10, r16
+     e40:	b1 06       	cpc	r11, r17
+     e42:	29 f7       	brne	.-54     	; 0xe0e <SD_Card_Init+0x398>
+		{   
+		     sprintf(prnt_buffer, "%2.2X ",valsout[i]);
+			 UART_Transmit_String(&UART1,0,prnt_buffer);
+		}
+        UART_Transmit(&UART1,CR);
+     e44:	6d e0       	ldi	r22, 0x0D	; 13
+     e46:	88 ec       	ldi	r24, 0xC8	; 200
+     e48:	90 e0       	ldi	r25, 0x00	; 0
+     e4a:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+        UART_Transmit(&UART1,LF);
+     e4e:	6a e0       	ldi	r22, 0x0A	; 10
+     e50:	88 ec       	ldi	r24, 0xC8	; 200
+     e52:	90 e0       	ldi	r25, 0x00	; 0
+     e54:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+		if((valsout[2]&0xFC)!=0xFC)
+     e58:	8b 81       	ldd	r24, Y+3	; 0x03
+     e5a:	8c 7f       	andi	r24, 0xFC	; 252
+     e5c:	8c 3f       	cpi	r24, 0xFC	; 252
+     e5e:	09 f0       	breq	.+2      	; 0xe62 <SD_Card_Init+0x3ec>
+     e60:	11 c2       	rjmp	.+1058   	; 0x1284 <SD_Card_Init+0x80e>
+     e62:	10 c0       	rjmp	.+32     	; 0xe84 <SD_Card_Init+0x40e>
+		   error_flag=voltage_error;
+		}
+     }
+     else
+     {
+        Output_Set(&PB,(SD_CS));  // Set nCS = 1
+     e64:	60 e1       	ldi	r22, 0x10	; 16
+     e66:	83 e2       	ldi	r24, 0x23	; 35
+     e68:	90 e0       	ldi	r25, 0x00	; 0
+     e6a:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+        Output_Set(&PB,(LED1));  //GREENLED=1;
+     e6e:	68 e0       	ldi	r22, 0x08	; 8
+     e70:	83 e2       	ldi	r24, 0x23	; 35
+     e72:	90 e0       	ldi	r25, 0x00	; 0
+     e74:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	    Output_Clear(&PA,(LED3));  //REDLED=0;  indicates error has occured.
+     e78:	60 e8       	ldi	r22, 0x80	; 128
+     e7a:	80 e2       	ldi	r24, 0x20	; 32
+     e7c:	90 e0       	ldi	r25, 0x00	; 0
+     e7e:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     e82:	04 c2       	rjmp	.+1032   	; 0x128c <SD_Card_Init+0x816>
+     }
+	 if(error_flag!=no_errors)
+     e84:	f1 10       	cpse	r15, r1
+     e86:	02 c2       	rjmp	.+1028   	; 0x128c <SD_Card_Init+0x816>
+	    error_status=error_flag;
+	 }
+   }
+   if(error_status==no_errors)
+   {
+     if(SD_Card_Type==Ver2)
+     e88:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <__data_end>
+     e8c:	82 30       	cpi	r24, 0x02	; 2
+     e8e:	21 f0       	breq	.+8      	; 0xe98 <SD_Card_Init+0x422>
+	 {
+	    argument=0x40000000;
+	 }
+	 else
+	 {
+	    argument=0;
+     e90:	41 2c       	mov	r4, r1
+     e92:	51 2c       	mov	r5, r1
+     e94:	32 01       	movw	r6, r4
+     e96:	05 c0       	rjmp	.+10     	; 0xea2 <SD_Card_Init+0x42c>
+   }
+   if(error_status==no_errors)
+   {
+     if(SD_Card_Type==Ver2)
+	 {
+	    argument=0x40000000;
+     e98:	41 2c       	mov	r4, r1
+     e9a:	51 2c       	mov	r5, r1
+     e9c:	32 01       	movw	r6, r4
+     e9e:	68 94       	set
+     ea0:	76 f8       	bld	r7, 6
+	 else
+	 {
+	    argument=0;
+	 }
+	 timeout=0;
+     Output_Clear(&PB,(LED1));  //GREENLED=0;
+     ea2:	68 e0       	ldi	r22, 0x08	; 8
+     ea4:	83 e2       	ldi	r24, 0x23	; 35
+     ea6:	90 e0       	ldi	r25, 0x00	; 0
+     ea8:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     Copy_String_to_Buffer(SD_Card_ACMD41,0,prnt_buffer);
+     eac:	4e 2d       	mov	r20, r14
+     eae:	59 2d       	mov	r21, r9
+     eb0:	60 e0       	ldi	r22, 0x00	; 0
+     eb2:	84 e7       	ldi	r24, 0x74	; 116
+     eb4:	91 e0       	ldi	r25, 0x01	; 1
+     eb6:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+     UART_Transmit_String(&UART1,0,prnt_buffer);
+     eba:	4e 2d       	mov	r20, r14
+     ebc:	59 2d       	mov	r21, r9
+     ebe:	60 e0       	ldi	r22, 0x00	; 0
+     ec0:	88 ec       	ldi	r24, 0xC8	; 200
+     ec2:	90 e0       	ldi	r25, 0x00	; 0
+     ec4:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+     ec8:	60 e1       	ldi	r22, 0x10	; 16
+     eca:	83 e2       	ldi	r24, 0x23	; 35
+     ecc:	90 e0       	ldi	r25, 0x00	; 0
+     ece:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+	 }
+	 else
+	 {
+	    argument=0;
+	 }
+	 timeout=0;
+     ed2:	00 e0       	ldi	r16, 0x00	; 0
+     ed4:	10 e0       	ldi	r17, 0x00	; 0
+     UART_Transmit_String(&UART1,0,prnt_buffer);
+     Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+	 do
+	 {
+	    //P3_5=0;
+	    error_flag=Send_Command(CMD55,0);
+     ed6:	40 e0       	ldi	r20, 0x00	; 0
+     ed8:	50 e0       	ldi	r21, 0x00	; 0
+     eda:	ba 01       	movw	r22, r20
+     edc:	87 e3       	ldi	r24, 0x37	; 55
+     ede:	0e 94 57 04 	call	0x8ae	; 0x8ae <Send_Command>
+     ee2:	f8 2e       	mov	r15, r24
+		if(error_flag==no_errors)  error_flag=Receive_Response(1,valsout);
+     ee4:	81 11       	cpse	r24, r1
+     ee6:	b7 c1       	rjmp	.+878    	; 0x1256 <SD_Card_Init+0x7e0>
+     ee8:	be 01       	movw	r22, r28
+     eea:	6f 5f       	subi	r22, 0xFF	; 255
+     eec:	7f 4f       	sbci	r23, 0xFF	; 255
+     eee:	81 e0       	ldi	r24, 0x01	; 1
+     ef0:	0e 94 99 04 	call	0x932	; 0x932 <Receive_Response>
+     ef4:	f8 2e       	mov	r15, r24
+		//P3_5=1;
+	    if((valsout[0]==0x01)||(valsout[0]==0x00))
+     ef6:	89 81       	ldd	r24, Y+1	; 0x01
+     ef8:	82 30       	cpi	r24, 0x02	; 2
+     efa:	30 f4       	brcc	.+12     	; 0xf08 <SD_Card_Init+0x492>
+		   error_flag=Send_Command(ACMD41,argument);
+     efc:	b3 01       	movw	r22, r6
+     efe:	a2 01       	movw	r20, r4
+     f00:	89 e2       	ldi	r24, 0x29	; 41
+     f02:	0e 94 57 04 	call	0x8ae	; 0x8ae <Send_Command>
+     f06:	f8 2e       	mov	r15, r24
+	    if(error_flag==no_errors) Receive_Response(1,valsout);
+     f08:	f1 10       	cpse	r15, r1
+     f0a:	06 c0       	rjmp	.+12     	; 0xf18 <SD_Card_Init+0x4a2>
+     f0c:	be 01       	movw	r22, r28
+     f0e:	6f 5f       	subi	r22, 0xFF	; 255
+     f10:	7f 4f       	sbci	r23, 0xFF	; 255
+     f12:	81 e0       	ldi	r24, 0x01	; 1
+     f14:	0e 94 99 04 	call	0x932	; 0x932 <Receive_Response>
+		timeout++;
+     f18:	0f 5f       	subi	r16, 0xFF	; 255
+     f1a:	1f 4f       	sbci	r17, 0xFF	; 255
+		if(timeout==0) error_flag=timeout_error;
+     f1c:	09 f4       	brne	.+2      	; 0xf20 <SD_Card_Init+0x4aa>
+     f1e:	aa c1       	rjmp	.+852    	; 0x1274 <SD_Card_Init+0x7fe>
+	   }while(((valsout[0]&0x01)==0x01)&&(error_flag==no_errors));
+     f20:	89 81       	ldd	r24, Y+1	; 0x01
+     f22:	80 ff       	sbrs	r24, 0
+     f24:	03 c0       	rjmp	.+6      	; 0xf2c <SD_Card_Init+0x4b6>
+     f26:	ff 20       	and	r15, r15
+     f28:	b1 f2       	breq	.-84     	; 0xed6 <SD_Card_Init+0x460>
+     f2a:	37 c0       	rjmp	.+110    	; 0xf9a <SD_Card_Init+0x524>
+	 if(error_flag==no_errors)
+     f2c:	f1 10       	cpse	r15, r1
+     f2e:	35 c0       	rjmp	.+106    	; 0xf9a <SD_Card_Init+0x524>
+     {
+		Output_Set(&PB,(SD_CS));  // Set nCS = 1
+     f30:	60 e1       	ldi	r22, 0x10	; 16
+     f32:	83 e2       	ldi	r24, 0x23	; 35
+     f34:	90 e0       	ldi	r25, 0x00	; 0
+     f36:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+        Output_Set(&PB,(LED1));  //GREENLED=1;
+     f3a:	68 e0       	ldi	r22, 0x08	; 8
+     f3c:	83 e2       	ldi	r24, 0x23	; 35
+     f3e:	90 e0       	ldi	r25, 0x00	; 0
+     f40:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	    Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+     f44:	4e 2d       	mov	r20, r14
+     f46:	59 2d       	mov	r21, r9
+     f48:	60 e0       	ldi	r22, 0x00	; 0
+     f4a:	88 e6       	ldi	r24, 0x68	; 104
+     f4c:	91 e0       	ldi	r25, 0x01	; 1
+     f4e:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+	    UART_Transmit_String(&UART1,0,prnt_buffer);
+     f52:	4e 2d       	mov	r20, r14
+     f54:	59 2d       	mov	r21, r9
+     f56:	60 e0       	ldi	r22, 0x00	; 0
+     f58:	88 ec       	ldi	r24, 0xC8	; 200
+     f5a:	90 e0       	ldi	r25, 0x00	; 0
+     f5c:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+		sprintf(prnt_buffer, "%2.2X \n\r",valsout[0]);
+     f60:	89 81       	ldd	r24, Y+1	; 0x01
+     f62:	1f 92       	push	r1
+     f64:	8f 93       	push	r24
+     f66:	8d e1       	ldi	r24, 0x1D	; 29
+     f68:	91 e0       	ldi	r25, 0x01	; 1
+     f6a:	9f 93       	push	r25
+     f6c:	8f 93       	push	r24
+     f6e:	9f 92       	push	r9
+     f70:	ef 92       	push	r14
+     f72:	0e 94 c9 0a 	call	0x1592	; 0x1592 <sprintf>
+		UART_Transmit_String(&UART1,0,prnt_buffer);
+     f76:	4e 2d       	mov	r20, r14
+     f78:	59 2d       	mov	r21, r9
+     f7a:	60 e0       	ldi	r22, 0x00	; 0
+     f7c:	88 ec       	ldi	r24, 0xC8	; 200
+     f7e:	90 e0       	ldi	r25, 0x00	; 0
+     f80:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     f84:	0f 90       	pop	r0
+     f86:	0f 90       	pop	r0
+     f88:	0f 90       	pop	r0
+     f8a:	0f 90       	pop	r0
+     f8c:	0f 90       	pop	r0
+     f8e:	0f 90       	pop	r0
+     f90:	15 c0       	rjmp	.+42     	; 0xfbc <SD_Card_Init+0x546>
+		//P3_5=1;
+	    if((valsout[0]==0x01)||(valsout[0]==0x00))
+		   error_flag=Send_Command(ACMD41,argument);
+	    if(error_flag==no_errors) Receive_Response(1,valsout);
+		timeout++;
+		if(timeout==0) error_flag=timeout_error;
+     f92:	0f 2e       	mov	r0, r31
+     f94:	f1 e8       	ldi	r31, 0x81	; 129
+     f96:	ff 2e       	mov	r15, r31
+     f98:	f0 2d       	mov	r31, r0
+		sprintf(prnt_buffer, "%2.2X \n\r",valsout[0]);
+		UART_Transmit_String(&UART1,0,prnt_buffer);
+     }
+     else
+     {
+        Output_Set(&PB,(SD_CS));  // Set nCS = 1
+     f9a:	60 e1       	ldi	r22, 0x10	; 16
+     f9c:	83 e2       	ldi	r24, 0x23	; 35
+     f9e:	90 e0       	ldi	r25, 0x00	; 0
+     fa0:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+        Output_Set(&PB,(LED1));  //GREENLED=1;
+     fa4:	68 e0       	ldi	r22, 0x08	; 8
+     fa6:	83 e2       	ldi	r24, 0x23	; 35
+     fa8:	90 e0       	ldi	r25, 0x00	; 0
+     faa:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	    Output_Clear(&PA,(LED3));  //REDLED=0;  indicates error has occured.
+     fae:	60 e8       	ldi	r22, 0x80	; 128
+     fb0:	80 e2       	ldi	r24, 0x20	; 32
+     fb2:	90 e0       	ldi	r25, 0x00	; 0
+     fb4:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+	 if(error_flag!=no_errors)
+	 {		
+	    error_status=error_flag;
+	 }
+   }
+   if((error_status==no_errors)&&(SD_Card_Type==Ver2))
+     fb8:	f1 10       	cpse	r15, r1
+     fba:	68 c1       	rjmp	.+720    	; 0x128c <SD_Card_Init+0x816>
+     fbc:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <__data_end>
+     fc0:	82 30       	cpi	r24, 0x02	; 2
+     fc2:	09 f0       	breq	.+2      	; 0xfc6 <SD_Card_Init+0x550>
+     fc4:	18 c1       	rjmp	.+560    	; 0x11f6 <SD_Card_Init+0x780>
+   {
+     Output_Clear(&PB,(LED1));  //GREENLED=0;
+     fc6:	68 e0       	ldi	r22, 0x08	; 8
+     fc8:	83 e2       	ldi	r24, 0x23	; 35
+     fca:	90 e0       	ldi	r25, 0x00	; 0
+     fcc:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     Copy_String_to_Buffer(SD_Card_CMD58,0,prnt_buffer);
+     fd0:	4e 2d       	mov	r20, r14
+     fd2:	59 2d       	mov	r21, r9
+     fd4:	60 e0       	ldi	r22, 0x00	; 0
+     fd6:	85 e8       	ldi	r24, 0x85	; 133
+     fd8:	91 e0       	ldi	r25, 0x01	; 1
+     fda:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+     UART_Transmit_String(&UART1,0,prnt_buffer);
+     fde:	4e 2d       	mov	r20, r14
+     fe0:	59 2d       	mov	r21, r9
+     fe2:	60 e0       	ldi	r22, 0x00	; 0
+     fe4:	88 ec       	ldi	r24, 0xC8	; 200
+     fe6:	90 e0       	ldi	r25, 0x00	; 0
+     fe8:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+     fec:	60 e1       	ldi	r22, 0x10	; 16
+     fee:	83 e2       	ldi	r24, 0x23	; 35
+     ff0:	90 e0       	ldi	r25, 0x00	; 0
+     ff2:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     error_flag=Send_Command(CMD58,0);
+     ff6:	40 e0       	ldi	r20, 0x00	; 0
+     ff8:	50 e0       	ldi	r21, 0x00	; 0
+     ffa:	ba 01       	movw	r22, r20
+     ffc:	8a e3       	ldi	r24, 0x3A	; 58
+     ffe:	0e 94 57 04 	call	0x8ae	; 0x8ae <Send_Command>
+    1002:	f8 2e       	mov	r15, r24
+	 if(error_flag==no_errors)
+    1004:	81 11       	cpse	r24, r1
+    1006:	e2 c0       	rjmp	.+452    	; 0x11cc <SD_Card_Init+0x756>
+     {
+        error_flag=Receive_Response(5,valsout);
+    1008:	be 01       	movw	r22, r28
+    100a:	6f 5f       	subi	r22, 0xFF	; 255
+    100c:	7f 4f       	sbci	r23, 0xFF	; 255
+    100e:	85 e0       	ldi	r24, 0x05	; 5
+    1010:	0e 94 99 04 	call	0x932	; 0x932 <Receive_Response>
+    1014:	f8 2e       	mov	r15, r24
+		Output_Set(&PB,(SD_CS));  // Set nCS = 1
+    1016:	60 e1       	ldi	r22, 0x10	; 16
+    1018:	83 e2       	ldi	r24, 0x23	; 35
+    101a:	90 e0       	ldi	r25, 0x00	; 0
+    101c:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+        Output_Set(&PB,(LED1));  //GREENLED=1;
+    1020:	68 e0       	ldi	r22, 0x08	; 8
+    1022:	83 e2       	ldi	r24, 0x23	; 35
+    1024:	90 e0       	ldi	r25, 0x00	; 0
+    1026:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	    Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+    102a:	4e 2d       	mov	r20, r14
+    102c:	59 2d       	mov	r21, r9
+    102e:	60 e0       	ldi	r22, 0x00	; 0
+    1030:	88 e6       	ldi	r24, 0x68	; 104
+    1032:	91 e0       	ldi	r25, 0x01	; 1
+    1034:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+	    UART_Transmit_String(&UART1,0,prnt_buffer);
+    1038:	4e 2d       	mov	r20, r14
+    103a:	59 2d       	mov	r21, r9
+    103c:	60 e0       	ldi	r22, 0x00	; 0
+    103e:	88 ec       	ldi	r24, 0xC8	; 200
+    1040:	90 e0       	ldi	r25, 0x00	; 0
+    1042:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+    1046:	8e 01       	movw	r16, r28
+    1048:	0f 5f       	subi	r16, 0xFF	; 255
+    104a:	1f 4f       	sbci	r17, 0xFF	; 255
+    104c:	5e 01       	movw	r10, r28
+    104e:	f6 e0       	ldi	r31, 0x06	; 6
+    1050:	af 0e       	add	r10, r31
+    1052:	b1 1c       	adc	r11, r1
+        for(i=0;i<5;i++)
+		{   
+           sprintf(prnt_buffer, "%2.2X ",valsout[i]);
+    1054:	0f 2e       	mov	r0, r31
+    1056:	f6 e1       	ldi	r31, 0x16	; 22
+    1058:	cf 2e       	mov	r12, r31
+    105a:	f1 e0       	ldi	r31, 0x01	; 1
+    105c:	df 2e       	mov	r13, r31
+    105e:	f0 2d       	mov	r31, r0
+    1060:	f8 01       	movw	r30, r16
+    1062:	81 91       	ld	r24, Z+
+    1064:	8f 01       	movw	r16, r30
+    1066:	1f 92       	push	r1
+    1068:	8f 93       	push	r24
+    106a:	df 92       	push	r13
+    106c:	cf 92       	push	r12
+    106e:	9f 92       	push	r9
+    1070:	ef 92       	push	r14
+    1072:	0e 94 c9 0a 	call	0x1592	; 0x1592 <sprintf>
+		   UART_Transmit_String(&UART1,0,prnt_buffer);
+    1076:	4e 2d       	mov	r20, r14
+    1078:	59 2d       	mov	r21, r9
+    107a:	60 e0       	ldi	r22, 0x00	; 0
+    107c:	88 ec       	ldi	r24, 0xC8	; 200
+    107e:	90 e0       	ldi	r25, 0x00	; 0
+    1080:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+        error_flag=Receive_Response(5,valsout);
+		Output_Set(&PB,(SD_CS));  // Set nCS = 1
+        Output_Set(&PB,(LED1));  //GREENLED=1;
+	    Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+	    UART_Transmit_String(&UART1,0,prnt_buffer);
+        for(i=0;i<5;i++)
+    1084:	0f 90       	pop	r0
+    1086:	0f 90       	pop	r0
+    1088:	0f 90       	pop	r0
+    108a:	0f 90       	pop	r0
+    108c:	0f 90       	pop	r0
+    108e:	0f 90       	pop	r0
+    1090:	a0 16       	cp	r10, r16
+    1092:	b1 06       	cpc	r11, r17
+    1094:	29 f7       	brne	.-54     	; 0x1060 <SD_Card_Init+0x5ea>
+		{   
+           sprintf(prnt_buffer, "%2.2X ",valsout[i]);
+		   UART_Transmit_String(&UART1,0,prnt_buffer);
+		}
+        UART_Transmit(&UART1,CR);
+    1096:	6d e0       	ldi	r22, 0x0D	; 13
+    1098:	88 ec       	ldi	r24, 0xC8	; 200
+    109a:	90 e0       	ldi	r25, 0x00	; 0
+    109c:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+        UART_Transmit(&UART1,LF);
+    10a0:	6a e0       	ldi	r22, 0x0A	; 10
+    10a2:	88 ec       	ldi	r24, 0xC8	; 200
+    10a4:	90 e0       	ldi	r25, 0x00	; 0
+    10a6:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+		if((valsout[1]&0x80)!=0x80)
+    10aa:	8a 81       	ldd	r24, Y+2	; 0x02
+    10ac:	88 23       	and	r24, r24
+    10ae:	0c f0       	brlt	.+2      	; 0x10b2 <SD_Card_Init+0x63c>
+    10b0:	d7 c0       	rjmp	.+430    	; 0x1260 <SD_Card_Init+0x7ea>
+		{
+		   error_flag=card_inactive;
+		}
+		else
+		{
+		   if((valsout[1]&0xC0)==0xC0)
+    10b2:	80 7c       	andi	r24, 0xC0	; 192
+    10b4:	80 3c       	cpi	r24, 0xC0	; 192
+    10b6:	89 f4       	brne	.+34     	; 0x10da <SD_Card_Init+0x664>
+		   {
+		      SD_Card_Type=High_Capacity;
+    10b8:	10 92 26 01 	sts	0x0126, r1	; 0x800126 <__data_end>
+		      Copy_String_to_Buffer(SD_Card_HC,0,prnt_buffer);
+    10bc:	4e 2d       	mov	r20, r14
+    10be:	59 2d       	mov	r21, r9
+    10c0:	60 e0       	ldi	r22, 0x00	; 0
+    10c2:	8a ee       	ldi	r24, 0xEA	; 234
+    10c4:	90 e0       	ldi	r25, 0x00	; 0
+    10c6:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+		      UART_Transmit_String(&UART1,0,prnt_buffer);
+    10ca:	4e 2d       	mov	r20, r14
+    10cc:	59 2d       	mov	r21, r9
+    10ce:	60 e0       	ldi	r22, 0x00	; 0
+    10d0:	88 ec       	ldi	r24, 0xC8	; 200
+    10d2:	90 e0       	ldi	r25, 0x00	; 0
+    10d4:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+    10d8:	d9 c0       	rjmp	.+434    	; 0x128c <SD_Card_Init+0x816>
+			  //sprintf(print_buffer,"High Capacity");
+			  //LCD_Print(0,print_buffer);
+		   }
+		   else
+		   {
+		      SD_Card_Type=Standard_Capacity;
+    10da:	89 e0       	ldi	r24, 0x09	; 9
+    10dc:	80 93 26 01 	sts	0x0126, r24	; 0x800126 <__data_end>
+			  Copy_String_to_Buffer(SD_Card_SC,0,prnt_buffer);
+    10e0:	4e 2d       	mov	r20, r14
+    10e2:	59 2d       	mov	r21, r9
+    10e4:	60 e0       	ldi	r22, 0x00	; 0
+    10e6:	89 e0       	ldi	r24, 0x09	; 9
+    10e8:	91 e0       	ldi	r25, 0x01	; 1
+    10ea:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+			  UART_Transmit_String(&UART1,0,prnt_buffer);
+    10ee:	4e 2d       	mov	r20, r14
+    10f0:	59 2d       	mov	r21, r9
+    10f2:	60 e0       	ldi	r22, 0x00	; 0
+    10f4:	88 ec       	ldi	r24, 0xC8	; 200
+    10f6:	90 e0       	ldi	r25, 0x00	; 0
+    10f8:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+			  //LCD_Write(COMMAND,set_ddram_addr|line2);
+			  //sprintf(print_buffer,"Standard Cap.");
+			  //LCD_Print(0,print_buffer);
+			  Output_Clear(&PB,(LED1));  //GREENLED=0;
+    10fc:	68 e0       	ldi	r22, 0x08	; 8
+    10fe:	83 e2       	ldi	r24, 0x23	; 35
+    1100:	90 e0       	ldi	r25, 0x00	; 0
+    1102:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+              Copy_String_to_Buffer(SD_Card_CMD16,0,prnt_buffer);
+    1106:	4e 2d       	mov	r20, r14
+    1108:	59 2d       	mov	r21, r9
+    110a:	60 e0       	ldi	r22, 0x00	; 0
+    110c:	85 e9       	ldi	r24, 0x95	; 149
+    110e:	91 e0       	ldi	r25, 0x01	; 1
+    1110:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+              UART_Transmit_String(&UART1,0,prnt_buffer);
+    1114:	4e 2d       	mov	r20, r14
+    1116:	59 2d       	mov	r21, r9
+    1118:	60 e0       	ldi	r22, 0x00	; 0
+    111a:	88 ec       	ldi	r24, 0xC8	; 200
+    111c:	90 e0       	ldi	r25, 0x00	; 0
+    111e:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+              Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+    1122:	60 e1       	ldi	r22, 0x10	; 16
+    1124:	83 e2       	ldi	r24, 0x23	; 35
+    1126:	90 e0       	ldi	r25, 0x00	; 0
+    1128:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+              error_flag=Send_Command(CMD16,512);
+    112c:	40 e0       	ldi	r20, 0x00	; 0
+    112e:	52 e0       	ldi	r21, 0x02	; 2
+    1130:	60 e0       	ldi	r22, 0x00	; 0
+    1132:	70 e0       	ldi	r23, 0x00	; 0
+    1134:	80 e1       	ldi	r24, 0x10	; 16
+    1136:	0e 94 57 04 	call	0x8ae	; 0x8ae <Send_Command>
+    113a:	f8 2e       	mov	r15, r24
+	          if(error_flag==no_errors)
+    113c:	81 11       	cpse	r24, r1
+    113e:	a6 c0       	rjmp	.+332    	; 0x128c <SD_Card_Init+0x816>
+              {
+                  error_flag=Receive_Response(1,valsout);
+    1140:	be 01       	movw	r22, r28
+    1142:	6f 5f       	subi	r22, 0xFF	; 255
+    1144:	7f 4f       	sbci	r23, 0xFF	; 255
+    1146:	81 e0       	ldi	r24, 0x01	; 1
+    1148:	0e 94 99 04 	call	0x932	; 0x932 <Receive_Response>
+    114c:	f8 2e       	mov	r15, r24
+		          Output_Set(&PB,(SD_CS));  // Set nCS = 1
+    114e:	60 e1       	ldi	r22, 0x10	; 16
+    1150:	83 e2       	ldi	r24, 0x23	; 35
+    1152:	90 e0       	ldi	r25, 0x00	; 0
+    1154:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+                  Output_Set(&PB,(LED1));  //GREENLED=1;
+    1158:	68 e0       	ldi	r22, 0x08	; 8
+    115a:	83 e2       	ldi	r24, 0x23	; 35
+    115c:	90 e0       	ldi	r25, 0x00	; 0
+    115e:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+				  Copy_String_to_Buffer(SD_Card_Resp,0,prnt_buffer);
+    1162:	4e 2d       	mov	r20, r14
+    1164:	59 2d       	mov	r21, r9
+    1166:	60 e0       	ldi	r22, 0x00	; 0
+    1168:	88 e6       	ldi	r24, 0x68	; 104
+    116a:	91 e0       	ldi	r25, 0x01	; 1
+    116c:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+				  UART_Transmit_String(&UART1,0,prnt_buffer);
+    1170:	4e 2d       	mov	r20, r14
+    1172:	59 2d       	mov	r21, r9
+    1174:	60 e0       	ldi	r22, 0x00	; 0
+    1176:	88 ec       	ldi	r24, 0xC8	; 200
+    1178:	90 e0       	ldi	r25, 0x00	; 0
+    117a:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+	              sprintf(prnt_buffer, "%2.2X \n\r",valsout[0]);
+    117e:	89 81       	ldd	r24, Y+1	; 0x01
+    1180:	1f 92       	push	r1
+    1182:	8f 93       	push	r24
+    1184:	8d e1       	ldi	r24, 0x1D	; 29
+    1186:	91 e0       	ldi	r25, 0x01	; 1
+    1188:	9f 93       	push	r25
+    118a:	8f 93       	push	r24
+    118c:	9f 92       	push	r9
+    118e:	ef 92       	push	r14
+    1190:	0e 94 c9 0a 	call	0x1592	; 0x1592 <sprintf>
+				  UART_Transmit_String(&UART1,0,prnt_buffer);
+    1194:	4e 2d       	mov	r20, r14
+    1196:	59 2d       	mov	r21, r9
+    1198:	60 e0       	ldi	r22, 0x00	; 0
+    119a:	88 ec       	ldi	r24, 0xC8	; 200
+    119c:	90 e0       	ldi	r25, 0x00	; 0
+    119e:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+                  Copy_String_to_Buffer(SD_Card_BlSz,0,prnt_buffer);
+    11a2:	4e 2d       	mov	r20, r14
+    11a4:	59 2d       	mov	r21, r9
+    11a6:	60 e0       	ldi	r22, 0x00	; 0
+    11a8:	8c ec       	ldi	r24, 0xCC	; 204
+    11aa:	90 e0       	ldi	r25, 0x00	; 0
+    11ac:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+                  UART_Transmit_String(&UART1,0,prnt_buffer);
+    11b0:	4e 2d       	mov	r20, r14
+    11b2:	59 2d       	mov	r21, r9
+    11b4:	60 e0       	ldi	r22, 0x00	; 0
+    11b6:	88 ec       	ldi	r24, 0xC8	; 200
+    11b8:	90 e0       	ldi	r25, 0x00	; 0
+    11ba:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+    11be:	0f 90       	pop	r0
+    11c0:	0f 90       	pop	r0
+    11c2:	0f 90       	pop	r0
+    11c4:	0f 90       	pop	r0
+    11c6:	0f 90       	pop	r0
+    11c8:	0f 90       	pop	r0
+    11ca:	60 c0       	rjmp	.+192    	; 0x128c <SD_Card_Init+0x816>
+			}
+		 }
+     }
+     else
+     {
+        Output_Set(&PB,(SD_CS));  // Set nCS = 1
+    11cc:	60 e1       	ldi	r22, 0x10	; 16
+    11ce:	83 e2       	ldi	r24, 0x23	; 35
+    11d0:	90 e0       	ldi	r25, 0x00	; 0
+    11d2:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+        Output_Set(&PB,(LED1));  //GREENLED=1;
+    11d6:	68 e0       	ldi	r22, 0x08	; 8
+    11d8:	83 e2       	ldi	r24, 0x23	; 35
+    11da:	90 e0       	ldi	r25, 0x00	; 0
+    11dc:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+	    Output_Clear(&PA,(LED3));  //REDLED=0; indicates error has occured.
+    11e0:	60 e8       	ldi	r22, 0x80	; 128
+    11e2:	80 e2       	ldi	r24, 0x20	; 32
+    11e4:	90 e0       	ldi	r25, 0x00	; 0
+    11e6:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+    11ea:	50 c0       	rjmp	.+160    	; 0x128c <SD_Card_Init+0x816>
+		  }
+		  timeout++;
+   } while ((valsout[0]!=0x01)&&(timeout<10));
+   if(timeout==10)
+   {
+	   error_flag=response_error;
+    11ec:	0f 2e       	mov	r0, r31
+    11ee:	f3 e8       	ldi	r31, 0x83	; 131
+    11f0:	ff 2e       	mov	r15, r31
+    11f2:	f0 2d       	mov	r31, r0
+    11f4:	4b c0       	rjmp	.+150    	; 0x128c <SD_Card_Init+0x816>
+    11f6:	f1 2c       	mov	r15, r1
+    11f8:	49 c0       	rjmp	.+146    	; 0x128c <SD_Card_Init+0x816>
+			  {
+				  SPI_return=SPI_Transfer(&SD_PORT,0xFF);
+			  }
+			  Output_Set(&PB,(SD_CS));
+		  }
+		  timeout++;
+    11fa:	ff ef       	ldi	r31, 0xFF	; 255
+    11fc:	cf 1a       	sub	r12, r31
+    11fe:	df 0a       	sbc	r13, r31
+    1200:	15 cd       	rjmp	.-1494   	; 0xc2c <SD_Card_Init+0x1b6>
+   {
+	   error_flag=response_error;
+	   error_status=response_error;
+   }
+
+   if(error_flag!=no_errors)
+    1202:	f1 10       	cpse	r15, r1
+    1204:	d9 ce       	rjmp	.-590    	; 0xfb8 <SD_Card_Init+0x542>
+    1206:	18 cd       	rjmp	.-1488   	; 0xc38 <SD_Card_Init+0x1c2>
+		UART_Transmit_String(&UART1,0,prnt_buffer);
+	 }
+   }
+   if(error_status==no_errors)
+   {
+     Output_Clear(&PB,(LED1));  //GREENLED=0;
+    1208:	68 e0       	ldi	r22, 0x08	; 8
+    120a:	83 e2       	ldi	r24, 0x23	; 35
+    120c:	90 e0       	ldi	r25, 0x00	; 0
+    120e:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     Copy_String_to_Buffer(SD_Card_CMD58,0,prnt_buffer);
+    1212:	4e 2d       	mov	r20, r14
+    1214:	59 2d       	mov	r21, r9
+    1216:	60 e0       	ldi	r22, 0x00	; 0
+    1218:	85 e8       	ldi	r24, 0x85	; 133
+    121a:	91 e0       	ldi	r25, 0x01	; 1
+    121c:	0e 94 1f 0a 	call	0x143e	; 0x143e <Copy_String_to_Buffer>
+     UART_Transmit_String(&UART1,0,prnt_buffer);
+    1220:	4e 2d       	mov	r20, r14
+    1222:	59 2d       	mov	r21, r9
+    1224:	60 e0       	ldi	r22, 0x00	; 0
+    1226:	88 ec       	ldi	r24, 0xC8	; 200
+    1228:	90 e0       	ldi	r25, 0x00	; 0
+    122a:	0e 94 3f 0a 	call	0x147e	; 0x147e <UART_Transmit_String>
+     Output_Clear(&PB,(SD_CS));  // Clear nCS = 0
+    122e:	60 e1       	ldi	r22, 0x10	; 16
+    1230:	83 e2       	ldi	r24, 0x23	; 35
+    1232:	90 e0       	ldi	r25, 0x00	; 0
+    1234:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+     error_flag=Send_Command(CMD58,0);
+    1238:	40 e0       	ldi	r20, 0x00	; 0
+    123a:	50 e0       	ldi	r21, 0x00	; 0
+    123c:	ba 01       	movw	r22, r20
+    123e:	8a e3       	ldi	r24, 0x3A	; 58
+    1240:	0e 94 57 04 	call	0x8ae	; 0x8ae <Send_Command>
+    1244:	f8 2e       	mov	r15, r24
+	 if(error_flag==no_errors)
+    1246:	88 23       	and	r24, r24
+    1248:	09 f4       	brne	.+2      	; 0x124c <SD_Card_Init+0x7d6>
+    124a:	b5 cd       	rjmp	.-1174   	; 0xdb6 <SD_Card_Init+0x340>
+    124c:	0b ce       	rjmp	.-1002   	; 0xe64 <SD_Card_Init+0x3ee>
+	 if(error_flag!=no_errors)
+	 {		
+	    error_status=error_flag;
+	 }
+   }
+   if(error_status==no_errors)
+    124e:	ff 20       	and	r15, r15
+    1250:	09 f4       	brne	.+2      	; 0x1254 <SD_Card_Init+0x7de>
+    1252:	1a ce       	rjmp	.-972    	; 0xe88 <SD_Card_Init+0x412>
+    1254:	1b c0       	rjmp	.+54     	; 0x128c <SD_Card_Init+0x816>
+	 {
+	    //P3_5=0;
+	    error_flag=Send_Command(CMD55,0);
+		if(error_flag==no_errors)  error_flag=Receive_Response(1,valsout);
+		//P3_5=1;
+	    if((valsout[0]==0x01)||(valsout[0]==0x00))
+    1256:	89 81       	ldd	r24, Y+1	; 0x01
+    1258:	82 30       	cpi	r24, 0x02	; 2
+    125a:	08 f0       	brcs	.+2      	; 0x125e <SD_Card_Init+0x7e8>
+    125c:	5d ce       	rjmp	.-838    	; 0xf18 <SD_Card_Init+0x4a2>
+    125e:	4e ce       	rjmp	.-868    	; 0xefc <SD_Card_Init+0x486>
+		}
+        UART_Transmit(&UART1,CR);
+        UART_Transmit(&UART1,LF);
+		if((valsout[1]&0x80)!=0x80)
+		{
+		   error_flag=card_inactive;
+    1260:	0f 2e       	mov	r0, r31
+    1262:	f6 e8       	ldi	r31, 0x86	; 134
+    1264:	ff 2e       	mov	r15, r31
+    1266:	f0 2d       	mov	r31, r0
+    1268:	11 c0       	rjmp	.+34     	; 0x128c <SD_Card_Init+0x816>
+		}
+        UART_Transmit(&UART1,CR);
+        UART_Transmit(&UART1,LF);
+		if(valsout[4]!=0xAA)
+		{
+		   error_flag=response_error;
+    126a:	0f 2e       	mov	r0, r31
+    126c:	f3 e8       	ldi	r31, 0x83	; 131
+    126e:	ff 2e       	mov	r15, r31
+    1270:	f0 2d       	mov	r31, r0
+    1272:	a2 ce       	rjmp	.-700    	; 0xfb8 <SD_Card_Init+0x542>
+	    if((valsout[0]==0x01)||(valsout[0]==0x00))
+		   error_flag=Send_Command(ACMD41,argument);
+	    if(error_flag==no_errors) Receive_Response(1,valsout);
+		timeout++;
+		if(timeout==0) error_flag=timeout_error;
+	   }while(((valsout[0]&0x01)==0x01)&&(error_flag==no_errors));
+    1274:	89 81       	ldd	r24, Y+1	; 0x01
+    1276:	80 fd       	sbrc	r24, 0
+    1278:	8c ce       	rjmp	.-744    	; 0xf92 <SD_Card_Init+0x51c>
+		//P3_5=1;
+	    if((valsout[0]==0x01)||(valsout[0]==0x00))
+		   error_flag=Send_Command(ACMD41,argument);
+	    if(error_flag==no_errors) Receive_Response(1,valsout);
+		timeout++;
+		if(timeout==0) error_flag=timeout_error;
+    127a:	0f 2e       	mov	r0, r31
+    127c:	f1 e8       	ldi	r31, 0x81	; 129
+    127e:	ff 2e       	mov	r15, r31
+    1280:	f0 2d       	mov	r31, r0
+    1282:	54 ce       	rjmp	.-856    	; 0xf2c <SD_Card_Init+0x4b6>
+		}
+        UART_Transmit(&UART1,CR);
+        UART_Transmit(&UART1,LF);
+		if((valsout[2]&0xFC)!=0xFC)
+		{
+		   error_flag=voltage_error;
+    1284:	0f 2e       	mov	r0, r31
+    1286:	f5 e8       	ldi	r31, 0x85	; 133
+    1288:	ff 2e       	mov	r15, r31
+    128a:	f0 2d       	mov	r31, r0
+ /*if(error_status!=no_errors)
+ {		
+	//Print_Error(error_status);
+ } */
+return error_status;
+}
+    128c:	8f 2d       	mov	r24, r15
+    128e:	28 96       	adiw	r28, 0x08	; 8
+    1290:	0f b6       	in	r0, 0x3f	; 63
+    1292:	f8 94       	cli
+    1294:	de bf       	out	0x3e, r29	; 62
+    1296:	0f be       	out	0x3f, r0	; 63
+    1298:	cd bf       	out	0x3d, r28	; 61
+    129a:	df 91       	pop	r29
+    129c:	cf 91       	pop	r28
+    129e:	1f 91       	pop	r17
+    12a0:	0f 91       	pop	r16
+    12a2:	ff 90       	pop	r15
+    12a4:	ef 90       	pop	r14
+    12a6:	df 90       	pop	r13
+    12a8:	cf 90       	pop	r12
+    12aa:	bf 90       	pop	r11
+    12ac:	af 90       	pop	r10
+    12ae:	9f 90       	pop	r9
+    12b0:	7f 90       	pop	r7
+    12b2:	6f 90       	pop	r6
+    12b4:	5f 90       	pop	r5
+    12b6:	4f 90       	pop	r4
+    12b8:	08 95       	ret
+
+000012ba <Return_SD_Card_Type>:
+************************************************************************/
+
+uint8_t Return_SD_Card_Type(void)
+{
+   return SD_Card_Type;
+}
+    12ba:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <__data_end>
+    12be:	08 95       	ret
+
+000012c0 <SPI_Master_Init>:
+CAUTION: Sets the CPHA to 0 and CPOL to 0
+         Disables SS and sets master mode 
+************************************************************************/
+
+uint8_t SPI_Master_Init(uint8_t volatile *SPI_addr, uint32_t clock_rate)
+{
+    12c0:	cf 92       	push	r12
+    12c2:	df 92       	push	r13
+    12c4:	ef 92       	push	r14
+    12c6:	ff 92       	push	r15
+    12c8:	cf 93       	push	r28
+    12ca:	df 93       	push	r29
+    12cc:	ec 01       	movw	r28, r24
+    12ce:	6a 01       	movw	r12, r20
+    12d0:	7b 01       	movw	r14, r22
+  uint8_t divider,return_val,SPR_val;
+  // Enable MOSI and SCK outputs
+  if(SPI_addr==&SPI0)
+    12d2:	8c 34       	cpi	r24, 0x4C	; 76
+    12d4:	91 05       	cpc	r25, r1
+    12d6:	a9 f4       	brne	.+42     	; 0x1302 <SPI_Master_Init+0x42>
+  {
+     Output_Set(&PB,MOSI);
+    12d8:	60 e2       	ldi	r22, 0x20	; 32
+    12da:	83 e2       	ldi	r24, 0x23	; 35
+    12dc:	90 e0       	ldi	r25, 0x00	; 0
+    12de:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+     Output_Init(&PB,MOSI);
+    12e2:	60 e2       	ldi	r22, 0x20	; 32
+    12e4:	83 e2       	ldi	r24, 0x23	; 35
+    12e6:	90 e0       	ldi	r25, 0x00	; 0
+    12e8:	0e 94 10 01 	call	0x220	; 0x220 <Output_Init>
+	 if(Clock_Polarity==0)
+	 {
+	   Output_Clear(&PB,SCK);
+    12ec:	60 e8       	ldi	r22, 0x80	; 128
+    12ee:	83 e2       	ldi	r24, 0x23	; 35
+    12f0:	90 e0       	ldi	r25, 0x00	; 0
+    12f2:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+	   Output_Init(&PB,SCK);
+    12f6:	60 e8       	ldi	r22, 0x80	; 128
+    12f8:	83 e2       	ldi	r24, 0x23	; 35
+    12fa:	90 e0       	ldi	r25, 0x00	; 0
+    12fc:	0e 94 10 01 	call	0x220	; 0x220 <Output_Init>
+    1300:	17 c0       	rjmp	.+46     	; 0x1330 <SPI_Master_Init+0x70>
+	 {
+	   Output_Set(&PB,SCK);
+	   Output_Init(&PB,SCK);
+	 }
+  }
+  else if(SPI_addr==&SPI1)
+    1302:	8c 3a       	cpi	r24, 0xAC	; 172
+    1304:	91 05       	cpc	r25, r1
+    1306:	a1 f4       	brne	.+40     	; 0x1330 <SPI_Master_Init+0x70>
+  {
+     Output_Set(&PE,(1<<3));
+    1308:	68 e0       	ldi	r22, 0x08	; 8
+    130a:	8c e2       	ldi	r24, 0x2C	; 44
+    130c:	90 e0       	ldi	r25, 0x00	; 0
+    130e:	0e 94 15 01 	call	0x22a	; 0x22a <Output_Set>
+     Output_Init(&PE,(1<<3));
+    1312:	68 e0       	ldi	r22, 0x08	; 8
+    1314:	8c e2       	ldi	r24, 0x2C	; 44
+    1316:	90 e0       	ldi	r25, 0x00	; 0
+    1318:	0e 94 10 01 	call	0x220	; 0x220 <Output_Init>
+	 if(Clock_Polarity==0)
+	 {
+	   Output_Clear(&PD,(1<<7));
+    131c:	60 e8       	ldi	r22, 0x80	; 128
+    131e:	89 e2       	ldi	r24, 0x29	; 41
+    1320:	90 e0       	ldi	r25, 0x00	; 0
+    1322:	0e 94 1a 01 	call	0x234	; 0x234 <Output_Clear>
+	   Output_Init(&PD,(1<<7));
+    1326:	60 e8       	ldi	r22, 0x80	; 128
+    1328:	89 e2       	ldi	r24, 0x29	; 41
+    132a:	90 e0       	ldi	r25, 0x00	; 0
+    132c:	0e 94 10 01 	call	0x220	; 0x220 <Output_Init>
+	 }
+  }
+
+
+  return_val=no_errors;
+  divider=(uint8_t)((F_CPU/F_DIV)/clock_rate);
+    1330:	60 e0       	ldi	r22, 0x00	; 0
+    1332:	74 e2       	ldi	r23, 0x24	; 36
+    1334:	84 ef       	ldi	r24, 0xF4	; 244
+    1336:	90 e0       	ldi	r25, 0x00	; 0
+    1338:	a7 01       	movw	r20, r14
+    133a:	96 01       	movw	r18, r12
+    133c:	0e 94 8d 0a 	call	0x151a	; 0x151a <__udivmodsi4>
+  if(divider<2)
+    1340:	22 30       	cpi	r18, 0x02	; 2
+    1342:	30 f4       	brcc	.+12     	; 0x1350 <SPI_Master_Init+0x90>
+  {
+     SPR_val=0;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+    1344:	80 e5       	ldi	r24, 0x50	; 80
+    1346:	88 83       	st	Y, r24
+	 *(SPI_addr+SPSR)=1;
+    1348:	81 e0       	ldi	r24, 0x01	; 1
+    134a:	89 83       	std	Y+1, r24	; 0x01
+	   Output_Init(&PD,(1<<7));
+	 }
+  }
+
+
+  return_val=no_errors;
+    134c:	80 e0       	ldi	r24, 0x00	; 0
+    134e:	38 c0       	rjmp	.+112    	; 0x13c0 <SPI_Master_Init+0x100>
+  {
+     SPR_val=0;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+	 *(SPI_addr+SPSR)=1;
+  }
+  else if((divider>=2)&&(divider<4))
+    1350:	8e ef       	ldi	r24, 0xFE	; 254
+    1352:	82 0f       	add	r24, r18
+    1354:	82 30       	cpi	r24, 0x02	; 2
+    1356:	28 f4       	brcc	.+10     	; 0x1362 <SPI_Master_Init+0xa2>
+  {
+     SPR_val=0;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+    1358:	80 e5       	ldi	r24, 0x50	; 80
+    135a:	88 83       	st	Y, r24
+	 *(SPI_addr+SPSR)=0;
+    135c:	19 82       	std	Y+1, r1	; 0x01
+	   Output_Init(&PD,(1<<7));
+	 }
+  }
+
+
+  return_val=no_errors;
+    135e:	80 e0       	ldi	r24, 0x00	; 0
+    1360:	2f c0       	rjmp	.+94     	; 0x13c0 <SPI_Master_Init+0x100>
+  {
+     SPR_val=0;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+	 *(SPI_addr+SPSR)=0;
+  }
+  else if((divider>=4)&&(divider<8))
+    1362:	8c ef       	ldi	r24, 0xFC	; 252
+    1364:	82 0f       	add	r24, r18
+    1366:	84 30       	cpi	r24, 0x04	; 4
+    1368:	30 f4       	brcc	.+12     	; 0x1376 <SPI_Master_Init+0xb6>
+  {
+     SPR_val=1;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+    136a:	81 e5       	ldi	r24, 0x51	; 81
+    136c:	88 83       	st	Y, r24
+	 *(SPI_addr+SPSR)=1;
+    136e:	81 e0       	ldi	r24, 0x01	; 1
+    1370:	89 83       	std	Y+1, r24	; 0x01
+	   Output_Init(&PD,(1<<7));
+	 }
+  }
+
+
+  return_val=no_errors;
+    1372:	80 e0       	ldi	r24, 0x00	; 0
+    1374:	25 c0       	rjmp	.+74     	; 0x13c0 <SPI_Master_Init+0x100>
+  {
+     SPR_val=1;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+	 *(SPI_addr+SPSR)=1;
+  }
+  else if((divider>=8)&&(divider<16))
+    1376:	88 ef       	ldi	r24, 0xF8	; 248
+    1378:	82 0f       	add	r24, r18
+    137a:	88 30       	cpi	r24, 0x08	; 8
+    137c:	28 f4       	brcc	.+10     	; 0x1388 <SPI_Master_Init+0xc8>
+  {
+     SPR_val=1;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+    137e:	81 e5       	ldi	r24, 0x51	; 81
+    1380:	88 83       	st	Y, r24
+	 *(SPI_addr+SPSR)=0;
+    1382:	19 82       	std	Y+1, r1	; 0x01
+	   Output_Init(&PD,(1<<7));
+	 }
+  }
+
+
+  return_val=no_errors;
+    1384:	80 e0       	ldi	r24, 0x00	; 0
+    1386:	1c c0       	rjmp	.+56     	; 0x13c0 <SPI_Master_Init+0x100>
+  {
+     SPR_val=1;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+	 *(SPI_addr+SPSR)=0;
+  } 
+  else if((divider>=16)&&(divider<32))
+    1388:	80 ef       	ldi	r24, 0xF0	; 240
+    138a:	82 0f       	add	r24, r18
+    138c:	80 31       	cpi	r24, 0x10	; 16
+    138e:	30 f4       	brcc	.+12     	; 0x139c <SPI_Master_Init+0xdc>
+  {
+     SPR_val=2;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+    1390:	82 e5       	ldi	r24, 0x52	; 82
+    1392:	88 83       	st	Y, r24
+	 *(SPI_addr+SPSR)=1;
+    1394:	81 e0       	ldi	r24, 0x01	; 1
+    1396:	89 83       	std	Y+1, r24	; 0x01
+	   Output_Init(&PD,(1<<7));
+	 }
+  }
+
+
+  return_val=no_errors;
+    1398:	80 e0       	ldi	r24, 0x00	; 0
+    139a:	12 c0       	rjmp	.+36     	; 0x13c0 <SPI_Master_Init+0x100>
+  {
+     SPR_val=2;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+	 *(SPI_addr+SPSR)=1;
+  }
+  else if((divider>=32)&&(divider<64))
+    139c:	80 ee       	ldi	r24, 0xE0	; 224
+    139e:	82 0f       	add	r24, r18
+    13a0:	80 32       	cpi	r24, 0x20	; 32
+    13a2:	28 f4       	brcc	.+10     	; 0x13ae <SPI_Master_Init+0xee>
+  {
+     SPR_val=2;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+    13a4:	82 e5       	ldi	r24, 0x52	; 82
+    13a6:	88 83       	st	Y, r24
+	 *(SPI_addr+SPSR)=0;
+    13a8:	19 82       	std	Y+1, r1	; 0x01
+	   Output_Init(&PD,(1<<7));
+	 }
+  }
+
+
+  return_val=no_errors;
+    13aa:	80 e0       	ldi	r24, 0x00	; 0
+    13ac:	09 c0       	rjmp	.+18     	; 0x13c0 <SPI_Master_Init+0x100>
+  {
+     SPR_val=2;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+	 *(SPI_addr+SPSR)=0;
+  }
+  else if((divider>=64)&&(divider<128))
+    13ae:	20 54       	subi	r18, 0x40	; 64
+    13b0:	20 34       	cpi	r18, 0x40	; 64
+    13b2:	28 f4       	brcc	.+10     	; 0x13be <SPI_Master_Init+0xfe>
+  {
+     SPR_val=3;
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+    13b4:	83 e5       	ldi	r24, 0x53	; 83
+    13b6:	88 83       	st	Y, r24
+	 *(SPI_addr+SPSR)=0;
+    13b8:	19 82       	std	Y+1, r1	; 0x01
+	   Output_Init(&PD,(1<<7));
+	 }
+  }
+
+
+  return_val=no_errors;
+    13ba:	80 e0       	ldi	r24, 0x00	; 0
+    13bc:	01 c0       	rjmp	.+2      	; 0x13c0 <SPI_Master_Init+0x100>
+	 *(SPI_addr+SPCR)=((1<<SPE)|(1<<MSTR)|(Clock_Polarity<<3)|(Clock_Phase<<2)|SPR_val);
+	 *(SPI_addr+SPSR)=0;
+  }
+  else  // if the SPI clock rate is too slow, a divider cannot be found
+  {
+    return_val=illegal_clockrate;
+    13be:	8f e0       	ldi	r24, 0x0F	; 15
+  }
+  return return_val;
+}
+    13c0:	df 91       	pop	r29
+    13c2:	cf 91       	pop	r28
+    13c4:	ff 90       	pop	r15
+    13c6:	ef 90       	pop	r14
+    13c8:	df 90       	pop	r13
+    13ca:	cf 90       	pop	r12
+    13cc:	08 95       	ret
+
+000013ce <SPI_Transfer>:
+CAUTION: Waits for the SPI transfer to be complete
+************************************************************************/
+
+
+uint8_t SPI_Transfer(uint8_t volatile *SPI_addr, uint8_t data_input)
+{
+    13ce:	fc 01       	movw	r30, r24
+   uint8_t test;
+   *(SPI_addr+SPDR)=data_input;
+    13d0:	62 83       	std	Z+2, r22	; 0x02
+   do
+   {
+      test=*(SPI_addr+SPSR);
+    13d2:	91 81       	ldd	r25, Z+1	; 0x01
+   }while((test&0x80)==0);
+    13d4:	99 23       	and	r25, r25
+    13d6:	ec f7       	brge	.-6      	; 0x13d2 <SPI_Transfer+0x4>
+   
+   return *(SPI_addr+SPDR);
+    13d8:	82 81       	ldd	r24, Z+2	; 0x02
+}
+    13da:	08 95       	ret
+
+000013dc <UART_init>:
+
+
+
+
+void UART_init (uint8_t volatile * UART_addr, uint16_t Baud_Rate)
+{
+    13dc:	cf 93       	push	r28
+    13de:	df 93       	push	r29
+    13e0:	ec 01       	movw	r28, r24
+	uint16_t Baud_Rate_Reload;
+	Baud_Rate_Reload = (uint16_t)(((F_CPU/F_DIV)/(8UL*(2-U2X_bit)*Baud_Rate))-1);
+    13e2:	cb 01       	movw	r24, r22
+    13e4:	a0 e0       	ldi	r26, 0x00	; 0
+    13e6:	b0 e0       	ldi	r27, 0x00	; 0
+    13e8:	88 0f       	add	r24, r24
+    13ea:	99 1f       	adc	r25, r25
+    13ec:	aa 1f       	adc	r26, r26
+    13ee:	bb 1f       	adc	r27, r27
+    13f0:	88 0f       	add	r24, r24
+    13f2:	99 1f       	adc	r25, r25
+    13f4:	aa 1f       	adc	r26, r26
+    13f6:	bb 1f       	adc	r27, r27
+    13f8:	9c 01       	movw	r18, r24
+    13fa:	ad 01       	movw	r20, r26
+    13fc:	22 0f       	add	r18, r18
+    13fe:	33 1f       	adc	r19, r19
+    1400:	44 1f       	adc	r20, r20
+    1402:	55 1f       	adc	r21, r21
+    1404:	60 e0       	ldi	r22, 0x00	; 0
+    1406:	74 e2       	ldi	r23, 0x24	; 36
+    1408:	84 ef       	ldi	r24, 0xF4	; 244
+    140a:	90 e0       	ldi	r25, 0x00	; 0
+    140c:	0e 94 8d 0a 	call	0x151a	; 0x151a <__udivmodsi4>
+    1410:	21 50       	subi	r18, 0x01	; 1
+    1412:	31 09       	sbc	r19, r1
+	
+	*(UART_addr+UBBRH) = (Baud_Rate_Reload / 256);
+    1414:	3d 83       	std	Y+5, r19	; 0x05
+	*(UART_addr+UBBRL) = (Baud_Rate_Reload % 256);
+    1416:	2c 83       	std	Y+4, r18	; 0x04
+		
+	*(UART_addr+UCSRA) = U2X_bit<<1;
+    1418:	82 e0       	ldi	r24, 0x02	; 2
+    141a:	88 83       	st	Y, r24
+	*(UART_addr+UCSRC) = Asynchronous|No_Parity|One_Stop_Bit|Eight_Data_bits;
+    141c:	86 e0       	ldi	r24, 0x06	; 6
+    141e:	8a 83       	std	Y+2, r24	; 0x02
+	*(UART_addr+UCSRB) = RX_enable|TX_enable;
+    1420:	88 e1       	ldi	r24, 0x18	; 24
+    1422:	89 83       	std	Y+1, r24	; 0x01
+}
+    1424:	df 91       	pop	r29
+    1426:	cf 91       	pop	r28
+    1428:	08 95       	ret
+
+0000142a <UART_Transmit>:
+
+int8_t UART_Transmit(uint8_t volatile * UART_addr, int8_t c)
+{
+    142a:	fc 01       	movw	r30, r24
+	uint8_t status;
+	do
+	{
+		status=*(UART_addr+UCSRA);
+    142c:	90 81       	ld	r25, Z
+	} while ((status & (1 << UDRE))!=(1 << UDRE));
+    142e:	95 ff       	sbrs	r25, 5
+    1430:	fd cf       	rjmp	.-6      	; 0x142c <UART_Transmit+0x2>
+	*(UART_addr+UDR) = c;
+    1432:	66 83       	std	Z+6, r22	; 0x06
+	return 0;
+}
+    1434:	80 e0       	ldi	r24, 0x00	; 0
+    1436:	08 95       	ret
+
+00001438 <Export_print_buffer>:
+//**** Used to make the global print_buffer available to other source code files *****//
+uint8_t * Export_print_buffer(void)
+{
+	
+	return print_buffer;
+}
+    1438:	87 e2       	ldi	r24, 0x27	; 39
+    143a:	91 e0       	ldi	r25, 0x01	; 1
+    143c:	08 95       	ret
+
+0000143e <Copy_String_to_Buffer>:
+//***** If num_bytes!=0, then the specified number of bytes is copied. ****// 
+uint8_t Copy_String_to_Buffer(const int8_t * flash_string, uint8_t num_bytes, uint8_t * buffer_p)
+{
+	uint8_t index;
+	uint8_t value;
+	if(num_bytes==0)
+    143e:	61 11       	cpse	r22, r1
+    1440:	0e c0       	rjmp	.+28     	; 0x145e <Copy_String_to_Buffer+0x20>
+	{
+		index=0;
+		do
+		{
+			value=pgm_read_byte(&flash_string[index]);
+    1442:	26 2f       	mov	r18, r22
+    1444:	30 e0       	ldi	r19, 0x00	; 0
+    1446:	fc 01       	movw	r30, r24
+    1448:	e2 0f       	add	r30, r18
+    144a:	f3 1f       	adc	r31, r19
+    144c:	e4 91       	lpm	r30, Z
+			buffer_p[index]=value;
+    144e:	da 01       	movw	r26, r20
+    1450:	a2 0f       	add	r26, r18
+    1452:	b3 1f       	adc	r27, r19
+    1454:	ec 93       	st	X, r30
+			index++;
+    1456:	6f 5f       	subi	r22, 0xFF	; 255
+		} while (value!=0);
+    1458:	e1 11       	cpse	r30, r1
+    145a:	f3 cf       	rjmp	.-26     	; 0x1442 <Copy_String_to_Buffer+0x4>
+    145c:	0e c0       	rjmp	.+28     	; 0x147a <Copy_String_to_Buffer+0x3c>
+    145e:	fc 01       	movw	r30, r24
+    1460:	da 01       	movw	r26, r20
+    1462:	8f ef       	ldi	r24, 0xFF	; 255
+    1464:	86 0f       	add	r24, r22
+    1466:	90 e0       	ldi	r25, 0x00	; 0
+    1468:	01 96       	adiw	r24, 0x01	; 1
+    146a:	48 0f       	add	r20, r24
+    146c:	59 1f       	adc	r21, r25
+	}
+	else
+	{
+		for(index=0;index<num_bytes;index++)
+		{
+			value=pgm_read_byte(&flash_string[index]);
+    146e:	84 91       	lpm	r24, Z
+			buffer_p[index]=value;
+    1470:	8d 93       	st	X+, r24
+    1472:	31 96       	adiw	r30, 0x01	; 1
+			index++;
+		} while (value!=0);
+	}
+	else
+	{
+		for(index=0;index<num_bytes;index++)
+    1474:	a4 17       	cp	r26, r20
+    1476:	b5 07       	cpc	r27, r21
+    1478:	d1 f7       	brne	.-12     	; 0x146e <Copy_String_to_Buffer+0x30>
+			buffer_p[index]=value;
+		}
+		index=num_bytes;
+	}
+	return index;
+}
+    147a:	86 2f       	mov	r24, r22
+    147c:	08 95       	ret
+
+0000147e <UART_Transmit_String>:
+
+//***** Transmits a string of unsigned bytes stored in an SRAM array (print buffer) using the specified UART.  ****//
+//***** If num_bytes==0, then the transmitting continues until a NULL termination is found. ****//
+//***** If num_bytes!=0, then the specified number of bytes is transmitted. ****//
+void UART_Transmit_String(uint8_t volatile * UART_addr, uint8_t num_bytes, uint8_t * string_name)
+{
+    147e:	cf 92       	push	r12
+    1480:	df 92       	push	r13
+    1482:	ef 92       	push	r14
+    1484:	ff 92       	push	r15
+    1486:	0f 93       	push	r16
+    1488:	1f 93       	push	r17
+    148a:	cf 93       	push	r28
+    148c:	df 93       	push	r29
+    148e:	7c 01       	movw	r14, r24
+    1490:	8a 01       	movw	r16, r20
+	int8_t temp8,index;
+	if(num_bytes==0)
+    1492:	66 23       	and	r22, r22
+    1494:	31 f0       	breq	.+12     	; 0x14a2 <UART_Transmit_String+0x24>
+			temp8=*string_name;
+		}
+	}
+	else
+	{
+		for(index=0;index<num_bytes;index++)
+    1496:	c6 2e       	mov	r12, r22
+    1498:	d1 2c       	mov	r13, r1
+    149a:	1c 14       	cp	r1, r12
+    149c:	1d 04       	cpc	r1, r13
+    149e:	74 f0       	brlt	.+28     	; 0x14bc <UART_Transmit_String+0x3e>
+    14a0:	1f c0       	rjmp	.+62     	; 0x14e0 <UART_Transmit_String+0x62>
+void UART_Transmit_String(uint8_t volatile * UART_addr, uint8_t num_bytes, uint8_t * string_name)
+{
+	int8_t temp8,index;
+	if(num_bytes==0)
+	{
+		temp8=*string_name;
+    14a2:	fa 01       	movw	r30, r20
+    14a4:	60 81       	ld	r22, Z
+		while (temp8!=0)
+    14a6:	66 23       	and	r22, r22
+    14a8:	d9 f0       	breq	.+54     	; 0x14e0 <UART_Transmit_String+0x62>
+    14aa:	ea 01       	movw	r28, r20
+    14ac:	21 96       	adiw	r28, 0x01	; 1
+		{
+			UART_Transmit(UART_addr, temp8);
+    14ae:	c7 01       	movw	r24, r14
+    14b0:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+			string_name++;
+			temp8=*string_name;
+    14b4:	69 91       	ld	r22, Y+
+{
+	int8_t temp8,index;
+	if(num_bytes==0)
+	{
+		temp8=*string_name;
+		while (temp8!=0)
+    14b6:	61 11       	cpse	r22, r1
+    14b8:	fa cf       	rjmp	.-12     	; 0x14ae <UART_Transmit_String+0x30>
+    14ba:	12 c0       	rjmp	.+36     	; 0x14e0 <UART_Transmit_String+0x62>
+			temp8=*string_name;
+		}
+	}
+	else
+	{
+		for(index=0;index<num_bytes;index++)
+    14bc:	c0 e0       	ldi	r28, 0x00	; 0
+		{
+			UART_Transmit(UART_addr, string_name[index]);
+    14be:	f8 01       	movw	r30, r16
+    14c0:	ec 0f       	add	r30, r28
+    14c2:	f1 1d       	adc	r31, r1
+    14c4:	c7 fd       	sbrc	r28, 7
+    14c6:	fa 95       	dec	r31
+    14c8:	60 81       	ld	r22, Z
+    14ca:	c7 01       	movw	r24, r14
+    14cc:	0e 94 15 0a 	call	0x142a	; 0x142a <UART_Transmit>
+    14d0:	cf 5f       	subi	r28, 0xFF	; 255
+			temp8=*string_name;
+		}
+	}
+	else
+	{
+		for(index=0;index<num_bytes;index++)
+    14d2:	8c 2f       	mov	r24, r28
+    14d4:	0c 2e       	mov	r0, r28
+    14d6:	00 0c       	add	r0, r0
+    14d8:	99 0b       	sbc	r25, r25
+    14da:	8c 15       	cp	r24, r12
+    14dc:	9d 05       	cpc	r25, r13
+    14de:	7c f3       	brlt	.-34     	; 0x14be <UART_Transmit_String+0x40>
+		{
+			UART_Transmit(UART_addr, string_name[index]);
+		}
+	}
+}
+    14e0:	df 91       	pop	r29
+    14e2:	cf 91       	pop	r28
+    14e4:	1f 91       	pop	r17
+    14e6:	0f 91       	pop	r16
+    14e8:	ff 90       	pop	r15
+    14ea:	ef 90       	pop	r14
+    14ec:	df 90       	pop	r13
+    14ee:	cf 90       	pop	r12
+    14f0:	08 95       	ret
+
+000014f2 <__udivmodhi4>:
+    14f2:	aa 1b       	sub	r26, r26
+    14f4:	bb 1b       	sub	r27, r27
+    14f6:	51 e1       	ldi	r21, 0x11	; 17
+    14f8:	07 c0       	rjmp	.+14     	; 0x1508 <__udivmodhi4_ep>
+
+000014fa <__udivmodhi4_loop>:
+    14fa:	aa 1f       	adc	r26, r26
+    14fc:	bb 1f       	adc	r27, r27
+    14fe:	a6 17       	cp	r26, r22
+    1500:	b7 07       	cpc	r27, r23
+    1502:	10 f0       	brcs	.+4      	; 0x1508 <__udivmodhi4_ep>
+    1504:	a6 1b       	sub	r26, r22
+    1506:	b7 0b       	sbc	r27, r23
+
+00001508 <__udivmodhi4_ep>:
+    1508:	88 1f       	adc	r24, r24
+    150a:	99 1f       	adc	r25, r25
+    150c:	5a 95       	dec	r21
+    150e:	a9 f7       	brne	.-22     	; 0x14fa <__udivmodhi4_loop>
+    1510:	80 95       	com	r24
+    1512:	90 95       	com	r25
+    1514:	bc 01       	movw	r22, r24
+    1516:	cd 01       	movw	r24, r26
+    1518:	08 95       	ret
+
+0000151a <__udivmodsi4>:
+    151a:	a1 e2       	ldi	r26, 0x21	; 33
+    151c:	1a 2e       	mov	r1, r26
+    151e:	aa 1b       	sub	r26, r26
+    1520:	bb 1b       	sub	r27, r27
+    1522:	fd 01       	movw	r30, r26
+    1524:	0d c0       	rjmp	.+26     	; 0x1540 <__udivmodsi4_ep>
+
+00001526 <__udivmodsi4_loop>:
+    1526:	aa 1f       	adc	r26, r26
+    1528:	bb 1f       	adc	r27, r27
+    152a:	ee 1f       	adc	r30, r30
+    152c:	ff 1f       	adc	r31, r31
+    152e:	a2 17       	cp	r26, r18
+    1530:	b3 07       	cpc	r27, r19
+    1532:	e4 07       	cpc	r30, r20
+    1534:	f5 07       	cpc	r31, r21
+    1536:	20 f0       	brcs	.+8      	; 0x1540 <__udivmodsi4_ep>
+    1538:	a2 1b       	sub	r26, r18
+    153a:	b3 0b       	sbc	r27, r19
+    153c:	e4 0b       	sbc	r30, r20
+    153e:	f5 0b       	sbc	r31, r21
+
+00001540 <__udivmodsi4_ep>:
+    1540:	66 1f       	adc	r22, r22
+    1542:	77 1f       	adc	r23, r23
+    1544:	88 1f       	adc	r24, r24
+    1546:	99 1f       	adc	r25, r25
+    1548:	1a 94       	dec	r1
+    154a:	69 f7       	brne	.-38     	; 0x1526 <__udivmodsi4_loop>
+    154c:	60 95       	com	r22
+    154e:	70 95       	com	r23
+    1550:	80 95       	com	r24
+    1552:	90 95       	com	r25
+    1554:	9b 01       	movw	r18, r22
+    1556:	ac 01       	movw	r20, r24
+    1558:	bd 01       	movw	r22, r26
+    155a:	cf 01       	movw	r24, r30
+    155c:	08 95       	ret
+
+0000155e <__muluhisi3>:
+    155e:	0e 94 ba 0a 	call	0x1574	; 0x1574 <__umulhisi3>
+    1562:	a5 9f       	mul	r26, r21
+    1564:	90 0d       	add	r25, r0
+    1566:	b4 9f       	mul	r27, r20
+    1568:	90 0d       	add	r25, r0
+    156a:	a4 9f       	mul	r26, r20
+    156c:	80 0d       	add	r24, r0
+    156e:	91 1d       	adc	r25, r1
+    1570:	11 24       	eor	r1, r1
+    1572:	08 95       	ret
+
+00001574 <__umulhisi3>:
+    1574:	a2 9f       	mul	r26, r18
+    1576:	b0 01       	movw	r22, r0
+    1578:	b3 9f       	mul	r27, r19
+    157a:	c0 01       	movw	r24, r0
+    157c:	a3 9f       	mul	r26, r19
+    157e:	70 0d       	add	r23, r0
+    1580:	81 1d       	adc	r24, r1
+    1582:	11 24       	eor	r1, r1
+    1584:	91 1d       	adc	r25, r1
+    1586:	b2 9f       	mul	r27, r18
+    1588:	70 0d       	add	r23, r0
+    158a:	81 1d       	adc	r24, r1
+    158c:	11 24       	eor	r1, r1
+    158e:	91 1d       	adc	r25, r1
+    1590:	08 95       	ret
+
+00001592 <sprintf>:
+    1592:	ae e0       	ldi	r26, 0x0E	; 14
+    1594:	b0 e0       	ldi	r27, 0x00	; 0
+    1596:	ef ec       	ldi	r30, 0xCF	; 207
+    1598:	fa e0       	ldi	r31, 0x0A	; 10
+    159a:	0c 94 8a 0d 	jmp	0x1b14	; 0x1b14 <__prologue_saves__+0x1c>
+    159e:	0d 89       	ldd	r16, Y+21	; 0x15
+    15a0:	1e 89       	ldd	r17, Y+22	; 0x16
+    15a2:	86 e0       	ldi	r24, 0x06	; 6
+    15a4:	8c 83       	std	Y+4, r24	; 0x04
+    15a6:	1a 83       	std	Y+2, r17	; 0x02
+    15a8:	09 83       	std	Y+1, r16	; 0x01
+    15aa:	8f ef       	ldi	r24, 0xFF	; 255
+    15ac:	9f e7       	ldi	r25, 0x7F	; 127
+    15ae:	9e 83       	std	Y+6, r25	; 0x06
+    15b0:	8d 83       	std	Y+5, r24	; 0x05
+    15b2:	ae 01       	movw	r20, r28
+    15b4:	47 5e       	subi	r20, 0xE7	; 231
+    15b6:	5f 4f       	sbci	r21, 0xFF	; 255
+    15b8:	6f 89       	ldd	r22, Y+23	; 0x17
+    15ba:	78 8d       	ldd	r23, Y+24	; 0x18
+    15bc:	ce 01       	movw	r24, r28
+    15be:	01 96       	adiw	r24, 0x01	; 1
+    15c0:	0e 94 eb 0a 	call	0x15d6	; 0x15d6 <vfprintf>
+    15c4:	ef 81       	ldd	r30, Y+7	; 0x07
+    15c6:	f8 85       	ldd	r31, Y+8	; 0x08
+    15c8:	e0 0f       	add	r30, r16
+    15ca:	f1 1f       	adc	r31, r17
+    15cc:	10 82       	st	Z, r1
+    15ce:	2e 96       	adiw	r28, 0x0e	; 14
+    15d0:	e4 e0       	ldi	r30, 0x04	; 4
+    15d2:	0c 94 a6 0d 	jmp	0x1b4c	; 0x1b4c <__epilogue_restores__+0x1c>
+
+000015d6 <vfprintf>:
+    15d6:	ab e0       	ldi	r26, 0x0B	; 11
+    15d8:	b0 e0       	ldi	r27, 0x00	; 0
+    15da:	e1 ef       	ldi	r30, 0xF1	; 241
+    15dc:	fa e0       	ldi	r31, 0x0A	; 10
+    15de:	0c 94 7c 0d 	jmp	0x1af8	; 0x1af8 <__prologue_saves__>
+    15e2:	6c 01       	movw	r12, r24
+    15e4:	7b 01       	movw	r14, r22
+    15e6:	8a 01       	movw	r16, r20
+    15e8:	fc 01       	movw	r30, r24
+    15ea:	17 82       	std	Z+7, r1	; 0x07
+    15ec:	16 82       	std	Z+6, r1	; 0x06
+    15ee:	83 81       	ldd	r24, Z+3	; 0x03
+    15f0:	81 ff       	sbrs	r24, 1
+    15f2:	cc c1       	rjmp	.+920    	; 0x198c <vfprintf+0x3b6>
+    15f4:	ce 01       	movw	r24, r28
+    15f6:	01 96       	adiw	r24, 0x01	; 1
+    15f8:	3c 01       	movw	r6, r24
+    15fa:	f6 01       	movw	r30, r12
+    15fc:	93 81       	ldd	r25, Z+3	; 0x03
+    15fe:	f7 01       	movw	r30, r14
+    1600:	93 fd       	sbrc	r25, 3
+    1602:	85 91       	lpm	r24, Z+
+    1604:	93 ff       	sbrs	r25, 3
+    1606:	81 91       	ld	r24, Z+
+    1608:	7f 01       	movw	r14, r30
+    160a:	88 23       	and	r24, r24
+    160c:	09 f4       	brne	.+2      	; 0x1610 <vfprintf+0x3a>
+    160e:	ba c1       	rjmp	.+884    	; 0x1984 <vfprintf+0x3ae>
+    1610:	85 32       	cpi	r24, 0x25	; 37
+    1612:	39 f4       	brne	.+14     	; 0x1622 <vfprintf+0x4c>
+    1614:	93 fd       	sbrc	r25, 3
+    1616:	85 91       	lpm	r24, Z+
+    1618:	93 ff       	sbrs	r25, 3
+    161a:	81 91       	ld	r24, Z+
+    161c:	7f 01       	movw	r14, r30
+    161e:	85 32       	cpi	r24, 0x25	; 37
+    1620:	29 f4       	brne	.+10     	; 0x162c <vfprintf+0x56>
+    1622:	b6 01       	movw	r22, r12
+    1624:	90 e0       	ldi	r25, 0x00	; 0
+    1626:	0e 94 e2 0c 	call	0x19c4	; 0x19c4 <fputc>
+    162a:	e7 cf       	rjmp	.-50     	; 0x15fa <vfprintf+0x24>
+    162c:	91 2c       	mov	r9, r1
+    162e:	21 2c       	mov	r2, r1
+    1630:	31 2c       	mov	r3, r1
+    1632:	ff e1       	ldi	r31, 0x1F	; 31
+    1634:	f3 15       	cp	r31, r3
+    1636:	d8 f0       	brcs	.+54     	; 0x166e <vfprintf+0x98>
+    1638:	8b 32       	cpi	r24, 0x2B	; 43
+    163a:	79 f0       	breq	.+30     	; 0x165a <vfprintf+0x84>
+    163c:	38 f4       	brcc	.+14     	; 0x164c <vfprintf+0x76>
+    163e:	80 32       	cpi	r24, 0x20	; 32
+    1640:	79 f0       	breq	.+30     	; 0x1660 <vfprintf+0x8a>
+    1642:	83 32       	cpi	r24, 0x23	; 35
+    1644:	a1 f4       	brne	.+40     	; 0x166e <vfprintf+0x98>
+    1646:	23 2d       	mov	r18, r3
+    1648:	20 61       	ori	r18, 0x10	; 16
+    164a:	1d c0       	rjmp	.+58     	; 0x1686 <vfprintf+0xb0>
+    164c:	8d 32       	cpi	r24, 0x2D	; 45
+    164e:	61 f0       	breq	.+24     	; 0x1668 <vfprintf+0x92>
+    1650:	80 33       	cpi	r24, 0x30	; 48
+    1652:	69 f4       	brne	.+26     	; 0x166e <vfprintf+0x98>
+    1654:	23 2d       	mov	r18, r3
+    1656:	21 60       	ori	r18, 0x01	; 1
+    1658:	16 c0       	rjmp	.+44     	; 0x1686 <vfprintf+0xb0>
+    165a:	83 2d       	mov	r24, r3
+    165c:	82 60       	ori	r24, 0x02	; 2
+    165e:	38 2e       	mov	r3, r24
+    1660:	e3 2d       	mov	r30, r3
+    1662:	e4 60       	ori	r30, 0x04	; 4
+    1664:	3e 2e       	mov	r3, r30
+    1666:	2a c0       	rjmp	.+84     	; 0x16bc <vfprintf+0xe6>
+    1668:	f3 2d       	mov	r31, r3
+    166a:	f8 60       	ori	r31, 0x08	; 8
+    166c:	1d c0       	rjmp	.+58     	; 0x16a8 <vfprintf+0xd2>
+    166e:	37 fc       	sbrc	r3, 7
+    1670:	2d c0       	rjmp	.+90     	; 0x16cc <vfprintf+0xf6>
+    1672:	20 ed       	ldi	r18, 0xD0	; 208
+    1674:	28 0f       	add	r18, r24
+    1676:	2a 30       	cpi	r18, 0x0A	; 10
+    1678:	40 f0       	brcs	.+16     	; 0x168a <vfprintf+0xb4>
+    167a:	8e 32       	cpi	r24, 0x2E	; 46
+    167c:	b9 f4       	brne	.+46     	; 0x16ac <vfprintf+0xd6>
+    167e:	36 fc       	sbrc	r3, 6
+    1680:	81 c1       	rjmp	.+770    	; 0x1984 <vfprintf+0x3ae>
+    1682:	23 2d       	mov	r18, r3
+    1684:	20 64       	ori	r18, 0x40	; 64
+    1686:	32 2e       	mov	r3, r18
+    1688:	19 c0       	rjmp	.+50     	; 0x16bc <vfprintf+0xe6>
+    168a:	36 fe       	sbrs	r3, 6
+    168c:	06 c0       	rjmp	.+12     	; 0x169a <vfprintf+0xc4>
+    168e:	8a e0       	ldi	r24, 0x0A	; 10
+    1690:	98 9e       	mul	r9, r24
+    1692:	20 0d       	add	r18, r0
+    1694:	11 24       	eor	r1, r1
+    1696:	92 2e       	mov	r9, r18
+    1698:	11 c0       	rjmp	.+34     	; 0x16bc <vfprintf+0xe6>
+    169a:	ea e0       	ldi	r30, 0x0A	; 10
+    169c:	2e 9e       	mul	r2, r30
+    169e:	20 0d       	add	r18, r0
+    16a0:	11 24       	eor	r1, r1
+    16a2:	22 2e       	mov	r2, r18
+    16a4:	f3 2d       	mov	r31, r3
+    16a6:	f0 62       	ori	r31, 0x20	; 32
+    16a8:	3f 2e       	mov	r3, r31
+    16aa:	08 c0       	rjmp	.+16     	; 0x16bc <vfprintf+0xe6>
+    16ac:	8c 36       	cpi	r24, 0x6C	; 108
+    16ae:	21 f4       	brne	.+8      	; 0x16b8 <vfprintf+0xe2>
+    16b0:	83 2d       	mov	r24, r3
+    16b2:	80 68       	ori	r24, 0x80	; 128
+    16b4:	38 2e       	mov	r3, r24
+    16b6:	02 c0       	rjmp	.+4      	; 0x16bc <vfprintf+0xe6>
+    16b8:	88 36       	cpi	r24, 0x68	; 104
+    16ba:	41 f4       	brne	.+16     	; 0x16cc <vfprintf+0xf6>
+    16bc:	f7 01       	movw	r30, r14
+    16be:	93 fd       	sbrc	r25, 3
+    16c0:	85 91       	lpm	r24, Z+
+    16c2:	93 ff       	sbrs	r25, 3
+    16c4:	81 91       	ld	r24, Z+
+    16c6:	7f 01       	movw	r14, r30
+    16c8:	81 11       	cpse	r24, r1
+    16ca:	b3 cf       	rjmp	.-154    	; 0x1632 <vfprintf+0x5c>
+    16cc:	98 2f       	mov	r25, r24
+    16ce:	9f 7d       	andi	r25, 0xDF	; 223
+    16d0:	95 54       	subi	r25, 0x45	; 69
+    16d2:	93 30       	cpi	r25, 0x03	; 3
+    16d4:	28 f4       	brcc	.+10     	; 0x16e0 <vfprintf+0x10a>
+    16d6:	0c 5f       	subi	r16, 0xFC	; 252
+    16d8:	1f 4f       	sbci	r17, 0xFF	; 255
+    16da:	9f e3       	ldi	r25, 0x3F	; 63
+    16dc:	99 83       	std	Y+1, r25	; 0x01
+    16de:	0d c0       	rjmp	.+26     	; 0x16fa <vfprintf+0x124>
+    16e0:	83 36       	cpi	r24, 0x63	; 99
+    16e2:	31 f0       	breq	.+12     	; 0x16f0 <vfprintf+0x11a>
+    16e4:	83 37       	cpi	r24, 0x73	; 115
+    16e6:	71 f0       	breq	.+28     	; 0x1704 <vfprintf+0x12e>
+    16e8:	83 35       	cpi	r24, 0x53	; 83
+    16ea:	09 f0       	breq	.+2      	; 0x16ee <vfprintf+0x118>
+    16ec:	59 c0       	rjmp	.+178    	; 0x17a0 <vfprintf+0x1ca>
+    16ee:	21 c0       	rjmp	.+66     	; 0x1732 <vfprintf+0x15c>
+    16f0:	f8 01       	movw	r30, r16
+    16f2:	80 81       	ld	r24, Z
+    16f4:	89 83       	std	Y+1, r24	; 0x01
+    16f6:	0e 5f       	subi	r16, 0xFE	; 254
+    16f8:	1f 4f       	sbci	r17, 0xFF	; 255
+    16fa:	88 24       	eor	r8, r8
+    16fc:	83 94       	inc	r8
+    16fe:	91 2c       	mov	r9, r1
+    1700:	53 01       	movw	r10, r6
+    1702:	13 c0       	rjmp	.+38     	; 0x172a <vfprintf+0x154>
+    1704:	28 01       	movw	r4, r16
+    1706:	f2 e0       	ldi	r31, 0x02	; 2
+    1708:	4f 0e       	add	r4, r31
+    170a:	51 1c       	adc	r5, r1
+    170c:	f8 01       	movw	r30, r16
+    170e:	a0 80       	ld	r10, Z
+    1710:	b1 80       	ldd	r11, Z+1	; 0x01
+    1712:	36 fe       	sbrs	r3, 6
+    1714:	03 c0       	rjmp	.+6      	; 0x171c <vfprintf+0x146>
+    1716:	69 2d       	mov	r22, r9
+    1718:	70 e0       	ldi	r23, 0x00	; 0
+    171a:	02 c0       	rjmp	.+4      	; 0x1720 <vfprintf+0x14a>
+    171c:	6f ef       	ldi	r22, 0xFF	; 255
+    171e:	7f ef       	ldi	r23, 0xFF	; 255
+    1720:	c5 01       	movw	r24, r10
+    1722:	0e 94 d7 0c 	call	0x19ae	; 0x19ae <strnlen>
+    1726:	4c 01       	movw	r8, r24
+    1728:	82 01       	movw	r16, r4
+    172a:	f3 2d       	mov	r31, r3
+    172c:	ff 77       	andi	r31, 0x7F	; 127
+    172e:	3f 2e       	mov	r3, r31
+    1730:	16 c0       	rjmp	.+44     	; 0x175e <vfprintf+0x188>
+    1732:	28 01       	movw	r4, r16
+    1734:	22 e0       	ldi	r18, 0x02	; 2
+    1736:	42 0e       	add	r4, r18
+    1738:	51 1c       	adc	r5, r1
+    173a:	f8 01       	movw	r30, r16
+    173c:	a0 80       	ld	r10, Z
+    173e:	b1 80       	ldd	r11, Z+1	; 0x01
+    1740:	36 fe       	sbrs	r3, 6
+    1742:	03 c0       	rjmp	.+6      	; 0x174a <vfprintf+0x174>
+    1744:	69 2d       	mov	r22, r9
+    1746:	70 e0       	ldi	r23, 0x00	; 0
+    1748:	02 c0       	rjmp	.+4      	; 0x174e <vfprintf+0x178>
+    174a:	6f ef       	ldi	r22, 0xFF	; 255
+    174c:	7f ef       	ldi	r23, 0xFF	; 255
+    174e:	c5 01       	movw	r24, r10
+    1750:	0e 94 cc 0c 	call	0x1998	; 0x1998 <strnlen_P>
+    1754:	4c 01       	movw	r8, r24
+    1756:	f3 2d       	mov	r31, r3
+    1758:	f0 68       	ori	r31, 0x80	; 128
+    175a:	3f 2e       	mov	r3, r31
+    175c:	82 01       	movw	r16, r4
+    175e:	33 fc       	sbrc	r3, 3
+    1760:	1b c0       	rjmp	.+54     	; 0x1798 <vfprintf+0x1c2>
+    1762:	82 2d       	mov	r24, r2
+    1764:	90 e0       	ldi	r25, 0x00	; 0
+    1766:	88 16       	cp	r8, r24
+    1768:	99 06       	cpc	r9, r25
+    176a:	b0 f4       	brcc	.+44     	; 0x1798 <vfprintf+0x1c2>
+    176c:	b6 01       	movw	r22, r12
+    176e:	80 e2       	ldi	r24, 0x20	; 32
+    1770:	90 e0       	ldi	r25, 0x00	; 0
+    1772:	0e 94 e2 0c 	call	0x19c4	; 0x19c4 <fputc>
+    1776:	2a 94       	dec	r2
+    1778:	f4 cf       	rjmp	.-24     	; 0x1762 <vfprintf+0x18c>
+    177a:	f5 01       	movw	r30, r10
+    177c:	37 fc       	sbrc	r3, 7
+    177e:	85 91       	lpm	r24, Z+
+    1780:	37 fe       	sbrs	r3, 7
+    1782:	81 91       	ld	r24, Z+
+    1784:	5f 01       	movw	r10, r30
+    1786:	b6 01       	movw	r22, r12
+    1788:	90 e0       	ldi	r25, 0x00	; 0
+    178a:	0e 94 e2 0c 	call	0x19c4	; 0x19c4 <fputc>
+    178e:	21 10       	cpse	r2, r1
+    1790:	2a 94       	dec	r2
+    1792:	21 e0       	ldi	r18, 0x01	; 1
+    1794:	82 1a       	sub	r8, r18
+    1796:	91 08       	sbc	r9, r1
+    1798:	81 14       	cp	r8, r1
+    179a:	91 04       	cpc	r9, r1
+    179c:	71 f7       	brne	.-36     	; 0x177a <vfprintf+0x1a4>
+    179e:	e8 c0       	rjmp	.+464    	; 0x1970 <vfprintf+0x39a>
+    17a0:	84 36       	cpi	r24, 0x64	; 100
+    17a2:	11 f0       	breq	.+4      	; 0x17a8 <vfprintf+0x1d2>
+    17a4:	89 36       	cpi	r24, 0x69	; 105
+    17a6:	41 f5       	brne	.+80     	; 0x17f8 <vfprintf+0x222>
+    17a8:	f8 01       	movw	r30, r16
+    17aa:	37 fe       	sbrs	r3, 7
+    17ac:	07 c0       	rjmp	.+14     	; 0x17bc <vfprintf+0x1e6>
+    17ae:	60 81       	ld	r22, Z
+    17b0:	71 81       	ldd	r23, Z+1	; 0x01
+    17b2:	82 81       	ldd	r24, Z+2	; 0x02
+    17b4:	93 81       	ldd	r25, Z+3	; 0x03
+    17b6:	0c 5f       	subi	r16, 0xFC	; 252
+    17b8:	1f 4f       	sbci	r17, 0xFF	; 255
+    17ba:	08 c0       	rjmp	.+16     	; 0x17cc <vfprintf+0x1f6>
+    17bc:	60 81       	ld	r22, Z
+    17be:	71 81       	ldd	r23, Z+1	; 0x01
+    17c0:	07 2e       	mov	r0, r23
+    17c2:	00 0c       	add	r0, r0
+    17c4:	88 0b       	sbc	r24, r24
+    17c6:	99 0b       	sbc	r25, r25
+    17c8:	0e 5f       	subi	r16, 0xFE	; 254
+    17ca:	1f 4f       	sbci	r17, 0xFF	; 255
+    17cc:	f3 2d       	mov	r31, r3
+    17ce:	ff 76       	andi	r31, 0x6F	; 111
+    17d0:	3f 2e       	mov	r3, r31
+    17d2:	97 ff       	sbrs	r25, 7
+    17d4:	09 c0       	rjmp	.+18     	; 0x17e8 <vfprintf+0x212>
+    17d6:	90 95       	com	r25
+    17d8:	80 95       	com	r24
+    17da:	70 95       	com	r23
+    17dc:	61 95       	neg	r22
+    17de:	7f 4f       	sbci	r23, 0xFF	; 255
+    17e0:	8f 4f       	sbci	r24, 0xFF	; 255
+    17e2:	9f 4f       	sbci	r25, 0xFF	; 255
+    17e4:	f0 68       	ori	r31, 0x80	; 128
+    17e6:	3f 2e       	mov	r3, r31
+    17e8:	2a e0       	ldi	r18, 0x0A	; 10
+    17ea:	30 e0       	ldi	r19, 0x00	; 0
+    17ec:	a3 01       	movw	r20, r6
+    17ee:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <__ultoa_invert>
+    17f2:	88 2e       	mov	r8, r24
+    17f4:	86 18       	sub	r8, r6
+    17f6:	45 c0       	rjmp	.+138    	; 0x1882 <vfprintf+0x2ac>
+    17f8:	85 37       	cpi	r24, 0x75	; 117
+    17fa:	31 f4       	brne	.+12     	; 0x1808 <vfprintf+0x232>
+    17fc:	23 2d       	mov	r18, r3
+    17fe:	2f 7e       	andi	r18, 0xEF	; 239
+    1800:	b2 2e       	mov	r11, r18
+    1802:	2a e0       	ldi	r18, 0x0A	; 10
+    1804:	30 e0       	ldi	r19, 0x00	; 0
+    1806:	25 c0       	rjmp	.+74     	; 0x1852 <vfprintf+0x27c>
+    1808:	93 2d       	mov	r25, r3
+    180a:	99 7f       	andi	r25, 0xF9	; 249
+    180c:	b9 2e       	mov	r11, r25
+    180e:	8f 36       	cpi	r24, 0x6F	; 111
+    1810:	c1 f0       	breq	.+48     	; 0x1842 <vfprintf+0x26c>
+    1812:	18 f4       	brcc	.+6      	; 0x181a <vfprintf+0x244>
+    1814:	88 35       	cpi	r24, 0x58	; 88
+    1816:	79 f0       	breq	.+30     	; 0x1836 <vfprintf+0x260>
+    1818:	b5 c0       	rjmp	.+362    	; 0x1984 <vfprintf+0x3ae>
+    181a:	80 37       	cpi	r24, 0x70	; 112
+    181c:	19 f0       	breq	.+6      	; 0x1824 <vfprintf+0x24e>
+    181e:	88 37       	cpi	r24, 0x78	; 120
+    1820:	21 f0       	breq	.+8      	; 0x182a <vfprintf+0x254>
+    1822:	b0 c0       	rjmp	.+352    	; 0x1984 <vfprintf+0x3ae>
+    1824:	e9 2f       	mov	r30, r25
+    1826:	e0 61       	ori	r30, 0x10	; 16
+    1828:	be 2e       	mov	r11, r30
+    182a:	b4 fe       	sbrs	r11, 4
+    182c:	0d c0       	rjmp	.+26     	; 0x1848 <vfprintf+0x272>
+    182e:	fb 2d       	mov	r31, r11
+    1830:	f4 60       	ori	r31, 0x04	; 4
+    1832:	bf 2e       	mov	r11, r31
+    1834:	09 c0       	rjmp	.+18     	; 0x1848 <vfprintf+0x272>
+    1836:	34 fe       	sbrs	r3, 4
+    1838:	0a c0       	rjmp	.+20     	; 0x184e <vfprintf+0x278>
+    183a:	29 2f       	mov	r18, r25
+    183c:	26 60       	ori	r18, 0x06	; 6
+    183e:	b2 2e       	mov	r11, r18
+    1840:	06 c0       	rjmp	.+12     	; 0x184e <vfprintf+0x278>
+    1842:	28 e0       	ldi	r18, 0x08	; 8
+    1844:	30 e0       	ldi	r19, 0x00	; 0
+    1846:	05 c0       	rjmp	.+10     	; 0x1852 <vfprintf+0x27c>
+    1848:	20 e1       	ldi	r18, 0x10	; 16
+    184a:	30 e0       	ldi	r19, 0x00	; 0
+    184c:	02 c0       	rjmp	.+4      	; 0x1852 <vfprintf+0x27c>
+    184e:	20 e1       	ldi	r18, 0x10	; 16
+    1850:	32 e0       	ldi	r19, 0x02	; 2
+    1852:	f8 01       	movw	r30, r16
+    1854:	b7 fe       	sbrs	r11, 7
+    1856:	07 c0       	rjmp	.+14     	; 0x1866 <vfprintf+0x290>
+    1858:	60 81       	ld	r22, Z
+    185a:	71 81       	ldd	r23, Z+1	; 0x01
+    185c:	82 81       	ldd	r24, Z+2	; 0x02
+    185e:	93 81       	ldd	r25, Z+3	; 0x03
+    1860:	0c 5f       	subi	r16, 0xFC	; 252
+    1862:	1f 4f       	sbci	r17, 0xFF	; 255
+    1864:	06 c0       	rjmp	.+12     	; 0x1872 <vfprintf+0x29c>
+    1866:	60 81       	ld	r22, Z
+    1868:	71 81       	ldd	r23, Z+1	; 0x01
+    186a:	80 e0       	ldi	r24, 0x00	; 0
+    186c:	90 e0       	ldi	r25, 0x00	; 0
+    186e:	0e 5f       	subi	r16, 0xFE	; 254
+    1870:	1f 4f       	sbci	r17, 0xFF	; 255
+    1872:	a3 01       	movw	r20, r6
+    1874:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <__ultoa_invert>
+    1878:	88 2e       	mov	r8, r24
+    187a:	86 18       	sub	r8, r6
+    187c:	fb 2d       	mov	r31, r11
+    187e:	ff 77       	andi	r31, 0x7F	; 127
+    1880:	3f 2e       	mov	r3, r31
+    1882:	36 fe       	sbrs	r3, 6
+    1884:	0d c0       	rjmp	.+26     	; 0x18a0 <vfprintf+0x2ca>
+    1886:	23 2d       	mov	r18, r3
+    1888:	2e 7f       	andi	r18, 0xFE	; 254
+    188a:	a2 2e       	mov	r10, r18
+    188c:	89 14       	cp	r8, r9
+    188e:	58 f4       	brcc	.+22     	; 0x18a6 <vfprintf+0x2d0>
+    1890:	34 fe       	sbrs	r3, 4
+    1892:	0b c0       	rjmp	.+22     	; 0x18aa <vfprintf+0x2d4>
+    1894:	32 fc       	sbrc	r3, 2
+    1896:	09 c0       	rjmp	.+18     	; 0x18aa <vfprintf+0x2d4>
+    1898:	83 2d       	mov	r24, r3
+    189a:	8e 7e       	andi	r24, 0xEE	; 238
+    189c:	a8 2e       	mov	r10, r24
+    189e:	05 c0       	rjmp	.+10     	; 0x18aa <vfprintf+0x2d4>
+    18a0:	b8 2c       	mov	r11, r8
+    18a2:	a3 2c       	mov	r10, r3
+    18a4:	03 c0       	rjmp	.+6      	; 0x18ac <vfprintf+0x2d6>
+    18a6:	b8 2c       	mov	r11, r8
+    18a8:	01 c0       	rjmp	.+2      	; 0x18ac <vfprintf+0x2d6>
+    18aa:	b9 2c       	mov	r11, r9
+    18ac:	a4 fe       	sbrs	r10, 4
+    18ae:	0f c0       	rjmp	.+30     	; 0x18ce <vfprintf+0x2f8>
+    18b0:	fe 01       	movw	r30, r28
+    18b2:	e8 0d       	add	r30, r8
+    18b4:	f1 1d       	adc	r31, r1
+    18b6:	80 81       	ld	r24, Z
+    18b8:	80 33       	cpi	r24, 0x30	; 48
+    18ba:	21 f4       	brne	.+8      	; 0x18c4 <vfprintf+0x2ee>
+    18bc:	9a 2d       	mov	r25, r10
+    18be:	99 7e       	andi	r25, 0xE9	; 233
+    18c0:	a9 2e       	mov	r10, r25
+    18c2:	09 c0       	rjmp	.+18     	; 0x18d6 <vfprintf+0x300>
+    18c4:	a2 fe       	sbrs	r10, 2
+    18c6:	06 c0       	rjmp	.+12     	; 0x18d4 <vfprintf+0x2fe>
+    18c8:	b3 94       	inc	r11
+    18ca:	b3 94       	inc	r11
+    18cc:	04 c0       	rjmp	.+8      	; 0x18d6 <vfprintf+0x300>
+    18ce:	8a 2d       	mov	r24, r10
+    18d0:	86 78       	andi	r24, 0x86	; 134
+    18d2:	09 f0       	breq	.+2      	; 0x18d6 <vfprintf+0x300>
+    18d4:	b3 94       	inc	r11
+    18d6:	a3 fc       	sbrc	r10, 3
+    18d8:	11 c0       	rjmp	.+34     	; 0x18fc <vfprintf+0x326>
+    18da:	a0 fe       	sbrs	r10, 0
+    18dc:	06 c0       	rjmp	.+12     	; 0x18ea <vfprintf+0x314>
+    18de:	b2 14       	cp	r11, r2
+    18e0:	88 f4       	brcc	.+34     	; 0x1904 <vfprintf+0x32e>
+    18e2:	28 0c       	add	r2, r8
+    18e4:	92 2c       	mov	r9, r2
+    18e6:	9b 18       	sub	r9, r11
+    18e8:	0e c0       	rjmp	.+28     	; 0x1906 <vfprintf+0x330>
+    18ea:	b2 14       	cp	r11, r2
+    18ec:	60 f4       	brcc	.+24     	; 0x1906 <vfprintf+0x330>
+    18ee:	b6 01       	movw	r22, r12
+    18f0:	80 e2       	ldi	r24, 0x20	; 32
+    18f2:	90 e0       	ldi	r25, 0x00	; 0
+    18f4:	0e 94 e2 0c 	call	0x19c4	; 0x19c4 <fputc>
+    18f8:	b3 94       	inc	r11
+    18fa:	f7 cf       	rjmp	.-18     	; 0x18ea <vfprintf+0x314>
+    18fc:	b2 14       	cp	r11, r2
+    18fe:	18 f4       	brcc	.+6      	; 0x1906 <vfprintf+0x330>
+    1900:	2b 18       	sub	r2, r11
+    1902:	02 c0       	rjmp	.+4      	; 0x1908 <vfprintf+0x332>
+    1904:	98 2c       	mov	r9, r8
+    1906:	21 2c       	mov	r2, r1
+    1908:	a4 fe       	sbrs	r10, 4
+    190a:	10 c0       	rjmp	.+32     	; 0x192c <vfprintf+0x356>
+    190c:	b6 01       	movw	r22, r12
+    190e:	80 e3       	ldi	r24, 0x30	; 48
+    1910:	90 e0       	ldi	r25, 0x00	; 0
+    1912:	0e 94 e2 0c 	call	0x19c4	; 0x19c4 <fputc>
+    1916:	a2 fe       	sbrs	r10, 2
+    1918:	17 c0       	rjmp	.+46     	; 0x1948 <vfprintf+0x372>
+    191a:	a1 fc       	sbrc	r10, 1
+    191c:	03 c0       	rjmp	.+6      	; 0x1924 <vfprintf+0x34e>
+    191e:	88 e7       	ldi	r24, 0x78	; 120
+    1920:	90 e0       	ldi	r25, 0x00	; 0
+    1922:	02 c0       	rjmp	.+4      	; 0x1928 <vfprintf+0x352>
+    1924:	88 e5       	ldi	r24, 0x58	; 88
+    1926:	90 e0       	ldi	r25, 0x00	; 0
+    1928:	b6 01       	movw	r22, r12
+    192a:	0c c0       	rjmp	.+24     	; 0x1944 <vfprintf+0x36e>
+    192c:	8a 2d       	mov	r24, r10
+    192e:	86 78       	andi	r24, 0x86	; 134
+    1930:	59 f0       	breq	.+22     	; 0x1948 <vfprintf+0x372>
+    1932:	a1 fe       	sbrs	r10, 1
+    1934:	02 c0       	rjmp	.+4      	; 0x193a <vfprintf+0x364>
+    1936:	8b e2       	ldi	r24, 0x2B	; 43
+    1938:	01 c0       	rjmp	.+2      	; 0x193c <vfprintf+0x366>
+    193a:	80 e2       	ldi	r24, 0x20	; 32
+    193c:	a7 fc       	sbrc	r10, 7
+    193e:	8d e2       	ldi	r24, 0x2D	; 45
+    1940:	b6 01       	movw	r22, r12
+    1942:	90 e0       	ldi	r25, 0x00	; 0
+    1944:	0e 94 e2 0c 	call	0x19c4	; 0x19c4 <fputc>
+    1948:	89 14       	cp	r8, r9
+    194a:	38 f4       	brcc	.+14     	; 0x195a <vfprintf+0x384>
+    194c:	b6 01       	movw	r22, r12
+    194e:	80 e3       	ldi	r24, 0x30	; 48
+    1950:	90 e0       	ldi	r25, 0x00	; 0
+    1952:	0e 94 e2 0c 	call	0x19c4	; 0x19c4 <fputc>
+    1956:	9a 94       	dec	r9
+    1958:	f7 cf       	rjmp	.-18     	; 0x1948 <vfprintf+0x372>
+    195a:	8a 94       	dec	r8
+    195c:	f3 01       	movw	r30, r6
+    195e:	e8 0d       	add	r30, r8
+    1960:	f1 1d       	adc	r31, r1
+    1962:	80 81       	ld	r24, Z
+    1964:	b6 01       	movw	r22, r12
+    1966:	90 e0       	ldi	r25, 0x00	; 0
+    1968:	0e 94 e2 0c 	call	0x19c4	; 0x19c4 <fputc>
+    196c:	81 10       	cpse	r8, r1
+    196e:	f5 cf       	rjmp	.-22     	; 0x195a <vfprintf+0x384>
+    1970:	22 20       	and	r2, r2
+    1972:	09 f4       	brne	.+2      	; 0x1976 <vfprintf+0x3a0>
+    1974:	42 ce       	rjmp	.-892    	; 0x15fa <vfprintf+0x24>
+    1976:	b6 01       	movw	r22, r12
+    1978:	80 e2       	ldi	r24, 0x20	; 32
+    197a:	90 e0       	ldi	r25, 0x00	; 0
+    197c:	0e 94 e2 0c 	call	0x19c4	; 0x19c4 <fputc>
+    1980:	2a 94       	dec	r2
+    1982:	f6 cf       	rjmp	.-20     	; 0x1970 <vfprintf+0x39a>
+    1984:	f6 01       	movw	r30, r12
+    1986:	86 81       	ldd	r24, Z+6	; 0x06
+    1988:	97 81       	ldd	r25, Z+7	; 0x07
+    198a:	02 c0       	rjmp	.+4      	; 0x1990 <vfprintf+0x3ba>
+    198c:	8f ef       	ldi	r24, 0xFF	; 255
+    198e:	9f ef       	ldi	r25, 0xFF	; 255
+    1990:	2b 96       	adiw	r28, 0x0b	; 11
+    1992:	e2 e1       	ldi	r30, 0x12	; 18
+    1994:	0c 94 98 0d 	jmp	0x1b30	; 0x1b30 <__epilogue_restores__>
+
+00001998 <strnlen_P>:
+    1998:	fc 01       	movw	r30, r24
+    199a:	05 90       	lpm	r0, Z+
+    199c:	61 50       	subi	r22, 0x01	; 1
+    199e:	70 40       	sbci	r23, 0x00	; 0
+    19a0:	01 10       	cpse	r0, r1
+    19a2:	d8 f7       	brcc	.-10     	; 0x199a <strnlen_P+0x2>
+    19a4:	80 95       	com	r24
+    19a6:	90 95       	com	r25
+    19a8:	8e 0f       	add	r24, r30
+    19aa:	9f 1f       	adc	r25, r31
+    19ac:	08 95       	ret
+
+000019ae <strnlen>:
+    19ae:	fc 01       	movw	r30, r24
+    19b0:	61 50       	subi	r22, 0x01	; 1
+    19b2:	70 40       	sbci	r23, 0x00	; 0
+    19b4:	01 90       	ld	r0, Z+
+    19b6:	01 10       	cpse	r0, r1
+    19b8:	d8 f7       	brcc	.-10     	; 0x19b0 <strnlen+0x2>
+    19ba:	80 95       	com	r24
+    19bc:	90 95       	com	r25
+    19be:	8e 0f       	add	r24, r30
+    19c0:	9f 1f       	adc	r25, r31
+    19c2:	08 95       	ret
+
+000019c4 <fputc>:
+    19c4:	0f 93       	push	r16
+    19c6:	1f 93       	push	r17
+    19c8:	cf 93       	push	r28
+    19ca:	df 93       	push	r29
+    19cc:	fb 01       	movw	r30, r22
+    19ce:	23 81       	ldd	r18, Z+3	; 0x03
+    19d0:	21 fd       	sbrc	r18, 1
+    19d2:	03 c0       	rjmp	.+6      	; 0x19da <fputc+0x16>
+    19d4:	8f ef       	ldi	r24, 0xFF	; 255
+    19d6:	9f ef       	ldi	r25, 0xFF	; 255
+    19d8:	2c c0       	rjmp	.+88     	; 0x1a32 <fputc+0x6e>
+    19da:	22 ff       	sbrs	r18, 2
+    19dc:	16 c0       	rjmp	.+44     	; 0x1a0a <fputc+0x46>
+    19de:	46 81       	ldd	r20, Z+6	; 0x06
+    19e0:	57 81       	ldd	r21, Z+7	; 0x07
+    19e2:	24 81       	ldd	r18, Z+4	; 0x04
+    19e4:	35 81       	ldd	r19, Z+5	; 0x05
+    19e6:	42 17       	cp	r20, r18
+    19e8:	53 07       	cpc	r21, r19
+    19ea:	44 f4       	brge	.+16     	; 0x19fc <fputc+0x38>
+    19ec:	a0 81       	ld	r26, Z
+    19ee:	b1 81       	ldd	r27, Z+1	; 0x01
+    19f0:	9d 01       	movw	r18, r26
+    19f2:	2f 5f       	subi	r18, 0xFF	; 255
+    19f4:	3f 4f       	sbci	r19, 0xFF	; 255
+    19f6:	31 83       	std	Z+1, r19	; 0x01
+    19f8:	20 83       	st	Z, r18
+    19fa:	8c 93       	st	X, r24
+    19fc:	26 81       	ldd	r18, Z+6	; 0x06
+    19fe:	37 81       	ldd	r19, Z+7	; 0x07
+    1a00:	2f 5f       	subi	r18, 0xFF	; 255
+    1a02:	3f 4f       	sbci	r19, 0xFF	; 255
+    1a04:	37 83       	std	Z+7, r19	; 0x07
+    1a06:	26 83       	std	Z+6, r18	; 0x06
+    1a08:	14 c0       	rjmp	.+40     	; 0x1a32 <fputc+0x6e>
+    1a0a:	8b 01       	movw	r16, r22
+    1a0c:	ec 01       	movw	r28, r24
+    1a0e:	fb 01       	movw	r30, r22
+    1a10:	00 84       	ldd	r0, Z+8	; 0x08
+    1a12:	f1 85       	ldd	r31, Z+9	; 0x09
+    1a14:	e0 2d       	mov	r30, r0
+    1a16:	09 95       	icall
+    1a18:	89 2b       	or	r24, r25
+    1a1a:	e1 f6       	brne	.-72     	; 0x19d4 <fputc+0x10>
+    1a1c:	d8 01       	movw	r26, r16
+    1a1e:	16 96       	adiw	r26, 0x06	; 6
+    1a20:	8d 91       	ld	r24, X+
+    1a22:	9c 91       	ld	r25, X
+    1a24:	17 97       	sbiw	r26, 0x07	; 7
+    1a26:	01 96       	adiw	r24, 0x01	; 1
+    1a28:	17 96       	adiw	r26, 0x07	; 7
+    1a2a:	9c 93       	st	X, r25
+    1a2c:	8e 93       	st	-X, r24
+    1a2e:	16 97       	sbiw	r26, 0x06	; 6
+    1a30:	ce 01       	movw	r24, r28
+    1a32:	df 91       	pop	r29
+    1a34:	cf 91       	pop	r28
+    1a36:	1f 91       	pop	r17
+    1a38:	0f 91       	pop	r16
+    1a3a:	08 95       	ret
+
+00001a3c <__ultoa_invert>:
+    1a3c:	fa 01       	movw	r30, r20
+    1a3e:	aa 27       	eor	r26, r26
+    1a40:	28 30       	cpi	r18, 0x08	; 8
+    1a42:	51 f1       	breq	.+84     	; 0x1a98 <__ultoa_invert+0x5c>
+    1a44:	20 31       	cpi	r18, 0x10	; 16
+    1a46:	81 f1       	breq	.+96     	; 0x1aa8 <__ultoa_invert+0x6c>
+    1a48:	e8 94       	clt
+    1a4a:	6f 93       	push	r22
+    1a4c:	6e 7f       	andi	r22, 0xFE	; 254
+    1a4e:	6e 5f       	subi	r22, 0xFE	; 254
+    1a50:	7f 4f       	sbci	r23, 0xFF	; 255
+    1a52:	8f 4f       	sbci	r24, 0xFF	; 255
+    1a54:	9f 4f       	sbci	r25, 0xFF	; 255
+    1a56:	af 4f       	sbci	r26, 0xFF	; 255
+    1a58:	b1 e0       	ldi	r27, 0x01	; 1
+    1a5a:	3e d0       	rcall	.+124    	; 0x1ad8 <__ultoa_invert+0x9c>
+    1a5c:	b4 e0       	ldi	r27, 0x04	; 4
+    1a5e:	3c d0       	rcall	.+120    	; 0x1ad8 <__ultoa_invert+0x9c>
+    1a60:	67 0f       	add	r22, r23
+    1a62:	78 1f       	adc	r23, r24
+    1a64:	89 1f       	adc	r24, r25
+    1a66:	9a 1f       	adc	r25, r26
+    1a68:	a1 1d       	adc	r26, r1
+    1a6a:	68 0f       	add	r22, r24
+    1a6c:	79 1f       	adc	r23, r25
+    1a6e:	8a 1f       	adc	r24, r26
+    1a70:	91 1d       	adc	r25, r1
+    1a72:	a1 1d       	adc	r26, r1
+    1a74:	6a 0f       	add	r22, r26
+    1a76:	71 1d       	adc	r23, r1
+    1a78:	81 1d       	adc	r24, r1
+    1a7a:	91 1d       	adc	r25, r1
+    1a7c:	a1 1d       	adc	r26, r1
+    1a7e:	20 d0       	rcall	.+64     	; 0x1ac0 <__ultoa_invert+0x84>
+    1a80:	09 f4       	brne	.+2      	; 0x1a84 <__ultoa_invert+0x48>
+    1a82:	68 94       	set
+    1a84:	3f 91       	pop	r19
+    1a86:	2a e0       	ldi	r18, 0x0A	; 10
+    1a88:	26 9f       	mul	r18, r22
+    1a8a:	11 24       	eor	r1, r1
+    1a8c:	30 19       	sub	r19, r0
+    1a8e:	30 5d       	subi	r19, 0xD0	; 208
+    1a90:	31 93       	st	Z+, r19
+    1a92:	de f6       	brtc	.-74     	; 0x1a4a <__ultoa_invert+0xe>
+    1a94:	cf 01       	movw	r24, r30
+    1a96:	08 95       	ret
+    1a98:	46 2f       	mov	r20, r22
+    1a9a:	47 70       	andi	r20, 0x07	; 7
+    1a9c:	40 5d       	subi	r20, 0xD0	; 208
+    1a9e:	41 93       	st	Z+, r20
+    1aa0:	b3 e0       	ldi	r27, 0x03	; 3
+    1aa2:	0f d0       	rcall	.+30     	; 0x1ac2 <__ultoa_invert+0x86>
+    1aa4:	c9 f7       	brne	.-14     	; 0x1a98 <__ultoa_invert+0x5c>
+    1aa6:	f6 cf       	rjmp	.-20     	; 0x1a94 <__ultoa_invert+0x58>
+    1aa8:	46 2f       	mov	r20, r22
+    1aaa:	4f 70       	andi	r20, 0x0F	; 15
+    1aac:	40 5d       	subi	r20, 0xD0	; 208
+    1aae:	4a 33       	cpi	r20, 0x3A	; 58
+    1ab0:	18 f0       	brcs	.+6      	; 0x1ab8 <__ultoa_invert+0x7c>
+    1ab2:	49 5d       	subi	r20, 0xD9	; 217
+    1ab4:	31 fd       	sbrc	r19, 1
+    1ab6:	40 52       	subi	r20, 0x20	; 32
+    1ab8:	41 93       	st	Z+, r20
+    1aba:	02 d0       	rcall	.+4      	; 0x1ac0 <__ultoa_invert+0x84>
+    1abc:	a9 f7       	brne	.-22     	; 0x1aa8 <__ultoa_invert+0x6c>
+    1abe:	ea cf       	rjmp	.-44     	; 0x1a94 <__ultoa_invert+0x58>
+    1ac0:	b4 e0       	ldi	r27, 0x04	; 4
+    1ac2:	a6 95       	lsr	r26
+    1ac4:	97 95       	ror	r25
+    1ac6:	87 95       	ror	r24
+    1ac8:	77 95       	ror	r23
+    1aca:	67 95       	ror	r22
+    1acc:	ba 95       	dec	r27
+    1ace:	c9 f7       	brne	.-14     	; 0x1ac2 <__ultoa_invert+0x86>
+    1ad0:	00 97       	sbiw	r24, 0x00	; 0
+    1ad2:	61 05       	cpc	r22, r1
+    1ad4:	71 05       	cpc	r23, r1
+    1ad6:	08 95       	ret
+    1ad8:	9b 01       	movw	r18, r22
+    1ada:	ac 01       	movw	r20, r24
+    1adc:	0a 2e       	mov	r0, r26
+    1ade:	06 94       	lsr	r0
+    1ae0:	57 95       	ror	r21
+    1ae2:	47 95       	ror	r20
+    1ae4:	37 95       	ror	r19
+    1ae6:	27 95       	ror	r18
+    1ae8:	ba 95       	dec	r27
+    1aea:	c9 f7       	brne	.-14     	; 0x1ade <__ultoa_invert+0xa2>
+    1aec:	62 0f       	add	r22, r18
+    1aee:	73 1f       	adc	r23, r19
+    1af0:	84 1f       	adc	r24, r20
+    1af2:	95 1f       	adc	r25, r21
+    1af4:	a0 1d       	adc	r26, r0
+    1af6:	08 95       	ret
+
+00001af8 <__prologue_saves__>:
+    1af8:	2f 92       	push	r2
+    1afa:	3f 92       	push	r3
+    1afc:	4f 92       	push	r4
+    1afe:	5f 92       	push	r5
+    1b00:	6f 92       	push	r6
+    1b02:	7f 92       	push	r7
+    1b04:	8f 92       	push	r8
+    1b06:	9f 92       	push	r9
+    1b08:	af 92       	push	r10
+    1b0a:	bf 92       	push	r11
+    1b0c:	cf 92       	push	r12
+    1b0e:	df 92       	push	r13
+    1b10:	ef 92       	push	r14
+    1b12:	ff 92       	push	r15
+    1b14:	0f 93       	push	r16
+    1b16:	1f 93       	push	r17
+    1b18:	cf 93       	push	r28
+    1b1a:	df 93       	push	r29
+    1b1c:	cd b7       	in	r28, 0x3d	; 61
+    1b1e:	de b7       	in	r29, 0x3e	; 62
+    1b20:	ca 1b       	sub	r28, r26
+    1b22:	db 0b       	sbc	r29, r27
+    1b24:	0f b6       	in	r0, 0x3f	; 63
+    1b26:	f8 94       	cli
+    1b28:	de bf       	out	0x3e, r29	; 62
+    1b2a:	0f be       	out	0x3f, r0	; 63
+    1b2c:	cd bf       	out	0x3d, r28	; 61
+    1b2e:	09 94       	ijmp
+
+00001b30 <__epilogue_restores__>:
+    1b30:	2a 88       	ldd	r2, Y+18	; 0x12
+    1b32:	39 88       	ldd	r3, Y+17	; 0x11
+    1b34:	48 88       	ldd	r4, Y+16	; 0x10
+    1b36:	5f 84       	ldd	r5, Y+15	; 0x0f
+    1b38:	6e 84       	ldd	r6, Y+14	; 0x0e
+    1b3a:	7d 84       	ldd	r7, Y+13	; 0x0d
+    1b3c:	8c 84       	ldd	r8, Y+12	; 0x0c
+    1b3e:	9b 84       	ldd	r9, Y+11	; 0x0b
+    1b40:	aa 84       	ldd	r10, Y+10	; 0x0a
+    1b42:	b9 84       	ldd	r11, Y+9	; 0x09
+    1b44:	c8 84       	ldd	r12, Y+8	; 0x08
+    1b46:	df 80       	ldd	r13, Y+7	; 0x07
+    1b48:	ee 80       	ldd	r14, Y+6	; 0x06
+    1b4a:	fd 80       	ldd	r15, Y+5	; 0x05
+    1b4c:	0c 81       	ldd	r16, Y+4	; 0x04
+    1b4e:	1b 81       	ldd	r17, Y+3	; 0x03
+    1b50:	aa 81       	ldd	r26, Y+2	; 0x02
+    1b52:	b9 81       	ldd	r27, Y+1	; 0x01
+    1b54:	ce 0f       	add	r28, r30
+    1b56:	d1 1d       	adc	r29, r1
+    1b58:	0f b6       	in	r0, 0x3f	; 63
+    1b5a:	f8 94       	cli
+    1b5c:	de bf       	out	0x3e, r29	; 62
+    1b5e:	0f be       	out	0x3f, r0	; 63
+    1b60:	cd bf       	out	0x3d, r28	; 61
+    1b62:	ed 01       	movw	r28, r26
+    1b64:	08 95       	ret
+
+00001b66 <_exit>:
+    1b66:	f8 94       	cli
+
+00001b68 <__stop_program>:
+    1b68:	ff cf       	rjmp	.-2      	; 0x1b68 <__stop_program>

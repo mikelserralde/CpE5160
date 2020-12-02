@@ -3,10 +3,10 @@
 #include "UART.h"
 #include "SPI.h"
 #include "SDCard.h"
-#include "File_System_v2.h"
+#include "FileSystem.h"
 #include "print_memory.h"
 #include "Directory_Functions_struct.h"
-#include "Read_Sector.h"
+#include "ReadSector.h"
 #include "UART_Print.h"
 
 /******* Private Constants *************/
@@ -65,10 +65,10 @@ uint16_t  Print_Directory(uint32_t Sector_num, uint8_t * array_in)
    {
      do
      {
-        temp8=read8(0+i,values);  // read first byte to see if empty
+        temp8=read_value_8(0+i,values);  // read first byte to see if empty
         if((temp8!=0xE5)&&(temp8!=0x00))
 	    {  
-	       attr=read8(0x0b+i,values);
+	       attr=read_value_8(0x0b+i,values);
 		   if((attr&0x0E)==0)   // if hidden, system or Vol_ID bit is set do not print
 		   {
 		      entries++;
@@ -76,14 +76,14 @@ uint16_t  Print_Directory(uint32_t Sector_num, uint8_t * array_in)
 		      UART_Transmit_String(&UART1,0,prnt_bffr);
 			  for(j=0;j<8;j++)
 			  {
-			     out_val=read8(i+j,values);   // print the 8 byte name
+			     out_val=read_value_8(i+j,values);   // print the 8 byte name
 			     UART_Transmit(&UART1,out_val);
 			  }
               if((attr&0x10)==0x10)  // indicates directory
 			  {
 			     for(j=8;j<11;j++)
 			     {
-			        out_val=read8(i+j,values);
+			        out_val=read_value_8(i+j,values);
 			        UART_Transmit(&UART1,out_val);
 			     }
 			     sprintf(prnt_bffr,"[DIR]\n\r");
@@ -94,7 +94,7 @@ uint16_t  Print_Directory(uint32_t Sector_num, uint8_t * array_in)
 			     UART_Transmit(&UART1,0x2E);       
 			     for(j=8;j<11;j++)
 			     {
-			        out_val=read8(i+j,values);
+			        out_val=read_value_8(i+j,values);
 			        UART_Transmit(&UART1,out_val);
 			     }
 			     UART_Transmit(&UART1,CR);
@@ -168,10 +168,10 @@ uint32_t Read_Dir_Entry(uint32_t Sector_num, uint16_t Entry, uint8_t * array_in)
    {
      do
      {
-        temp8=read8(0+i,values);  // read first byte to see if empty
+        temp8=read_value_8(0+i,values);  // read first byte to see if empty
         if((temp8!=0xE5)&&(temp8!=0x00))
 	    {  
-	       attr=read8(0x0b+i,values);
+	       attr=read_value_8(0x0b+i,values);
 		   if((attr&0x0E)==0)    // if hidden do not print
 		   {
 		      entries++;
@@ -179,15 +179,15 @@ uint32_t Read_Dir_Entry(uint32_t Sector_num, uint16_t Entry, uint8_t * array_in)
               {
 			    if(Drive_values.FATtype==FAT32)
                 {
-                   return_clus=read8(21+i,values);
+                   return_clus=read_value_8(21+i,values);
 				   return_clus=return_clus<<8;
-                   return_clus|=read8(20+i,values);
+                   return_clus|=read_value_8(20+i,values);
                    return_clus=return_clus<<8;
                 }
-                return_clus|=read8(27+i,values);
+                return_clus|=read_value_8(27+i,values);
 			    return_clus=return_clus<<8;
-                return_clus|=read8(26+i,values);
-			    attr=read8(0x0b+i,values);
+                return_clus|=read_value_8(26+i,values);
+			    attr=read_value_8(0x0b+i,values);
 			    if(attr&0x10) return_clus|=directory_bit;
                 temp8=0;    // forces a function exit
               }

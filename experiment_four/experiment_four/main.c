@@ -10,6 +10,8 @@
 #include "Long_Serial_In.h"
 #include "board.h"
 #include "print_memory.h"
+#include "FileSystem.h"
+#include "Directory_Functions_struct.h"
 #include <avr/pgmspace.h>
 
 const char LSI_Prompt[16] PROGMEM = {"Enter block #: "};
@@ -19,11 +21,15 @@ const char LSI_Prompt[16] PROGMEM = {"Enter block #: "};
 
 int main(void)
 {
+	FS_values_t *Drive_p;
     /* Replace with your application code */
 	int8_t *prnt_bffr;
 	uint32_t temp32;
+	uint8_t result;
+	uint32_t current_dir;
 
-	
+	Drive_p = Export_Drive_values();
+
 	prnt_bffr=Export_print_buffer();
 	Output_Set(&PA,(LED3|OLED_C_D));
 	Output_Init(&PA,(LED3|OLED_C_D));
@@ -39,8 +45,16 @@ int main(void)
 	UART_init(&UART1,9600);
 	SD_Card_Init();
 	SPI_Master_Init(&SPI0,2000000);
+
+	result = mount_drive(&buffer1);
+		
+
+	current_dir = Drive_p->FirstRootDirSec;
     while (1) 
     {
+
+
+/*
 		 Copy_String_to_Buffer(LSI_Prompt,0,prnt_bffr);
 		 UART_Transmit_String(&UART1,0,prnt_bffr);
 		 temp32=long_serial_input(&UART1);
@@ -50,7 +64,7 @@ int main(void)
 		 Read_Block(512,buffer1);
 		 Output_Set(&PB,LED1);
 		 Output_Set(&PB,SD_CS);  // Set nCS = 1
-		 print_memory(&UART1,512,buffer1);
+		 print_memory(&UART1,512,buffer1);*/
 		 
     }
 }

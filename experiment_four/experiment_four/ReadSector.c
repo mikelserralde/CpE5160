@@ -2,6 +2,8 @@
 #include "Control_Outputs.h"
 #include "ReadSector.h"
 #include "SDCard.h"
+#include "Directory_Functions_struct.h"
+#include "board.h"
 
 uint8_t Read_Sector(uint32_t sector_number, uint16_t sector_size, uint8_t * data_array)
 {
@@ -12,14 +14,14 @@ uint8_t Read_Sector(uint32_t sector_number, uint16_t sector_size, uint8_t * data
 
 	// SC=9, multiplies sector number by 512 to convert to byte addr.
 
-	Output_Clear(&PB,SDCS);  //nCS0=0;
-	error_flag=SEND_COMMAND(17,(sector_number<<SDtype));
+	Output_Clear(&PB,SD_CS);  //nCS0=0;
+	error_flag=Send_Command(17,(sector_number<<SDtype));
 
 
-	Output_Set(&PB,SDCS);  // nCS0=1;
+	Output_Set(&PB,SD_CS);  // nCS0=1;
 
 	if(error_flag==no_errors)
-		error_flag=read_block(sector_size,array_for_data);
+		error_flag=Read_Block(sector_size,data_array);
 
 	if(error_flag!=no_errors)
 	{
