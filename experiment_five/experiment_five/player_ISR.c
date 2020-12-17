@@ -58,13 +58,195 @@ ISR(TIMER2_COMPA_vect)
      {
        buffer_flag=0;
 	   DR_input=Read_Pin(&PC,DATA_REQ);
+	   while ((DR_input == 0) && (buffer_flag == 0))
+	   {
+		   Output_Set(&PD, (BIT_EN));
+		   SPI_Transfer(&SPI0, buffer1[index1_g]);
+		   Output_Clear(&PD, (BIT_EN));
+		   index1_g++;
+		   if (index1_g > 511)
+		   {
+			   if (index2_g > 511)
+			   {
+				   if (num_sectors_g == (Drive_p->SecPerClus))
+				   {
+					   play_state_g = locate_cluster_2;
+				   }
+				   else
+				   {
+					   play_state_g = load_buf_2;
+				   }
+			   }
+
+			   else
+			   {
+				   play_state_g = send_data_2;
+			   }
+
+			   buffer_flag = 1;
+		   }
+
+		   DR_input = Read_Pin(&PC, DATA_REQ);
+	   }
   
-  
-  
-  
+	   DR_input = Read_Pin(&PC, DATA_REQ);
+	   if ((DR_input == 1) && (play_state_g == send_data_1))
+	   {
+		   if (index2_g > 511)
+		   {
+			   if (num_sectors_g == (Drive_p->SecPerClus))
+			   {
+				   play_state_g = locate_cluster_2;
+			   }
+
+			   else
+			   {
+				   play_state_g = load_buf_2;
+			   }
+		   }
+
+		   else
+		   {
+			   play_state_g = data_idle_1;
+		   }
+	   }
+
 	  break;
 	 }
 
+	 switch (play_state_g)
+	 {
+	 case data_idle_2:
+	 {
+		 DR_input = Read_Pin(&PC, DATA_REQ);
+		 if (DR_input == 0)
+		 {
+			 play_state_g = send_data_2;
+		 }
+		 break;
+	 }
+
+	 case send_data_2:
+	 {
+		 buffer_flag = 0;
+		 DR_input = Read_Pin(&PC, DATA_REQ);
+		 while ((DR_input == 0) && (buffer_flag == 0))
+		 {
+			 Output_Set(&PD, (BIT_EN));
+			 SPI_Transfer(&SPI0, buffer2[index2_g]);
+			 Output_Clear(&PD, (BIT_EN));
+			 index1_g++;
+			 if (index1_g > 511)
+			 {
+				 if (index2_g > 511)
+				 {
+					 if (num_sectors_g == (Drive_p->SecPerClus))
+					 {
+						 play_state_g = locate_cluster_1;
+					 }
+					 else
+					 {
+						 play_state_g = load_buf_1;
+					 }
+				 }
+
+				 else
+				 {
+					 play_state_g = send_data_1;
+				 }
+
+				 buffer_flag = 1;
+			 }
+
+			 DR_input = Read_Pin(&PC, DATA_REQ);
+		 }
+
+		 DR_input = Read_Pin(&PC, DATA_REQ);
+		 if ((DR_input == 1) && (play_state_g == send_data_1))
+		 {
+			 if (index1_g > 511)
+			 {
+				 if (num_sectors_g == (Drive_p->SecPerClus))
+				 {
+					 play_state_g = locate_cluster_1;
+				 }
+
+				 else
+				 {
+					 play_state_g = load_buf_1;
+				 }
+			 }
+
+			 else
+			 {
+				 play_state_g = data_idle_2;
+			 }
+		 }
+
+		 break;
+	 }
+
+
+	 case load_buf_1:
+	 {
+		 Read_Sector(sector_g + num_sectors_g, Drive_p->BytesPerSec, buffer1);
+		 num_sectors_g++;
+		 index1_g = 0;
+
+		 play_state_g = data_idle_2
+		 break;
+	 }
+
+	 case load_buf_2:
+	 {
+		 Read_Sector(sector_g + num_sectors_g, Drive_p->BytesPerSec, buffer2);
+		 num_sectors_g++;
+		 index2_g = 0;
+
+		 play_state_g = data_idle_1
+		 break;
+	 }
+
+	 case locate_cluster_1:
+	 {
+		 cluster_g = Find_Next_Clus(cluster_g, buffer2);
+		 if (cluster_g == 0x0FFFFFFF)
+		 {
+			 play_state_g = exit_player;
+		 }
+		 else
+		 {
+			 num_sectors_g = 0;
+			 sector_g = First_Sector(cluster_g);
+			 play_state_g = data_idle_2;
+		 }
+		 
+		 break;
+	 }
+
+	 case locate_cluster_2:
+	 {
+		 cluster_g = Find_Next_Clus(cluster_g, buffer1);
+		 if (cluster_g == 0x0FFFFFFF)
+		 {
+			 play_state_g = exit_player;
+		 }
+		 else
+		 {
+			 num_sectors_g = 0;
+			 sector_g = First_Sector(cluster_g);
+			 play_state_g = data_idle_1l
+		 }
+
+		 break;
+	 }
+
+	 case exit_player:
+	 {
+		 play_status_g = 0;
+
+		 break;
+	 }
     }   
 }
 

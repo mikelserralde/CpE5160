@@ -78,8 +78,8 @@ int main(void)
 			 }
 			 else
 			 {
-				 Open_File(Entry_clus, buffer1);
-				 //Play_Song(Entry_clus);
+				 //Open_File(Entry_clus, buffer1);
+				 Play_MP3_File(Entry_clus);
 			 }
 			 
 		 }
